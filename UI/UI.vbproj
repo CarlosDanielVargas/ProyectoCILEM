@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmMinorDetails.Designer.vb">
+      <DependentUpon>frmMinorDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMinorDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmNewRepresentative.Designer.vb">
       <DependentUpon>frmNewRepresentative.vb</DependentUpon>
     </Compile>
@@ -84,6 +90,18 @@
       <DependentUpon>frmNewMinor.vb</DependentUpon>
     </Compile>
     <Compile Include="frmNewMinor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRepresentativeDetails.Designer.vb">
+      <DependentUpon>frmRepresentativeDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRepresentativeDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserDetails.Designer.vb">
+      <DependentUpon>frmUserDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserDetails.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MdiMain.Designer.vb">
@@ -110,11 +128,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmMinorDetails.resx">
+      <DependentUpon>frmMinorDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNewMinor.resx">
       <DependentUpon>frmNewMinor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewRepresentative.resx">
       <DependentUpon>frmNewRepresentative.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRepresentativeDetails.resx">
+      <DependentUpon>frmRepresentativeDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserDetails.resx">
+      <DependentUpon>frmUserDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiMain.resx">
       <DependentUpon>MdiMain.vb</DependentUpon>
