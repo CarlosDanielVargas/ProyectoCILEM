@@ -23,6 +23,11 @@
         Me.RecommendationMethod = recommendationMethod
     End Sub
 
+	Public Sub New(ByVal minorID As String, ByVal name As String)
+		Me.MinorID = minorID
+		Me.Name = name
+	End Sub
+
 
 
 End Class

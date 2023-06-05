@@ -24,6 +24,14 @@
 		Me.EncargadoLegal = encargadoLegal
 	End Sub
 
+	Public Sub New(cedulaMenor As String, nombreCompleto As String)
+		InitializeComponent()
+
+		' Asignar los valores recibidos a las propiedades correspondientes
+		Me.CedulaMenor = cedulaMenor
+		Me.NombreCompleto = nombreCompleto
+	End Sub
+
 	Private Sub frmMinorDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 		' Mostrar los datos del niño en los controles correspondientes
 		txtNombreCompleto.Text = Genero
