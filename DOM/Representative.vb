@@ -43,4 +43,11 @@
         Me.WorkPlace = workPlace
     End Sub
 
+	Public Sub New(ByVal name As String, ByVal representativeID As Integer, ByVal mail As String, ByVal phone As String)
+		Me.RepresentativeID = representativeID
+		Me.Name = name
+		Me.Mail = mail
+		Me.Phone = phone
+	End Sub
+
 End Class
