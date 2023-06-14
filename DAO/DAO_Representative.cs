@@ -24,7 +24,7 @@ namespace DAO
                 foreach (DataRow row in dtRepresentatives.Rows)
                 {
                     Representative representative = new Representative();
-                    representative.RepresentativeID = Convert.ToInt32(row["RepresentativeID"]);
+                    representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
                     representative.Gender = Convert.ToChar(row["Gender"]);
                     representative.Residency = row["Residency"].ToString();
@@ -131,7 +131,7 @@ namespace DAO
                 foreach (DataRow row in dtRepresentatives.Rows)
                 {
                     Representative representative = new Representative();
-                    representative.RepresentativeID = Convert.ToInt32(row["RepresentativeID"]);
+                    representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
                     representative.Gender = Convert.ToChar(row["Gender"]);
                     representative.Residency = row["Residency"].ToString();
@@ -162,7 +162,7 @@ namespace DAO
                 foreach (DataRow row in dtRepresentatives.Rows)
                 {
                     Representative representative = new Representative();
-                    representative.RepresentativeID = Convert.ToInt32(row["RepresentativeID"]);
+                    representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
                     representative.Gender = Convert.ToChar(row["Gender"]);
                     representative.Residency = row["Residency"].ToString();
@@ -192,7 +192,7 @@ namespace DAO
                 foreach (DataRow row in dtRepresentatives.Rows)
                 {
                     Representative representative = new Representative();
-                    representative.RepresentativeID = Convert.ToInt32(row["RepresentativeID"]);
+                    representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
                     representative.Gender = Convert.ToChar(row["Gender"]);
                     representative.Residency = row["Residency"].ToString();
