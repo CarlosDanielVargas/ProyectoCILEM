@@ -56,13 +56,16 @@ Partial Class frmNewMinor
         Me.btnAddRepresentativeMinor = New System.Windows.Forms.Button()
         Me.lboxAssociatedRepresentatives = New System.Windows.Forms.ListBox()
         Me.lbAssociatedRepresentatives = New System.Windows.Forms.Label()
+        Me.lbRelation = New System.Windows.Forms.Label()
+        Me.tbRecommendationMethod = New System.Windows.Forms.TextBox()
+        Me.lbRecommendationMethod = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lbEnterDate
         '
         Me.lbEnterDate.AutoSize = True
         Me.lbEnterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbEnterDate.Location = New System.Drawing.Point(51, 201)
+        Me.lbEnterDate.Location = New System.Drawing.Point(51, 157)
         Me.lbEnterDate.Name = "lbEnterDate"
         Me.lbEnterDate.Size = New System.Drawing.Size(171, 25)
         Me.lbEnterDate.TabIndex = 39
@@ -72,16 +75,16 @@ Partial Class frmNewMinor
         '
         Me.cboxGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.cboxGender.FormattingEnabled = True
-        Me.cboxGender.Location = New System.Drawing.Point(264, 544)
+        Me.cboxGender.Location = New System.Drawing.Point(256, 544)
         Me.cboxGender.Name = "cboxGender"
-        Me.cboxGender.Size = New System.Drawing.Size(551, 28)
+        Me.cboxGender.Size = New System.Drawing.Size(557, 28)
         Me.cboxGender.TabIndex = 38
         '
         'lbGender
         '
         Me.lbGender.AutoSize = True
         Me.lbGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbGender.Location = New System.Drawing.Point(51, 581)
+        Me.lbGender.Location = New System.Drawing.Point(51, 547)
         Me.lbGender.Name = "lbGender"
         Me.lbGender.Size = New System.Drawing.Size(83, 25)
         Me.lbGender.TabIndex = 37
@@ -91,7 +94,7 @@ Partial Class frmNewMinor
         '
         Me.lbSchoolarship.AutoSize = True
         Me.lbSchoolarship.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbSchoolarship.Location = New System.Drawing.Point(51, 521)
+        Me.lbSchoolarship.Location = New System.Drawing.Point(51, 500)
         Me.lbSchoolarship.Name = "lbSchoolarship"
         Me.lbSchoolarship.Size = New System.Drawing.Size(122, 25)
         Me.lbSchoolarship.TabIndex = 35
@@ -100,17 +103,17 @@ Partial Class frmNewMinor
         'tbResidency
         '
         Me.tbResidency.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbResidency.Location = New System.Drawing.Point(264, 383)
+        Me.tbResidency.Location = New System.Drawing.Point(256, 339)
         Me.tbResidency.Multiline = True
         Me.tbResidency.Name = "tbResidency"
-        Me.tbResidency.Size = New System.Drawing.Size(551, 82)
+        Me.tbResidency.Size = New System.Drawing.Size(554, 129)
         Me.tbResidency.TabIndex = 34
         '
         'lbResidency
         '
         Me.lbResidency.AutoSize = True
         Me.lbResidency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbResidency.Location = New System.Drawing.Point(51, 385)
+        Me.lbResidency.Location = New System.Drawing.Point(51, 339)
         Me.lbResidency.Name = "lbResidency"
         Me.lbResidency.Size = New System.Drawing.Size(114, 25)
         Me.lbResidency.TabIndex = 33
@@ -119,16 +122,16 @@ Partial Class frmNewMinor
         'tbCurrentPayment
         '
         Me.tbCurrentPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.tbCurrentPayment.Location = New System.Drawing.Point(264, 330)
+        Me.tbCurrentPayment.Location = New System.Drawing.Point(256, 245)
         Me.tbCurrentPayment.Name = "tbCurrentPayment"
-        Me.tbCurrentPayment.Size = New System.Drawing.Size(551, 30)
+        Me.tbCurrentPayment.Size = New System.Drawing.Size(554, 30)
         Me.tbCurrentPayment.TabIndex = 32
         '
         'lbCurrentPayment
         '
         Me.lbCurrentPayment.AutoSize = True
         Me.lbCurrentPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCurrentPayment.Location = New System.Drawing.Point(51, 320)
+        Me.lbCurrentPayment.Location = New System.Drawing.Point(51, 248)
         Me.lbCurrentPayment.Name = "lbCurrentPayment"
         Me.lbCurrentPayment.Size = New System.Drawing.Size(121, 25)
         Me.lbCurrentPayment.TabIndex = 31
@@ -138,7 +141,7 @@ Partial Class frmNewMinor
         '
         Me.lbLeaveDate.AutoSize = True
         Me.lbLeaveDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbLeaveDate.Location = New System.Drawing.Point(51, 257)
+        Me.lbLeaveDate.Location = New System.Drawing.Point(51, 205)
         Me.lbLeaveDate.Name = "lbLeaveDate"
         Me.lbLeaveDate.Size = New System.Drawing.Size(202, 25)
         Me.lbLeaveDate.TabIndex = 29
@@ -148,7 +151,7 @@ Partial Class frmNewMinor
         '
         Me.lbBirthDate.AutoSize = True
         Me.lbBirthDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBirthDate.Location = New System.Drawing.Point(51, 144)
+        Me.lbBirthDate.Location = New System.Drawing.Point(51, 111)
         Me.lbBirthDate.Name = "lbBirthDate"
         Me.lbBirthDate.Size = New System.Drawing.Size(199, 25)
         Me.lbBirthDate.TabIndex = 27
@@ -157,16 +160,16 @@ Partial Class frmNewMinor
         'tbIDCard
         '
         Me.tbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbIDCard.Location = New System.Drawing.Point(264, 135)
+        Me.tbIDCard.Location = New System.Drawing.Point(256, 64)
         Me.tbIDCard.Name = "tbIDCard"
-        Me.tbIDCard.Size = New System.Drawing.Size(551, 28)
+        Me.tbIDCard.Size = New System.Drawing.Size(554, 28)
         Me.tbIDCard.TabIndex = 26
         '
         'lbIDCard
         '
         Me.lbIDCard.AutoSize = True
         Me.lbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIDCard.Location = New System.Drawing.Point(51, 76)
+        Me.lbIDCard.Location = New System.Drawing.Point(51, 64)
         Me.lbIDCard.Name = "lbIDCard"
         Me.lbIDCard.Size = New System.Drawing.Size(81, 25)
         Me.lbIDCard.TabIndex = 25
@@ -175,9 +178,9 @@ Partial Class frmNewMinor
         'tbName
         '
         Me.tbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbName.Location = New System.Drawing.Point(264, 86)
+        Me.tbName.Location = New System.Drawing.Point(256, 19)
         Me.tbName.Name = "tbName"
-        Me.tbName.Size = New System.Drawing.Size(551, 28)
+        Me.tbName.Size = New System.Drawing.Size(554, 28)
         Me.tbName.TabIndex = 24
         '
         'lbName
@@ -213,34 +216,34 @@ Partial Class frmNewMinor
         'dtpBirthDate
         '
         Me.dtpBirthDate.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpBirthDate.Location = New System.Drawing.Point(262, 192)
+        Me.dtpBirthDate.Location = New System.Drawing.Point(256, 114)
         Me.dtpBirthDate.Name = "dtpBirthDate"
-        Me.dtpBirthDate.Size = New System.Drawing.Size(551, 22)
+        Me.dtpBirthDate.Size = New System.Drawing.Size(554, 22)
         Me.dtpBirthDate.TabIndex = 41
         '
         'dtpEnterDate
         '
         Me.dtpEnterDate.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpEnterDate.Location = New System.Drawing.Point(264, 236)
+        Me.dtpEnterDate.Location = New System.Drawing.Point(256, 157)
         Me.dtpEnterDate.Name = "dtpEnterDate"
-        Me.dtpEnterDate.Size = New System.Drawing.Size(551, 22)
+        Me.dtpEnterDate.Size = New System.Drawing.Size(554, 22)
         Me.dtpEnterDate.TabIndex = 42
         '
         'dtpLeaveDate
         '
         Me.dtpLeaveDate.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpLeaveDate.Location = New System.Drawing.Point(264, 283)
+        Me.dtpLeaveDate.Location = New System.Drawing.Point(256, 205)
         Me.dtpLeaveDate.Name = "dtpLeaveDate"
-        Me.dtpLeaveDate.Size = New System.Drawing.Size(551, 22)
+        Me.dtpLeaveDate.Size = New System.Drawing.Size(554, 22)
         Me.dtpLeaveDate.TabIndex = 43
         '
         'cboxSchoolarship
         '
         Me.cboxSchoolarship.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.cboxSchoolarship.FormattingEnabled = True
-        Me.cboxSchoolarship.Location = New System.Drawing.Point(262, 497)
+        Me.cboxSchoolarship.Location = New System.Drawing.Point(256, 497)
         Me.cboxSchoolarship.Name = "cboxSchoolarship"
-        Me.cboxSchoolarship.Size = New System.Drawing.Size(553, 28)
+        Me.cboxSchoolarship.Size = New System.Drawing.Size(554, 28)
         Me.cboxSchoolarship.TabIndex = 44
         '
         'lbRepresentatives
@@ -286,10 +289,10 @@ Partial Class frmNewMinor
         Me.lboxFoundRepresentants.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.lboxFoundRepresentants.FormattingEnabled = True
         Me.lboxFoundRepresentants.ItemHeight = 22
-        Me.lboxFoundRepresentants.Location = New System.Drawing.Point(47, 740)
+        Me.lboxFoundRepresentants.Location = New System.Drawing.Point(56, 740)
         Me.lboxFoundRepresentants.Name = "lboxFoundRepresentants"
         Me.lboxFoundRepresentants.ScrollAlwaysVisible = True
-        Me.lboxFoundRepresentants.Size = New System.Drawing.Size(766, 92)
+        Me.lboxFoundRepresentants.Size = New System.Drawing.Size(757, 92)
         Me.lboxFoundRepresentants.TabIndex = 49
         '
         'lbFoundRepresentatives
@@ -316,18 +319,18 @@ Partial Class frmNewMinor
         '
         Me.tbSelectedRepresentative.Enabled = False
         Me.tbSelectedRepresentative.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSelectedRepresentative.Location = New System.Drawing.Point(308, 848)
+        Me.tbSelectedRepresentative.Location = New System.Drawing.Point(324, 848)
         Me.tbSelectedRepresentative.Name = "tbSelectedRepresentative"
-        Me.tbSelectedRepresentative.Size = New System.Drawing.Size(505, 28)
+        Me.tbSelectedRepresentative.Size = New System.Drawing.Size(489, 28)
         Me.tbSelectedRepresentative.TabIndex = 52
         '
         'cbRelationship
         '
         Me.cbRelationship.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.cbRelationship.FormattingEnabled = True
-        Me.cbRelationship.Location = New System.Drawing.Point(262, 893)
+        Me.cbRelationship.Location = New System.Drawing.Point(324, 893)
         Me.cbRelationship.Name = "cbRelationship"
-        Me.cbRelationship.Size = New System.Drawing.Size(551, 28)
+        Me.cbRelationship.Size = New System.Drawing.Size(489, 28)
         Me.cbRelationship.TabIndex = 54
         '
         'lbRelationship
@@ -355,10 +358,10 @@ Partial Class frmNewMinor
         Me.lboxAssociatedRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.lboxAssociatedRepresentatives.FormattingEnabled = True
         Me.lboxAssociatedRepresentatives.ItemHeight = 22
-        Me.lboxAssociatedRepresentatives.Location = New System.Drawing.Point(46, 1011)
+        Me.lboxAssociatedRepresentatives.Location = New System.Drawing.Point(56, 1011)
         Me.lboxAssociatedRepresentatives.Name = "lboxAssociatedRepresentatives"
         Me.lboxAssociatedRepresentatives.ScrollAlwaysVisible = True
-        Me.lboxAssociatedRepresentatives.Size = New System.Drawing.Size(766, 92)
+        Me.lboxAssociatedRepresentatives.Size = New System.Drawing.Size(756, 92)
         Me.lboxAssociatedRepresentatives.TabIndex = 56
         '
         'lbAssociatedRepresentatives
@@ -371,12 +374,43 @@ Partial Class frmNewMinor
         Me.lbAssociatedRepresentatives.TabIndex = 57
         Me.lbAssociatedRepresentatives.Text = "Representantes asociados con este menor"
         '
+        'lbRelation
+        '
+        Me.lbRelation.AutoSize = True
+        Me.lbRelation.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.lbRelation.Location = New System.Drawing.Point(62, 894)
+        Me.lbRelation.Name = "lbRelation"
+        Me.lbRelation.Size = New System.Drawing.Size(206, 24)
+        Me.lbRelation.TabIndex = 58
+        Me.lbRelation.Text = "Relación con el menor:"
+        '
+        'tbRecommendationMethod
+        '
+        Me.tbRecommendationMethod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.tbRecommendationMethod.Location = New System.Drawing.Point(256, 293)
+        Me.tbRecommendationMethod.Name = "tbRecommendationMethod"
+        Me.tbRecommendationMethod.Size = New System.Drawing.Size(554, 30)
+        Me.tbRecommendationMethod.TabIndex = 60
+        '
+        'lbRecommendationMethod
+        '
+        Me.lbRecommendationMethod.AutoSize = True
+        Me.lbRecommendationMethod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbRecommendationMethod.Location = New System.Drawing.Point(51, 296)
+        Me.lbRecommendationMethod.Name = "lbRecommendationMethod"
+        Me.lbRecommendationMethod.Size = New System.Drawing.Size(121, 25)
+        Me.lbRecommendationMethod.TabIndex = 59
+        Me.lbRecommendationMethod.Text = "Pago actual:"
+        '
         'frmNewMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(849, 559)
+        Me.ClientSize = New System.Drawing.Size(866, 438)
+        Me.Controls.Add(Me.tbRecommendationMethod)
+        Me.Controls.Add(Me.lbRecommendationMethod)
+        Me.Controls.Add(Me.lbRelation)
         Me.Controls.Add(Me.lbAssociatedRepresentatives)
         Me.Controls.Add(Me.lboxAssociatedRepresentatives)
         Me.Controls.Add(Me.btnAddRepresentativeMinor)
@@ -452,4 +486,7 @@ Partial Class frmNewMinor
     Friend WithEvents btnAddRepresentativeMinor As Button
     Friend WithEvents lboxAssociatedRepresentatives As ListBox
     Friend WithEvents lbAssociatedRepresentatives As Label
+    Friend WithEvents lbRelation As Label
+    Friend WithEvents tbRecommendationMethod As TextBox
+    Friend WithEvents lbRecommendationMethod As Label
 End Class

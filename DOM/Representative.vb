@@ -14,6 +14,12 @@ Public Class Representative
     Property WorkPlace As String
     Property Relationship As String
 
+    Public ReadOnly Property IDAndName As String
+        Get
+            Return $"{RepresentativeID} - {Name}"
+        End Get
+    End Property
+
     'Enums
 
     'Relationship with the minor
