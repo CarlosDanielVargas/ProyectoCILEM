@@ -11,7 +11,7 @@
 	Private Property Nombre As String
 	Private Property Cedula As String
 
-	' Constructor para recibir los datos del niño
+	' Constructor para recibir los datos del representante
 	Public Sub New(genero As String, relacion As String, ocupacion As String, estadoCivil As String, telefono As String, lugarTrabajo As String, residencia As String, correoElectronico As String, nombre As String, cedula As String)
 		InitializeComponent()
 
@@ -24,6 +24,13 @@
 		Me.LugarTrabajo = lugarTrabajo
 		Me.Residencia = residencia
 		Me.CorreoElectronico = correoElectronico
+		Me.Nombre = nombre
+		Me.Cedula = cedula
+	End Sub
+
+	' Constructor para recibir los datos del representante
+	Public Sub New(cedula As String, nombre As String)
+		InitializeComponent()
 		Me.Nombre = nombre
 		Me.Cedula = cedula
 	End Sub

@@ -104,6 +104,12 @@
     <Compile Include="frmMinorList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRepresentativeList.Designer.vb">
+      <DependentUpon>frmRepresentativeList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRepresentativeList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MdiMain.Designer.vb">
       <DependentUpon>MdiMain.vb</DependentUpon>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMinorList.resx">
       <DependentUpon>frmMinorList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRepresentativeList.resx">
+      <DependentUpon>frmRepresentativeList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiMain.resx">
       <DependentUpon>MdiMain.vb</DependentUpon>

@@ -41,4 +41,11 @@ Public Class frmMinorList
 	'	minorDetails.Show()
 	'End Sub
 
+	Private Sub UserList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UserList.SelectedIndexChanged
+
+	End Sub
+
+	Private Sub lbIndications_Click(sender As Object, e As EventArgs) Handles lbIndications.Click
+
+	End Sub
 End Class
