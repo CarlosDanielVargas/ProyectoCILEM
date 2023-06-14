@@ -47,24 +47,43 @@ namespace DAO
         {
             try
             {
-                SqlCommand insert = new SqlCommand();
-                insert.Connection = connection;
-                insert.CommandText = "INSERT INTO Minors(MinorID, Name, BirthDate, EnteredDate, GraduationDate, Gender, RecommendationMethod, Residency, LevelID, HasSchoolarship) VALUES @MinorID, @Name, @BirthDate, @EnteredDate, @GraduationDate, @Gender, @RecommendationMethod, @Residency, @LevelID, @HasSchoolarship";
-                insert.Parameters.AddWithValue("@MinorID", minor.MinorID);
-                insert.Parameters.AddWithValue("@Name", minor.Name);
-                insert.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
-                insert.Parameters.AddWithValue("@EnteredDate", minor.EnteredDate);
-                insert.Parameters.AddWithValue("@GraduationDate", minor.GraduationDate);
-                insert.Parameters.AddWithValue("@Gender", minor.Gender);
-                insert.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
-                insert.Parameters.AddWithValue("@Residency", minor.Residency);
-                insert.Parameters.AddWithValue("@LevelID", minor.LevelID);
-                insert.Parameters.AddWithValue("@HasSchoolarship", minor.HasSchoolarship);
+                // Minor insertion to DB
+                SqlCommand insertMinor = new SqlCommand();
+                insertMinor.Connection = connection;
+                insertMinor.CommandText = "INSERT INTO [dbo].[Minors] ([MinorID], [Name], [BirthDate], [EnterDate], [LeaveDate], [Residency], [Gender], [HasSchoolarship], [LevelID], [CurrentPayment]) VALUES (@MinorID, @Name, @BirthDate, @EnterDate, @LeaveDate, @Residency, @Gender, @HasSchoolarship, @LevelID, @CurrentPayment)";
+                insertMinor.Parameters.AddWithValue("@MinorID", minor.MinorID);
+                insertMinor.Parameters.AddWithValue("@Name", minor.Name);
+                insertMinor.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
+                insertMinor.Parameters.AddWithValue("@EnterDate", minor.EnteredDate);
+                insertMinor.Parameters.AddWithValue("@LeaveDate", minor.GraduationDate);
+                insertMinor.Parameters.AddWithValue("@Gender", minor.Gender);
+                //insertMinor.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
+                insertMinor.Parameters.AddWithValue("@Residency", minor.Residency);
+                insertMinor.Parameters.AddWithValue("@HasSchoolarship", minor.HasSchoolarship);
+                //insertMinor.Parameters.AddWithValue("@LevelID", minor.LevelID);
+                insertMinor.Parameters.AddWithValue("@CurrentPayment", minor.CurrentPayment);
+                insertMinor.Parameters.AddWithValue("@LevelID", 1);
 
                 connection.Open();
-                insert.ExecuteNonQuery();
-
+                insertMinor.ExecuteNonQuery();
                 connection.Close();
+
+                //Creation and insertion representativeMinors to DB
+                List<RepresentativeMinor> representativeMinors = minor.RepresentativeMinors;
+                SqlCommand insertRepresentativeMinors = new SqlCommand();
+                insertRepresentativeMinors.Connection = connection;
+                insertRepresentativeMinors.CommandText = "INSERT INTO RepresentativeMinors(MinorID, RepresentativeID, Relationship) VALUES @MinorID, @RepresentativeID, @Relationship";
+                foreach (RepresentativeMinor representativeMinor in representativeMinors)
+                {
+                    insertRepresentativeMinors.Parameters.AddWithValue("@MinorID", minor.MinorID);
+                    insertRepresentativeMinors.Parameters.AddWithValue("@RepresentativeID", representativeMinor.RepresentativeID);
+                    insertRepresentativeMinors.Parameters.AddWithValue("@Relationship", representativeMinor.Relationship);
+
+                    connection.Open();
+                    insertRepresentativeMinors.ExecuteNonQuery();
+
+                    connection.Close();
+                }
             }
             catch (Exception ex)
             {

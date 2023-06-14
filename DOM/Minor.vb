@@ -13,6 +13,7 @@
     Property HasSchoolarship As String
     Property CurrentPayment As Double
     Property Representatives As List(Of Representative)
+    Property RepresentativeMinors As List(Of RepresentativeMinor)
 
 
     'Enums
@@ -29,6 +30,8 @@
 
     'Empty constructor
     Public Sub New()
+        Me.Representatives = New List(Of Representative)
+        Me.RepresentativeMinors = New List(Of RepresentativeMinor)
     End Sub
 
     'Constructor with all the parameters
@@ -210,9 +213,9 @@
         If ValidateRecommendationMethod() = False Then
             exceptionError += "El método de recomendación del menor no puede estar vacío." + vbNewLine
         End If
-        If ValidateLevel() = False Then
-            exceptionError += "El nivel del menor no puede estar vacío." + vbNewLine
-        End If
+        'If ValidateLevel() = False Then
+        '    exceptionError += "El nivel del menor no puede estar vacío." + vbNewLine
+        'End If
         If ValidateHasSchoolarship() = False Then
             exceptionError += "El menor debe tener o no beca." + vbNewLine
         End If

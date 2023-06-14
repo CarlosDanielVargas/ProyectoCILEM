@@ -398,16 +398,16 @@ Partial Class frmNewMinor
         Me.lbRecommendationMethod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbRecommendationMethod.Location = New System.Drawing.Point(51, 296)
         Me.lbRecommendationMethod.Name = "lbRecommendationMethod"
-        Me.lbRecommendationMethod.Size = New System.Drawing.Size(121, 25)
+        Me.lbRecommendationMethod.Size = New System.Drawing.Size(159, 25)
         Me.lbRecommendationMethod.TabIndex = 59
-        Me.lbRecommendationMethod.Text = "Pago actual:"
+        Me.lbRecommendationMethod.Text = "Recomendación:"
         '
         'frmNewMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(866, 438)
+        Me.ClientSize = New System.Drawing.Size(845, 438)
         Me.Controls.Add(Me.tbRecommendationMethod)
         Me.Controls.Add(Me.lbRecommendationMethod)
         Me.Controls.Add(Me.lbRelation)
