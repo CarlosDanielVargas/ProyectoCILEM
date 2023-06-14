@@ -12,6 +12,7 @@ Public Class Representative
     Property Gender As Char
     Property Occupation As String
     Property WorkPlace As String
+    Property Relationship As String
 
     'Enums
 
@@ -43,7 +44,7 @@ Public Class Representative
     End Sub
 
     'Constructor with all the parameters
-    Public Sub New(ByVal representativeID As Integer, ByVal name As String, ByVal mail As String, ByVal phone As String, ByVal maritalStatus As String, ByVal residency As String, ByVal gender As Char, ByVal occupation As String, ByVal workPlace As String)
+    Public Sub New(ByVal representativeID As Integer, ByVal name As String, ByVal mail As String, ByVal phone As String, ByVal maritalStatus As String, ByVal residency As String, ByVal gender As Char, ByVal occupation As String, ByVal workPlace As String, ByVal relationship As String)
         Me.RepresentativeID = representativeID
         Me.Name = name
         Me.Mail = mail
@@ -53,6 +54,7 @@ Public Class Representative
         Me.Gender = gender
         Me.Occupation = occupation
         Me.WorkPlace = workPlace
+        Me.Relationship = relationship
     End Sub
 
     'Constructor with only the representativeID and name

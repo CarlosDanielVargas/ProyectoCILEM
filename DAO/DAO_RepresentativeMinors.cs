@@ -12,15 +12,16 @@ namespace DAO
     {
         private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString);
 
-        public void saveToDB(string minorID, string representativeID)
+        public void saveToDB(string minorID, string representativeID, string relationship)
         {
             try
             {
                 SqlCommand insert = new SqlCommand();
                 insert.Connection = connection;
-                insert.CommandText = "INSERT INTO RepresentativeMinors(MinorID, RepresentativeID) VALUES (@MinorID, @RepresentativeID)";
+                insert.CommandText = "INSERT INTO RepresentativeMinors(MinorID, RepresentativeID, Relationship) VALUES (@MinorID, @RepresentativeID, @Relationship)";
                 insert.Parameters.AddWithValue("@MinorID", minorID);
                 insert.Parameters.AddWithValue("@RepresentativeID", representativeID);
+                insert.Parameters.AddWithValue("@Relationship", relationship);
                 connection.Open();
                 insert.ExecuteNonQuery();
                 connection.Close();

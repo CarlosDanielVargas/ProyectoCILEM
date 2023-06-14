@@ -154,10 +154,14 @@ namespace DAO
         {
             try
             {
-                SqlCommand search = new SqlCommand();
-                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Representatives WHERE Names = " + name, connection);
                 DataTable dtRepresentatives = new DataTable();
+                string query = "SELECT * FROM Representatives WHERE Name LIKE @Name";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", "%" + name + "%");
+
+                SqlDataAdapter adp = new SqlDataAdapter(command);
                 adp.Fill(dtRepresentatives);
+
                 List<Representative> representatives = new List<Representative>();
                 foreach (DataRow row in dtRepresentatives.Rows)
                 {
@@ -171,8 +175,10 @@ namespace DAO
                     representative.MaritalStatus = row["MaritalStatus"].ToString();
                     representative.Occupation = row["Occupation"].ToString();
                     representative.WorkPlace = row["WorkPlace"].ToString();
+
                     representatives.Add(representative);
                 }
+
                 return representatives;
             }
             catch (Exception ex)
@@ -203,6 +209,47 @@ namespace DAO
                     representative.WorkPlace = row["WorkPlace"].ToString();
                     representatives.Add(representative);
                 }
+                return representatives;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Representative> searchRepresentativesByMinorID(string minorID)
+        {
+            try
+            {
+                DataTable dtRepresentatives = new DataTable();
+                string query = @"
+                                SELECT r.*
+                                FROM Minor m
+                                INNER JOIN RepresentativeMinors rm ON m.MinorID = rm.MinorID
+                                INNER JOIN Representative r ON rm.RepresentativeID = r.RepresentativeID
+                                WHERE m.MinorID = @MinorID";
+
+                SqlDataAdapter adp = new SqlDataAdapter(query, connection);
+                adp.SelectCommand.Parameters.AddWithValue("@MinorID", minorID);
+                adp.Fill(dtRepresentatives);
+
+                List<Representative> representatives = new List<Representative>();
+                foreach (DataRow row in dtRepresentatives.Rows)
+                {
+                    Representative representative = new Representative();
+                    representative.RepresentativeID = row["RepresentativeID"].ToString();
+                    representative.Name = row["Name"].ToString();
+                    representative.Gender = Convert.ToChar(row["Gender"]);
+                    representative.Residency = row["Residency"].ToString();
+                    representative.Mail = row["Mail"].ToString();
+                    representative.Phone = row["Phone"].ToString();
+                    representative.MaritalStatus = row["MaritalStatus"].ToString();
+                    representative.Occupation = row["Occupation"].ToString();
+                    representative.WorkPlace = row["WorkPlace"].ToString();
+
+                    representatives.Add(representative);
+                }
+
                 return representatives;
             }
             catch (Exception ex)

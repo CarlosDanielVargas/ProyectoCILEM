@@ -47,5 +47,43 @@ namespace BL
                 throw ex;
             }
         }
+
+        public void deleteFromDB(Representative representative)
+        {
+            try
+            {
+                daoRepresentative.deleteFromDB(representative);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Representative> searchByMinorID(string minorID)
+        {
+            try
+            {
+                return daoRepresentative.searchRepresentativesByMinorID(minorID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Representative> searchByName(string name)
+        {
+            try
+            {
+                return daoRepresentative.searchByName(name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

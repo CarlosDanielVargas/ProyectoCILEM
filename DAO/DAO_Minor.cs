@@ -49,7 +49,7 @@ namespace DAO
             {
                 SqlCommand insert = new SqlCommand();
                 insert.Connection = connection;
-                insert.CommandText = "INSERT INTO Minors(MinorID, Name, BirthDate, EnteredDate, GraduationDate, Gender, RecommendationMethod, Residency, LevelID) VALUES @MinorID, @Name, @BirthDate, @EnteredDate, @GraduationDate, @Gender, @RecommendationMethod, @Residency, @LevelID";
+                insert.CommandText = "INSERT INTO Minors(MinorID, Name, BirthDate, EnteredDate, GraduationDate, Gender, RecommendationMethod, Residency, LevelID, HasSchoolarship) VALUES @MinorID, @Name, @BirthDate, @EnteredDate, @GraduationDate, @Gender, @RecommendationMethod, @Residency, @LevelID, @HasSchoolarship";
                 insert.Parameters.AddWithValue("@MinorID", minor.MinorID);
                 insert.Parameters.AddWithValue("@Name", minor.Name);
                 insert.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
@@ -59,6 +59,7 @@ namespace DAO
                 insert.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
                 insert.Parameters.AddWithValue("@Residency", minor.Residency);
                 insert.Parameters.AddWithValue("@LevelID", minor.LevelID);
+                insert.Parameters.AddWithValue("@HasSchoolarship", minor.HasSchoolarship);
 
                 connection.Open();
                 insert.ExecuteNonQuery();
@@ -155,6 +156,47 @@ namespace DAO
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
                     minors.Add(minor);
                 }
+                return minors;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Minor> searchMinorsByRepresentativeID(string representativeID)
+        {
+            try
+            {
+                DataTable dtMinors = new DataTable();
+                string query = @"
+            SELECT m.*
+            FROM Representative r
+            INNER JOIN RepresentativeMinors rm ON r.RepresentativeID = rm.RepresentativeID
+            INNER JOIN Minor m ON rm.MinorID = m.MinorID
+            WHERE r.RepresentativeID = @RepresentativeID";
+
+                SqlDataAdapter adp = new SqlDataAdapter(query, connection);
+                adp.SelectCommand.Parameters.AddWithValue("@RepresentativeID", representativeID);
+                adp.Fill(dtMinors);
+
+                List<Minor> minors = new List<Minor>();
+                foreach (DataRow row in dtMinors.Rows)
+                {
+                    Minor minor = new Minor();
+                    minor.MinorID = row["MinorID"].ToString();
+                    minor.Name = row["Name"].ToString();
+                    minor.BirthDate = Convert.ToDateTime(row["BirthDate"]);
+                    minor.EnteredDate = Convert.ToDateTime(row["EnteredDate"]);
+                    minor.GraduationDate = Convert.ToDateTime(row["GraduationDate"]);
+                    minor.Gender = Convert.ToChar(row["Gender"]);
+                    minor.RecommendationMethod = row["RecommendationMethod"].ToString();
+                    minor.Residency = row["Residency"].ToString();
+                    minor.LevelID = Int32.Parse(row["LevelID"].ToString());
+
+                    minors.Add(minor);
+                }
+
                 return minors;
             }
             catch (Exception ex)

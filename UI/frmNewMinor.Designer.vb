@@ -44,7 +44,7 @@ Partial Class frmNewMinor
         Me.cboxSchoolarship = New System.Windows.Forms.ComboBox()
         Me.lbRepresentatives = New System.Windows.Forms.Label()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.tbRepresentativeName = New System.Windows.Forms.TextBox()
         Me.lbRepresentativeName = New System.Windows.Forms.Label()
         Me.btnSearchRepresentative = New System.Windows.Forms.Button()
         Me.lboxFoundRepresentants = New System.Windows.Forms.ListBox()
@@ -62,7 +62,7 @@ Partial Class frmNewMinor
         '
         Me.lbEnterDate.AutoSize = True
         Me.lbEnterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbEnterDate.Location = New System.Drawing.Point(42, 236)
+        Me.lbEnterDate.Location = New System.Drawing.Point(51, 201)
         Me.lbEnterDate.Name = "lbEnterDate"
         Me.lbEnterDate.Size = New System.Drawing.Size(171, 25)
         Me.lbEnterDate.TabIndex = 39
@@ -81,7 +81,7 @@ Partial Class frmNewMinor
         '
         Me.lbGender.AutoSize = True
         Me.lbGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbGender.Location = New System.Drawing.Point(42, 540)
+        Me.lbGender.Location = New System.Drawing.Point(51, 581)
         Me.lbGender.Name = "lbGender"
         Me.lbGender.Size = New System.Drawing.Size(83, 25)
         Me.lbGender.TabIndex = 37
@@ -91,7 +91,7 @@ Partial Class frmNewMinor
         '
         Me.lbSchoolarship.AutoSize = True
         Me.lbSchoolarship.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbSchoolarship.Location = New System.Drawing.Point(42, 493)
+        Me.lbSchoolarship.Location = New System.Drawing.Point(51, 521)
         Me.lbSchoolarship.Name = "lbSchoolarship"
         Me.lbSchoolarship.Size = New System.Drawing.Size(122, 25)
         Me.lbSchoolarship.TabIndex = 35
@@ -110,7 +110,7 @@ Partial Class frmNewMinor
         '
         Me.lbResidency.AutoSize = True
         Me.lbResidency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbResidency.Location = New System.Drawing.Point(42, 384)
+        Me.lbResidency.Location = New System.Drawing.Point(51, 385)
         Me.lbResidency.Name = "lbResidency"
         Me.lbResidency.Size = New System.Drawing.Size(114, 25)
         Me.lbResidency.TabIndex = 33
@@ -128,7 +128,7 @@ Partial Class frmNewMinor
         '
         Me.lbCurrentPayment.AutoSize = True
         Me.lbCurrentPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCurrentPayment.Location = New System.Drawing.Point(42, 331)
+        Me.lbCurrentPayment.Location = New System.Drawing.Point(51, 320)
         Me.lbCurrentPayment.Name = "lbCurrentPayment"
         Me.lbCurrentPayment.Size = New System.Drawing.Size(121, 25)
         Me.lbCurrentPayment.TabIndex = 31
@@ -138,7 +138,7 @@ Partial Class frmNewMinor
         '
         Me.lbLeaveDate.AutoSize = True
         Me.lbLeaveDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbLeaveDate.Location = New System.Drawing.Point(42, 281)
+        Me.lbLeaveDate.Location = New System.Drawing.Point(51, 257)
         Me.lbLeaveDate.Name = "lbLeaveDate"
         Me.lbLeaveDate.Size = New System.Drawing.Size(202, 25)
         Me.lbLeaveDate.TabIndex = 29
@@ -148,7 +148,7 @@ Partial Class frmNewMinor
         '
         Me.lbBirthDate.AutoSize = True
         Me.lbBirthDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBirthDate.Location = New System.Drawing.Point(42, 190)
+        Me.lbBirthDate.Location = New System.Drawing.Point(51, 144)
         Me.lbBirthDate.Name = "lbBirthDate"
         Me.lbBirthDate.Size = New System.Drawing.Size(199, 25)
         Me.lbBirthDate.TabIndex = 27
@@ -166,7 +166,7 @@ Partial Class frmNewMinor
         '
         Me.lbIDCard.AutoSize = True
         Me.lbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIDCard.Location = New System.Drawing.Point(42, 136)
+        Me.lbIDCard.Location = New System.Drawing.Point(51, 76)
         Me.lbIDCard.Name = "lbIDCard"
         Me.lbIDCard.Size = New System.Drawing.Size(81, 25)
         Me.lbIDCard.TabIndex = 25
@@ -184,7 +184,7 @@ Partial Class frmNewMinor
         '
         Me.lbName.AutoSize = True
         Me.lbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbName.Location = New System.Drawing.Point(42, 90)
+        Me.lbName.Location = New System.Drawing.Point(51, 19)
         Me.lbName.Name = "lbName"
         Me.lbName.Size = New System.Drawing.Size(171, 25)
         Me.lbName.TabIndex = 23
@@ -194,7 +194,7 @@ Partial Class frmNewMinor
         '
         Me.lbIndications.AutoSize = True
         Me.lbIndications.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIndications.Location = New System.Drawing.Point(42, 28)
+        Me.lbIndications.Location = New System.Drawing.Point(51, -60)
         Me.lbIndications.Name = "lbIndications"
         Me.lbIndications.Size = New System.Drawing.Size(384, 29)
         Me.lbIndications.TabIndex = 22
@@ -247,25 +247,25 @@ Partial Class frmNewMinor
         '
         Me.lbRepresentatives.AutoSize = True
         Me.lbRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbRepresentatives.Location = New System.Drawing.Point(42, 604)
+        Me.lbRepresentatives.Location = New System.Drawing.Point(53, 624)
         Me.lbRepresentatives.Name = "lbRepresentatives"
         Me.lbRepresentatives.Size = New System.Drawing.Size(268, 29)
         Me.lbRepresentatives.TabIndex = 45
         Me.lbRepresentatives.Text = "Representantes legales"
         '
-        'TextBox1
+        'tbRepresentativeName
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(262, 656)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(420, 28)
-        Me.TextBox1.TabIndex = 47
+        Me.tbRepresentativeName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbRepresentativeName.Location = New System.Drawing.Point(262, 670)
+        Me.tbRepresentativeName.Name = "tbRepresentativeName"
+        Me.tbRepresentativeName.Size = New System.Drawing.Size(420, 28)
+        Me.tbRepresentativeName.TabIndex = 47
         '
         'lbRepresentativeName
         '
         Me.lbRepresentativeName.AutoSize = True
         Me.lbRepresentativeName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbRepresentativeName.Location = New System.Drawing.Point(42, 656)
+        Me.lbRepresentativeName.Location = New System.Drawing.Point(53, 671)
         Me.lbRepresentativeName.Name = "lbRepresentativeName"
         Me.lbRepresentativeName.Size = New System.Drawing.Size(171, 25)
         Me.lbRepresentativeName.TabIndex = 46
@@ -274,7 +274,7 @@ Partial Class frmNewMinor
         'btnSearchRepresentative
         '
         Me.btnSearchRepresentative.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSearchRepresentative.Location = New System.Drawing.Point(701, 651)
+        Me.btnSearchRepresentative.Location = New System.Drawing.Point(701, 665)
         Me.btnSearchRepresentative.Name = "btnSearchRepresentative"
         Me.btnSearchRepresentative.Size = New System.Drawing.Size(112, 36)
         Me.btnSearchRepresentative.TabIndex = 48
@@ -296,7 +296,7 @@ Partial Class frmNewMinor
         '
         Me.lbFoundRepresentatives.AutoSize = True
         Me.lbFoundRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.lbFoundRepresentatives.Location = New System.Drawing.Point(43, 701)
+        Me.lbFoundRepresentatives.Location = New System.Drawing.Point(54, 709)
         Me.lbFoundRepresentatives.Name = "lbFoundRepresentatives"
         Me.lbFoundRepresentatives.Size = New System.Drawing.Size(229, 20)
         Me.lbFoundRepresentatives.TabIndex = 50
@@ -306,11 +306,11 @@ Partial Class frmNewMinor
         '
         Me.lbSelectedRepresentantText.AutoSize = True
         Me.lbSelectedRepresentantText.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lbSelectedRepresentantText.Location = New System.Drawing.Point(43, 851)
+        Me.lbSelectedRepresentantText.Location = New System.Drawing.Point(62, 851)
         Me.lbSelectedRepresentantText.Name = "lbSelectedRepresentantText"
-        Me.lbSelectedRepresentantText.Size = New System.Drawing.Size(259, 24)
+        Me.lbSelectedRepresentantText.Size = New System.Drawing.Size(256, 24)
         Me.lbSelectedRepresentantText.TabIndex = 51
-        Me.lbSelectedRepresentantText.Text = "Representante Seleccionado:"
+        Me.lbSelectedRepresentantText.Text = "Representante seleccionado:"
         '
         'tbSelectedRepresentative
         '
@@ -334,7 +334,7 @@ Partial Class frmNewMinor
         '
         Me.lbRelationship.AutoSize = True
         Me.lbRelationship.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbRelationship.Location = New System.Drawing.Point(42, 890)
+        Me.lbRelationship.Location = New System.Drawing.Point(51, 1019)
         Me.lbRelationship.Name = "lbRelationship"
         Me.lbRelationship.Size = New System.Drawing.Size(210, 25)
         Me.lbRelationship.TabIndex = 53
@@ -365,9 +365,9 @@ Partial Class frmNewMinor
         '
         Me.lbAssociatedRepresentatives.AutoSize = True
         Me.lbAssociatedRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.lbAssociatedRepresentatives.Location = New System.Drawing.Point(43, 972)
+        Me.lbAssociatedRepresentatives.Location = New System.Drawing.Point(52, 978)
         Me.lbAssociatedRepresentatives.Name = "lbAssociatedRepresentatives"
-        Me.lbAssociatedRepresentatives.Size = New System.Drawing.Size(411, 25)
+        Me.lbAssociatedRepresentatives.Size = New System.Drawing.Size(329, 20)
         Me.lbAssociatedRepresentatives.TabIndex = 57
         Me.lbAssociatedRepresentatives.Text = "Representantes asociados con este menor"
         '
@@ -375,7 +375,8 @@ Partial Class frmNewMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(851, 1172)
+        Me.AutoScroll = True
+        Me.ClientSize = New System.Drawing.Size(849, 559)
         Me.Controls.Add(Me.lbAssociatedRepresentatives)
         Me.Controls.Add(Me.lboxAssociatedRepresentatives)
         Me.Controls.Add(Me.btnAddRepresentativeMinor)
@@ -386,7 +387,7 @@ Partial Class frmNewMinor
         Me.Controls.Add(Me.lbFoundRepresentatives)
         Me.Controls.Add(Me.lboxFoundRepresentants)
         Me.Controls.Add(Me.btnSearchRepresentative)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.tbRepresentativeName)
         Me.Controls.Add(Me.lbRepresentativeName)
         Me.Controls.Add(Me.lbRepresentatives)
         Me.Controls.Add(Me.cboxSchoolarship)
@@ -439,7 +440,7 @@ Partial Class frmNewMinor
     Friend WithEvents cboxSchoolarship As ComboBox
     Friend WithEvents lbRepresentatives As Label
     Friend WithEvents ColorDialog1 As ColorDialog
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbRepresentativeName As TextBox
     Friend WithEvents lbRepresentativeName As Label
     Friend WithEvents btnSearchRepresentative As Button
     Friend WithEvents lboxFoundRepresentants As ListBox
