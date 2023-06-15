@@ -26,7 +26,9 @@ Public Class MdiMain
         form.Show()
     End Sub
 
-    Private Sub MdiMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub menuItemShowStudents_Click(sender As Object, e As EventArgs) Handles menuItemShowStudents.Click
+        Dim form As New frmMinorList
+        form.MdiParent = Me
+        form.Show()
     End Sub
 End Class

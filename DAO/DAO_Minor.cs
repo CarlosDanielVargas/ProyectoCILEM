@@ -27,12 +27,18 @@ namespace DAO
                     minor.MinorID = row["MinorID"].ToString();
                     minor.Name = row["Name"].ToString();
                     minor.BirthDate = Convert.ToDateTime(row["BirthDate"]);
-                    minor.EnteredDate = Convert.ToDateTime(row["EnteredDate"]);
-                    minor.GraduationDate = Convert.ToDateTime(row["GraduationDate"]);
+                    minor.EnteredDate = Convert.ToDateTime(row["EnterDate"]);
+                    minor.GraduationDate = Convert.ToDateTime(row["LeaveDate"]);
                     minor.Gender = Convert.ToChar(row["Gender"]);
-                    minor.RecommendationMethod = row["RecomendationMethod"].ToString();
+                    minor.HasSchoolarship = row["HasSchoolarship"].ToString();
+                    //minor.RecommendationMethod = row["RecomendationMethod"].ToString();
                     minor.Residency = row["Residency"].ToString();
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
+                    minor.CurrentPayment = Convert.ToDouble(row["CurrentPayment"]);
+
+                    // Get Level
+                    DAO_Level daoLevel = new DAO_Level();
+                    minor.Level = daoLevel.loadFromDB(minor.LevelID);
                     minors.Add(minor);
                 }
                 return minors;

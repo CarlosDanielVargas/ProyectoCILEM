@@ -92,7 +92,7 @@ namespace DAO
             }
         }
 
-        public Level loadFromDB(string levelID)
+        public Level loadFromDB(int levelID)
         {
             try
             {
