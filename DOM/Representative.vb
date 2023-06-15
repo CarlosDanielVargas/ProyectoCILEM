@@ -37,6 +37,7 @@ Public Class Representative
         Padre
         Madre
         Tutor
+        Otro
     End Enum
 
     'Marital status
