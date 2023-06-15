@@ -1,4 +1,4 @@
-﻿using DAO;
+using DAO;
 using DOM;
 using System;
 using System.Collections.Generic;
@@ -52,5 +52,54 @@ namespace BL
         {
             return new DAO_Representative().loadAllFromDB();
         }
+
+        public void deleteFromDB(Representative representative)
+        {
+            try
+            {
+                daoRepresentative.deleteFromDB(representative);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Representative> searchByMinorID(string minorID)
+        {
+            try
+            {
+                return daoRepresentative.searchRepresentativesByMinorID(minorID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Representative> searchByName(string name)
+        {
+            try
+            {
+                return daoRepresentative.searchByName(name);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Representative searchByID(string id)
+        {
+            try
+            {
+                return daoRepresentative.searchByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

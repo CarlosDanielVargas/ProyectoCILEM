@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,17 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LevelManager.cs" />
     <Compile Include="RepresentativeManager.cs" />
     <Compile Include="MinorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{B3C3AE20-015B-4D74-AF3F-81A9C2892622}</Project>
+      <Project>{b3c3ae20-015b-4d74-af3f-81a9c2892622}</Project>
       <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DOM\DOM.vbproj">
-      <Project>{410F5EA0-F730-4E69-9761-98A4E4BE64EC}</Project>
+      <Project>{410f5ea0-f730-4e69-9761-98a4e4be64ec}</Project>
       <Name>DOM</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,51 +1,80 @@
 ﻿Imports DOM
 Imports BL
 Public Class frmMinorList
+	Private minors As List(Of Minor)
+
 	Private Sub frmMinorList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-		' Agregar columnas al control ListView
-		UserList.Columns.Add("Nombre", 150)
-		UserList.Columns.Add("Cédula", 100)
-		UserList.Columns.Add("Detalles", 80)
+		Dim minorManager As New MinorManager()
+		minors = minorManager.loadAllFromDB()
 
-		' Poblar el control ListView con los datos de los usuarios
-		Dim listaUsuarios As New List(Of Minor)()
-		listaUsuarios.Add(New Minor("Juan Pérez", "209340373"))
-		listaUsuarios.Add(New Minor("María Gómez", "203890312"))
+		dgvMinors.ReadOnly = True ' Set the DataGridView to read-only
+		dgvMinors.AllowUserToAddRows = False ' Disable the ability to add new rows
 
-		For Each usuario As Minor In listaUsuarios
-			Dim item As New ListViewItem(usuario.Name)
-			item.SubItems.Add(usuario.MinorID)
+		dgvMinors.Columns.Add("Nombre", "Nombre")
+		dgvMinors.Columns.Add("Cédula", "Cédula")
+		dgvMinors.Columns.Add("Nivel", "Nivel")
 
-			' Agregar botón en la columna de "Detalles"
-			Dim btnDetalles As New Button()
-			btnDetalles.Text = "Detalles"
-			btnDetalles.Size = New Size(75, 23)
-			btnDetalles.Tag = usuario ' Almacenar el objeto Usuario en la propiedad Tag del botón
-			AddHandler btnDetalles.Click, AddressOf btnDetalles_Click
+		Dim btnDetallesColumn As New DataGridViewButtonColumn()
+		btnDetallesColumn.HeaderText = "Detalles"
+		btnDetallesColumn.Name = "Detalles"
+		btnDetallesColumn.Text = "Detalles"
+		btnDetallesColumn.UseColumnTextForButtonValue = True
 
-			Dim subItem As New ListViewItem.ListViewSubItem(item, "")
-			subItem.Tag = btnDetalles ' Almacenar el botón en la propiedad Tag del subítem
-			item.SubItems.Add(subItem)
+		Dim btnDeleteColumn As New DataGridViewButtonColumn()
+		btnDeleteColumn.HeaderText = "Eliminar"
+		btnDeleteColumn.Name = "Eliminar"
+		btnDeleteColumn.Text = "Eliminar"
+		btnDeleteColumn.UseColumnTextForButtonValue = True
 
-			UserList.Items.Add(item)
+		Dim btnEditColumn As New DataGridViewButtonColumn()
+		btnEditColumn.HeaderText = "Editar"
+		btnEditColumn.Name = "Editar"
+		btnEditColumn.Text = "Editar"
+		btnEditColumn.UseColumnTextForButtonValue = True
+
+		dgvMinors.Columns.Add(btnDetallesColumn)
+		dgvMinors.Columns.Add(btnDeleteColumn)
+		dgvMinors.Columns.Add(btnEditColumn)
+
+		For Each column As DataGridViewColumn In dgvMinors.Columns
+			column.ReadOnly = True ' Set individual columns to read-only
+		Next
+
+		For Each minor As Minor In minors
+			Dim rowIndex As Integer = dgvMinors.Rows.Add()
+
+			dgvMinors.Rows(rowIndex).Cells("Nombre").Value = minor.Name
+			dgvMinors.Rows(rowIndex).Cells("Cédula").Value = minor.MinorID
+			dgvMinors.Rows(rowIndex).Cells("Nivel").Value = minor.Level.Name
 		Next
 	End Sub
 
-	Private Sub btnDetalles_Click(sender As Object, e As EventArgs)
-		' Obtener el botón y el objeto Usuario asociados al evento Click
-		Dim btnDetalles As Button = CType(sender, Button)
-		Dim usuario As Minor = CType(btnDetalles.Tag, Minor)
+	Private Sub dgvMinors_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvMinors.CellContentClick
+		' Check if the clicked cell is a button cell and the corresponding column index
+		If e.ColumnIndex = dgvMinors.Columns("Detalles").Index AndAlso e.RowIndex >= 0 Then
+			' "Detalles" button clicked
+			Dim rowIndex As Integer = e.RowIndex
+			Dim minor As Minor = minors(rowIndex)
+			Dim form As New frmMinorDetails(minor)
+			form.MdiParent = Me.MdiParent
+			form.Show()
+		ElseIf e.ColumnIndex = dgvMinors.Columns("Eliminar").Index AndAlso e.RowIndex >= 0 Then
+			' "Eliminar" button clicked
+			Dim rowIndex As Integer = e.RowIndex
+			Dim minor As Minor = minors(rowIndex)
+			' Perform delete action using the minor object
+			' Example:
+			' minorManager.deleteFromDB(minor.MinorID)
+			' Reload the DataGridView data after deletion
 
-		' Mostrar los detalles del usuario en una nueva ventana o realizar cualquier otra acción necesaria
-		Dim minorDetails As New frmMinorDetails(usuario.MinorID, usuario.Name)
-		minorDetails.Show()
-	End Sub
-
-	Private Sub UserList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UserList.SelectedIndexChanged
-
-	End Sub
-
-	Private Sub lbIndications_Click(sender As Object, e As EventArgs) Handles lbIndications.Click
-
+		ElseIf e.ColumnIndex = dgvMinors.Columns("Editar").Index AndAlso e.RowIndex >= 0 Then
+			' "Editar" button clicked
+			Dim rowIndex As Integer = e.RowIndex
+			Dim minor As Minor = minors(rowIndex)
+			' Open the form for editing the minor using the minor object
+			' Example:
+			' Dim form As New frmEditMinor(minor)
+			' form.Show()
+		End If
 	End Sub
 End Class
