@@ -47,5 +47,10 @@ namespace BL
                 throw ex;
             }
         }
+
+        public List<Minor> MinorList()
+        {
+            return new DAO_Minor().loadAllFromDB();
+        }
     }
 }

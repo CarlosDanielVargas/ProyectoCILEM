@@ -47,5 +47,10 @@ namespace BL
                 throw ex;
             }
         }
+
+        public List<Representative> RepresentativeList()
+        {
+            return new DAO_Representative().loadAllFromDB();
+        }
     }
 }
