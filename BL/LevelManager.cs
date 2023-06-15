@@ -8,15 +8,15 @@ using DAO;
 
 namespace BL
 {
-    public class MinorManager
+    public class LevelManager
     {
-        private DAO_Minor daoMinor = new DAO_Minor();
+        private DAO_Level daoLevel = new DAO_Level();
 
-        public List<Minor> loadAllFromDB()
+        public List<Level> loadAllFromDB()
         {
             try
             {
-                return daoMinor.loadAllFromDB();
+                return daoLevel.loadAllFromDB();
             }
             catch (Exception ex)
             {
@@ -24,11 +24,11 @@ namespace BL
             }
         }
 
-        public void saveToDB(Minor minor)
+        public void saveToDB(Level level)
         {
             try
             {
-                daoMinor.saveToDB(minor);
+                daoLevel.saveToDB(level);
             }
             catch (Exception ex)
             {
@@ -36,11 +36,11 @@ namespace BL
             }
         }
 
-        public void updateToDB(Minor minor)
+        public void updateToDB(Level level)
         {
             try
             {
-                daoMinor.updateToDB(minor);
+                daoLevel.updateInDB(level);
             }
             catch (Exception ex)
             {
@@ -48,16 +48,28 @@ namespace BL
             }
         }
 
-        public List<Minor> searchByRepresentativeID(string id)
+        public void deleteFromDB(Level level)
         {
             try
             {
-                return daoMinor.searchMinorsByRepresentativeID(id);
+                daoLevel.deleteFromDB(level.LevelID);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        public List<Level> searchOnDB(string keyword)
+        {
+            try
+            {
+                return daoLevel.searchFromDB(keyword);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }   
     }
 }
