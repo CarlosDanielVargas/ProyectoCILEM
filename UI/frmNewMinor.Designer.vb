@@ -22,6 +22,7 @@ Partial Class frmNewMinor
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lbEnterDate = New System.Windows.Forms.Label()
         Me.cboxGender = New System.Windows.Forms.ComboBox()
         Me.lbGender = New System.Windows.Forms.Label()
@@ -59,6 +60,12 @@ Partial Class frmNewMinor
         Me.lbRelation = New System.Windows.Forms.Label()
         Me.tbRecommendationMethod = New System.Windows.Forms.TextBox()
         Me.lbRecommendationMethod = New System.Windows.Forms.Label()
+        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.lbLevel = New System.Windows.Forms.Label()
+        Me.cboxLevels = New System.Windows.Forms.ComboBox()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbEnterDate
@@ -106,7 +113,7 @@ Partial Class frmNewMinor
         Me.tbResidency.Location = New System.Drawing.Point(256, 339)
         Me.tbResidency.Multiline = True
         Me.tbResidency.Name = "tbResidency"
-        Me.tbResidency.Size = New System.Drawing.Size(554, 129)
+        Me.tbResidency.Size = New System.Drawing.Size(554, 95)
         Me.tbResidency.TabIndex = 34
         '
         'lbResidency
@@ -402,12 +409,33 @@ Partial Class frmNewMinor
         Me.lbRecommendationMethod.TabIndex = 59
         Me.lbRecommendationMethod.Text = "Recomendación:"
         '
+        'lbLevel
+        '
+        Me.lbLevel.AutoSize = True
+        Me.lbLevel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbLevel.Location = New System.Drawing.Point(53, 460)
+        Me.lbLevel.Name = "lbLevel"
+        Me.lbLevel.Size = New System.Drawing.Size(122, 25)
+        Me.lbLevel.TabIndex = 61
+        Me.lbLevel.Text = "Posee beca:"
+        '
+        'cboxLevels
+        '
+        Me.cboxLevels.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.cboxLevels.FormattingEnabled = True
+        Me.cboxLevels.Location = New System.Drawing.Point(256, 457)
+        Me.cboxLevels.Name = "cboxLevels"
+        Me.cboxLevels.Size = New System.Drawing.Size(554, 28)
+        Me.cboxLevels.TabIndex = 62
+        '
         'frmNewMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(845, 438)
+        Me.ClientSize = New System.Drawing.Size(866, 438)
+        Me.Controls.Add(Me.cboxLevels)
+        Me.Controls.Add(Me.lbLevel)
         Me.Controls.Add(Me.tbRecommendationMethod)
         Me.Controls.Add(Me.lbRecommendationMethod)
         Me.Controls.Add(Me.lbRelation)
@@ -448,6 +476,8 @@ Partial Class frmNewMinor
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "Agregar menor"
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -489,4 +519,8 @@ Partial Class frmNewMinor
     Friend WithEvents lbRelation As Label
     Friend WithEvents tbRecommendationMethod As TextBox
     Friend WithEvents lbRecommendationMethod As Label
+    Friend WithEvents BindingSource1 As BindingSource
+    Friend WithEvents BindingSource2 As BindingSource
+    Friend WithEvents lbLevel As Label
+    Friend WithEvents cboxLevels As ComboBox
 End Class

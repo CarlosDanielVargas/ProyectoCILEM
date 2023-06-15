@@ -42,11 +42,11 @@ namespace DAO
             {
                 SqlCommand insert = new SqlCommand();
                 insert.Connection = connection;
-                insert.CommandText = "INSERT INTO Levels(LevelID, Name) VALUES (@LevelID, @Name)";
-                insert.Parameters.AddWithValue("@LevelID", level.LevelID);
+                insert.CommandText = "INSERT INTO Levels(Name) VALUES (@Name); SELECT SCOPE_IDENTITY()";
                 insert.Parameters.AddWithValue("@Name", level.Name);
+
                 connection.Open();
-                insert.ExecuteNonQuery();
+                level.LevelID = Convert.ToInt32(insert.ExecuteScalar());
                 connection.Close();
             }
             catch (Exception ex)
@@ -74,7 +74,7 @@ namespace DAO
             }
         }
 
-        public void deleteFromDB(string levelID)
+        public void deleteFromDB(int levelID)
         {
             try
             {

@@ -8,11 +8,14 @@ Public Class frmNewMinor
     Private representatives As List(Of Representative)
 
     Private Sub frmNewMinor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim levelManager As New LevelManager()
         Dim minor As Minor = New Minor()
         cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
         cboxGender.SelectedIndex = 0
         cboxSchoolarship.DataSource = [Enum].GetValues(GetType(Minor.HasSchoolarshipEnum))
         cboxSchoolarship.SelectedIndex = 0
+        cboxLevels.DataSource = levelManager.loadAllFromDB()
+        cboxLevels.DisplayMember = "Name"
         btnAddRepresentativeMinor.Enabled = False
     End Sub
 
@@ -87,6 +90,7 @@ Public Class frmNewMinor
             minor.CurrentPayment = Double.Parse(tbCurrentPayment.Text)
             minor.RepresentativeMinors = representativeMinors
             minor.Representatives = representatives
+            minor.LevelID = cboxLevels.SelectedItem.LevelID
 
             minor.ValidateAll()
 

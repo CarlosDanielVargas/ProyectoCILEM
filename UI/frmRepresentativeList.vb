@@ -2,47 +2,82 @@
 Imports BL
 
 Public Class frmRepresentativeList
-	'Private Sub frmRepresentativeList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-	'	' Agregar columnas al control ListView
-	'	UserList.Columns.Add("Nombre", 150)
-	'	UserList.Columns.Add("Cédula", 100)
-	'	UserList.Columns.Add("Correo", 150)
-	'	UserList.Columns.Add("Teléfono", 100)
-	'	UserList.Columns.Add("Detalles", 80)
+    Private representatives As List(Of Representative)
+    Private Sub frmRepresentativeList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim representativeManager As New RepresentativeManager()
+        representatives = representativeManager.loadAllFromDB()
 
-	'	' Poblar el control ListView con los datos de los encargados legales
-	'	Dim listaRepresentatives As New List(Of Representative)()
-	'	listaRepresentatives.Add(New Representative("John Doe", "123456789", "john.doe@example.com", "555-1234"))
-	'	listaRepresentatives.Add(New Representative("Jane Smith", "987654321", "jane.smith@example.com", "555-5678"))
+        dgvRepresentatives.ReadOnly = True ' Set the DataGridView to read-only
+        dgvRepresentatives.AllowUserToAddRows = False ' Disable the ability to add new rows
 
-	'	For Each representative As Representative In listaRepresentatives
-	'		Dim item As New ListViewItem(representative.Name)
-	'		item.SubItems.Add(representative.RepresentativeID)
-	'		item.SubItems.Add(representative.Mail)
-	'		item.SubItems.Add(representative.Phone)
 
-	'		' Agregar botón en la columna de "Detalles"
-	'		Dim btnDetalles As New Button()
-	'		btnDetalles.Text = "Detalles"
-	'		btnDetalles.Size = New Size(75, 23)
-	'		btnDetalles.Tag = representative ' Almacenar el objeto Representative en la propiedad Tag del botón
-	'		AddHandler btnDetalles.Click, AddressOf btnDetalles_Click
+        dgvRepresentatives.Columns.Add("Nombre", "Nombre")
+        dgvRepresentatives.Columns.Add("Cédula", "Cédula")
+        dgvRepresentatives.Columns.Add("Correo", "Correo")
+        dgvRepresentatives.Columns.Add("Teléfono", "Teléfono")
 
-	'		Dim subItem As New ListViewItem.ListViewSubItem(item, "")
-	'		subItem.Tag = btnDetalles ' Almacenar el botón en la propiedad Tag del subítem
-	'		item.SubItems.Add(subItem)
+        Dim btnDetallesColumn As New DataGridViewButtonColumn()
+        btnDetallesColumn.HeaderText = "Detalles"
+        btnDetallesColumn.Name = "Detalles"
+        btnDetallesColumn.Text = "Detalles"
+        btnDetallesColumn.UseColumnTextForButtonValue = True
 
-	'		UserList.Items.Add(item)
-	'	Next
-	'End Sub
+        Dim btnDeleteColumn As New DataGridViewButtonColumn()
+        btnDeleteColumn.HeaderText = "Eliminar"
+        btnDeleteColumn.Name = "Eliminar"
+        btnDeleteColumn.Text = "Eliminar"
+        btnDeleteColumn.UseColumnTextForButtonValue = True
 
-	'Private Sub btnDetalles_Click(sender As Object, e As EventArgs)
-	'	' Obtener el botón y el objeto Representative asociados al evento Click
-	'	Dim btnDetalles As Button = CType(sender, Button)
-	'	Dim representative As Representative = CType(btnDetalles.Tag, Representative)
+        Dim btnEditColumn As New DataGridViewButtonColumn()
+        btnEditColumn.HeaderText = "Editar"
+        btnEditColumn.Name = "Editar"
+        btnEditColumn.Text = "Editar"
+        btnEditColumn.UseColumnTextForButtonValue = True
 
-	'	' Mostrar los detalles del encargado legal en una nueva ventana o realizar cualquier otra acción necesaria
-	'	Dim representativeDetails As New frmRepresentativeDetails(representative.RepresentativeID, representative.Name)
-	'	representativeDetails.Show()
-	'End Sub
+        dgvRepresentatives.Columns.Add(btnDetallesColumn)
+        dgvRepresentatives.Columns.Add(btnDeleteColumn)
+        dgvRepresentatives.Columns.Add(btnEditColumn)
+
+        For Each column As DataGridViewColumn In dgvRepresentatives.Columns
+            column.ReadOnly = True ' Set individual columns to read-only
+        Next
+
+        For Each representative As Representative In representatives
+            Dim rowIndex As Integer = dgvRepresentatives.Rows.Add()
+
+            dgvRepresentatives.Rows(rowIndex).Cells("Nombre").Value = representative.Name
+            dgvRepresentatives.Rows(rowIndex).Cells("Cédula").Value = representative.RepresentativeID
+            dgvRepresentatives.Rows(rowIndex).Cells("Correo").Value = representative.Mail
+            dgvRepresentatives.Rows(rowIndex).Cells("Teléfono").Value = representative.Phone
+        Next
+    End Sub
+
+    Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRepresentatives.CellContentClick
+        ' Check if the clicked cell is a button cell and the corresponding column index
+        If e.ColumnIndex = dgvRepresentatives.Columns("Detalles").Index AndAlso e.RowIndex >= 0 Then
+            ' "Detalles" button clicked
+            Dim rowIndex As Integer = e.RowIndex
+            Dim representative As Representative = representatives(rowIndex)
+            Dim form As New frmRepresentativeDetails(representative)
+            form.MdiParent = Me.MdiParent
+            form.Show()
+        ElseIf e.ColumnIndex = dgvRepresentatives.Columns("Eliminar").Index AndAlso e.RowIndex >= 0 Then
+            ' "Eliminar" button clicked
+            Dim rowIndex As Integer = e.RowIndex
+            Dim representative As Representative = representatives(rowIndex)
+            ' Perform delete action using the representative object
+            ' Example:
+            ' representativeManager.deleteFromDB(representative.RepresentativeID)
+            ' Reload the DataGridView data after deletion
+
+        ElseIf e.ColumnIndex = dgvRepresentatives.Columns("Editar").Index AndAlso e.RowIndex >= 0 Then
+            ' "Editar" button clicked
+            Dim rowIndex As Integer = e.RowIndex
+            Dim representative As Representative = representatives(rowIndex)
+            ' Open the form for editing the representative using the representative object
+            ' Example:
+            ' Dim form As New frmEditRepresentative(representative)
+            ' form.Show()
+        End If
+    End Sub
 End Class

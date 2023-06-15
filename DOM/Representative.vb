@@ -1,6 +1,10 @@
 Imports System.Text.RegularExpressions
 
 Public Class Representative
+    Private v1 As String
+    Private v2 As String
+    Private v3 As String
+    Private v4 As String
 
     'Properties
     Property RepresentativeID As String
@@ -17,6 +21,12 @@ Public Class Representative
     Public ReadOnly Property IDAndName As String
         Get
             Return $"{RepresentativeID} - {Name}"
+        End Get
+    End Property
+
+    Public ReadOnly Property IDAndNameAndRelationship As String
+        Get
+            Return $"{RepresentativeID} - {Name} - {Relationship}"
         End Get
     End Property
 
@@ -67,6 +77,13 @@ Public Class Representative
     Public Sub New(ByVal representativeID As Integer, ByVal name As String)
         Me.RepresentativeID = representativeID
         Me.Name = name
+    End Sub
+
+    Public Sub New(v1 As String, v2 As String, v3 As String, v4 As String)
+        Me.v1 = v1
+        Me.v2 = v2
+        Me.v3 = v3
+        Me.v4 = v4
     End Sub
 
     'Validations

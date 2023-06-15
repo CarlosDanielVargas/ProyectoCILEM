@@ -84,6 +84,17 @@ namespace BL
             }
         }
 
+        public Representative searchByID(string id)
+        {
+            try
+            {
+                return daoRepresentative.searchByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

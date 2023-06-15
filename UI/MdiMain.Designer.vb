@@ -40,6 +40,9 @@ Partial Class MdiMain
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.NivelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgregarNivelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListarNivelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -48,7 +51,7 @@ Partial Class MdiMain
         'MenuStrip
         '
         Me.MenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(843, 28)
@@ -146,6 +149,25 @@ Partial Class MdiMain
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(54, 20)
         Me.ToolStripStatusLabel.Text = "Estado"
         '
+        'NivelesToolStripMenuItem
+        '
+        Me.NivelesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarNivelToolStripMenuItem, Me.ListarNivelesToolStripMenuItem})
+        Me.NivelesToolStripMenuItem.Name = "NivelesToolStripMenuItem"
+        Me.NivelesToolStripMenuItem.Size = New System.Drawing.Size(71, 24)
+        Me.NivelesToolStripMenuItem.Text = "Niveles"
+        '
+        'AgregarNivelToolStripMenuItem
+        '
+        Me.AgregarNivelToolStripMenuItem.Name = "AgregarNivelToolStripMenuItem"
+        Me.AgregarNivelToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.AgregarNivelToolStripMenuItem.Text = "Agregar Nivel"
+        '
+        'ListarNivelesToolStripMenuItem
+        '
+        Me.ListarNivelesToolStripMenuItem.Name = "ListarNivelesToolStripMenuItem"
+        Me.ListarNivelesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.ListarNivelesToolStripMenuItem.Text = "Listar Niveles"
+        '
         'MdiMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -187,4 +209,7 @@ Partial Class MdiMain
     Friend WithEvents menuItemAddRepresentative As ToolStripMenuItem
     Friend WithEvents menuItemShowRepresentatives As ToolStripMenuItem
     Friend WithEvents BuscarEncargadoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NivelesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AgregarNivelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListarNivelesToolStripMenuItem As ToolStripMenuItem
 End Class
