@@ -60,9 +60,8 @@ namespace DAO
                 //insertMinor.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
                 insertMinor.Parameters.AddWithValue("@Residency", minor.Residency);
                 insertMinor.Parameters.AddWithValue("@HasSchoolarship", minor.HasSchoolarship);
-                //insertMinor.Parameters.AddWithValue("@LevelID", minor.LevelID);
+                insertMinor.Parameters.AddWithValue("@LevelID", minor.LevelID);
                 insertMinor.Parameters.AddWithValue("@CurrentPayment", minor.CurrentPayment);
-                insertMinor.Parameters.AddWithValue("@LevelID", 1);
 
                 connection.Open();
                 insertMinor.ExecuteNonQuery();
@@ -97,14 +96,14 @@ namespace DAO
             {
                 SqlCommand update = new SqlCommand();
                 update.Connection = connection;
-                update.CommandText = "UPDATE Minors SET Name = @Name, BirthDate = @BirthDate, EnteredDate = @EnteredDate, GraduationDate = @GraduationDate, Gender = @Gender, RecommendationMethod = @RecommendationMethod, Residency = @Residency, LevelID = @LevelID WHERE MinorID = @MinorID";
+                update.CommandText = "UPDATE Minors SET Name = @Name, BirthDate = @BirthDate, EnterDate = @EnteredDate, LeaveDate = @GraduationDate, Gender = @Gender, Residency = @Residency, LevelID = @LevelID WHERE MinorID = @MinorID";
                 update.Parameters.AddWithValue("@MinorID", minor.MinorID);
                 update.Parameters.AddWithValue("@Name", minor.Name);
                 update.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
-                update.Parameters.AddWithValue("@EnteredDate", minor.EnteredDate);
-                update.Parameters.AddWithValue("@GraduationDate", minor.GraduationDate);
+                update.Parameters.AddWithValue("@EnterDate", minor.EnteredDate);
+                update.Parameters.AddWithValue("@LeaveDate", minor.GraduationDate);
                 update.Parameters.AddWithValue("@Gender", minor.Gender);
-                update.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
+                //update.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
                 update.Parameters.AddWithValue("@Residency", minor.Residency);
                 update.Parameters.AddWithValue("@LevelID", minor.LevelID);
 
@@ -189,10 +188,10 @@ namespace DAO
             {
                 DataTable dtMinors = new DataTable();
                 string query = @"
-            SELECT m.*
-            FROM Representative r
+            SELECT *
+            FROM Representatives r
             INNER JOIN RepresentativeMinors rm ON r.RepresentativeID = rm.RepresentativeID
-            INNER JOIN Minor m ON rm.MinorID = m.MinorID
+            INNER JOIN Minors m ON rm.MinorID = m.MinorID
             WHERE r.RepresentativeID = @RepresentativeID";
 
                 SqlDataAdapter adp = new SqlDataAdapter(query, connection);
@@ -206,10 +205,11 @@ namespace DAO
                     minor.MinorID = row["MinorID"].ToString();
                     minor.Name = row["Name"].ToString();
                     minor.BirthDate = Convert.ToDateTime(row["BirthDate"]);
-                    minor.EnteredDate = Convert.ToDateTime(row["EnteredDate"]);
-                    minor.GraduationDate = Convert.ToDateTime(row["GraduationDate"]);
+                    minor.EnteredDate = Convert.ToDateTime(row["EnterDate"]);
+                    minor.GraduationDate = Convert.ToDateTime(row["LeaveDate"]);
                     minor.Gender = Convert.ToChar(row["Gender"]);
-                    minor.RecommendationMethod = row["RecommendationMethod"].ToString();
+                    //minor.RecommendationMethod = row["RecommendationMethod"].ToString();
+                    minor.Relationship = row["Relationship"].ToString();
                     minor.Residency = row["Residency"].ToString();
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
 

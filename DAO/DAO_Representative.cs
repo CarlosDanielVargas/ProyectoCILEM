@@ -119,7 +119,7 @@ namespace DAO
             }
         }
 
-        public List<Representative> searchByID(string id)
+        public Representative searchByID(string id)
         {
             try
             {
@@ -142,7 +142,7 @@ namespace DAO
                     representative.WorkPlace = row["WorkPlace"].ToString();
                     representatives.Add(representative);
                 }
-                return representatives;
+                return representatives[0];
             }
             catch (Exception ex)
             {

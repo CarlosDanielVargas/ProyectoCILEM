@@ -12,8 +12,14 @@
     Property LevelID As Integer
     Property HasSchoolarship As String
     Property CurrentPayment As Double
+    Property Relationship As String
     Property Representatives As List(Of Representative)
     Property RepresentativeMinors As List(Of RepresentativeMinor)
+    Public ReadOnly Property IdAndNameAndRelationship As String
+        Get
+            Return Me.MinorID & " - " & Me.Name & " - " & Me.Relationship
+        End Get
+    End Property
 
 
     'Enums

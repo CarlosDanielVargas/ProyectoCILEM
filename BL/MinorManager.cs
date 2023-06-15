@@ -47,5 +47,17 @@ namespace BL
                 throw ex;
             }
         }
+
+        public List<Minor> searchByRepresentativeID(string id)
+        {
+            try
+            {
+                return daoMinor.searchMinorsByRepresentativeID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -13,4 +13,20 @@ Public Class MdiMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub AgregarNivelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNivelToolStripMenuItem.Click
+        Dim form As New frmNewLevel
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub menuItemShowRepresentatives_Click(sender As Object, e As EventArgs) Handles menuItemShowRepresentatives.Click
+        Dim form As New frmRepresentativeList
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub MdiMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

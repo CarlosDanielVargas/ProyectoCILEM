@@ -27,4 +27,17 @@
         End If
     End Function
 
+    'Methods
+
+    'Execute validations and return a list of errors messages
+    Public Function ValidateAll() As String
+        Dim errorMessage As String = ""
+
+        If ValidateName() = False Then
+            errorMessage = "El nombre está vacío"
+        End If
+
+        Return errorMessage
+    End Function
+
 End Class
