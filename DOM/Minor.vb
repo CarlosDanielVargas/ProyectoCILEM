@@ -15,6 +15,7 @@
     Property Relationship As String
     Property Representatives As List(Of Representative)
     Property RepresentativeMinors As List(Of RepresentativeMinor)
+    Property Level As Level
     Public ReadOnly Property IdAndNameAndRelationship As String
         Get
             Return Me.MinorID & " - " & Me.Name & " - " & Me.Relationship

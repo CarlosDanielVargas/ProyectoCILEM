@@ -23,8 +23,8 @@ Partial Class frmMinorList
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
         Me.lbIndications = New System.Windows.Forms.Label()
-        Me.dvgMinors = New System.Windows.Forms.DataGridView()
-        CType(Me.dvgMinors, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.dgvMinors = New System.Windows.Forms.DataGridView()
+        CType(Me.dgvMinors, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbIndications
@@ -37,33 +37,33 @@ Partial Class frmMinorList
         Me.lbIndications.TabIndex = 6
         Me.lbIndications.Text = "Lista de menores registrados "
         '
-        'dvgMinors
+        'dgvMinors
         '
-        Me.dvgMinors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dvgMinors.Location = New System.Drawing.Point(12, 72)
-        Me.dvgMinors.Name = "dvgMinors"
-        Me.dvgMinors.RowHeadersWidth = 51
-        Me.dvgMinors.RowTemplate.Height = 24
-        Me.dvgMinors.Size = New System.Drawing.Size(855, 592)
-        Me.dvgMinors.TabIndex = 7
+        Me.dgvMinors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvMinors.Location = New System.Drawing.Point(12, 72)
+        Me.dgvMinors.Name = "dgvMinors"
+        Me.dgvMinors.RowHeadersWidth = 51
+        Me.dgvMinors.RowTemplate.Height = 24
+        Me.dgvMinors.Size = New System.Drawing.Size(855, 592)
+        Me.dgvMinors.TabIndex = 7
         '
         'frmMinorList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(879, 676)
-        Me.Controls.Add(Me.dvgMinors)
+        Me.Controls.Add(Me.dgvMinors)
         Me.Controls.Add(Me.lbIndications)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmMinorList"
         Me.ShowIcon = False
         Me.Text = "Lista de menores"
-        CType(Me.dvgMinors, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvMinors, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents lbIndications As Label
-	Friend WithEvents dvgMinors As DataGridView
+	Friend WithEvents dgvMinors As DataGridView
 End Class

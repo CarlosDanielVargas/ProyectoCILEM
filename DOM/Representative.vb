@@ -1,10 +1,6 @@
 Imports System.Text.RegularExpressions
 
 Public Class Representative
-    Private v1 As String
-    Private v2 As String
-    Private v3 As String
-    Private v4 As String
 
     'Properties
     Property RepresentativeID As String

@@ -223,10 +223,10 @@ namespace DAO
             {
                 DataTable dtRepresentatives = new DataTable();
                 string query = @"
-                                SELECT r.*
-                                FROM Minor m
+                                SELECT r.*, rm.*
+                                FROM Minors m
                                 INNER JOIN RepresentativeMinors rm ON m.MinorID = rm.MinorID
-                                INNER JOIN Representative r ON rm.RepresentativeID = r.RepresentativeID
+                                INNER JOIN Representatives r ON rm.RepresentativeID = r.RepresentativeID
                                 WHERE m.MinorID = @MinorID";
 
                 SqlDataAdapter adp = new SqlDataAdapter(query, connection);
@@ -246,6 +246,7 @@ namespace DAO
                     representative.MaritalStatus = row["MaritalStatus"].ToString();
                     representative.Occupation = row["Occupation"].ToString();
                     representative.WorkPlace = row["WorkPlace"].ToString();
+                    representative.Relationship = row["Relationship"].ToString();
 
                     representatives.Add(representative);
                 }
