@@ -1,22 +1,56 @@
 ﻿Imports BL
 Imports DOM
 
-Public Class frmNewMinor
+Public Class frmInsertUpdateMinor
     Private selectedRepresentative As Representative
     Private representativeMinors As List(Of RepresentativeMinor)
     Private filteredRepresentatives As List(Of Representative)
     Private representatives As List(Of Representative)
+    Private minor As Minor
+    Private isNew As Boolean
 
     Private Sub frmNewMinor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim levelManager As New LevelManager()
-        Dim minor As Minor = New Minor()
+        If minor Is Nothing Then
+            minor = New Minor()
+            isNew = True
+        End If
         cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
         cboxGender.SelectedIndex = 0
         cboxSchoolarship.DataSource = [Enum].GetValues(GetType(Minor.HasSchoolarshipEnum))
         cboxSchoolarship.SelectedIndex = 0
         cboxLevels.DataSource = levelManager.loadAllFromDB()
         cboxLevels.DisplayMember = "Name"
+        cboxLevels.ValueMember = "LevelID"
+        If minor IsNot Nothing Then
+            isNew = False
+            cboxLevels.SelectedValue = minor.LevelID
+            lboxAssociatedRepresentatives.DataSource = minor.Representatives
+            lboxAssociatedRepresentatives.DisplayMember = "IDAndName"
+            lboxAssociatedRepresentatives.SelectedIndex = -1
+            tbIDCard.Text = minor.MinorID
+            tbName.Text = minor.Name
+            tbResidency.Text = minor.Residency
+            tbCurrentPayment.Text = minor.CurrentPayment
+            dtpBirthDate.Value = minor.BirthDate
+            dtpEnterDate.Value = minor.EnteredDate
+            dtpLeaveDate.Value = minor.GraduationDate
+            btnSave.Text = "Actualizar"
+        End If
         btnAddRepresentativeMinor.Enabled = False
+    End Sub
+
+    Public Sub New(minor As Minor)
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        Me.minor = minor
+    End Sub
+
+    Public Sub New()
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
     End Sub
 
     Private Sub btnSearchRepresentative_Click(sender As Object, e As EventArgs) Handles btnSearchRepresentative.Click
@@ -93,8 +127,11 @@ Public Class frmNewMinor
             minor.LevelID = cboxLevels.SelectedItem.LevelID
 
             minor.ValidateAll()
-
-            minorManager.saveToDB(minor)
+            If isNew Then
+                minorManager.saveToDB(minor)
+            Else
+                minorManager.updateToDB(minor)
+            End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmInsertUpdateMinor.Designer.vb">
+      <DependentUpon>frmInsertUpdateMinor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInsertUpdateMinor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMinorDetails.Designer.vb">
       <DependentUpon>frmMinorDetails.vb</DependentUpon>
     </Compile>
@@ -92,12 +98,6 @@
     <Compile Include="frmNewRepresentative.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewMinor.Designer.vb">
-      <DependentUpon>frmNewMinor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmNewMinor.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmRepresentativeDetails.Designer.vb">
       <DependentUpon>frmRepresentativeDetails.vb</DependentUpon>
     </Compile>
@@ -114,12 +114,6 @@
       <DependentUpon>frmRepresentativeList.vb</DependentUpon>
     </Compile>
     <Compile Include="frmRepresentativeList.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUpdateMinor.Designer.vb">
-      <DependentUpon>frmUpdateMinor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmUpdateMinor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUpdateRepresentative.Designer.vb">
@@ -152,14 +146,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmInsertUpdateMinor.resx">
+      <DependentUpon>frmInsertUpdateMinor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMinorDetails.resx">
       <DependentUpon>frmMinorDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewLevel.resx">
       <DependentUpon>frmNewLevel.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNewMinor.resx">
-      <DependentUpon>frmNewMinor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewRepresentative.resx">
       <DependentUpon>frmNewRepresentative.vb</DependentUpon>
@@ -172,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepresentativeList.resx">
       <DependentUpon>frmRepresentativeList.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateMinor.resx">
-      <DependentUpon>frmUpdateMinor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateRepresentative.resx">
       <DependentUpon>frmUpdateRepresentative.vb</DependentUpon>

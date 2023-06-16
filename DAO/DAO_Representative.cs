@@ -26,7 +26,7 @@ namespace DAO
                     Representative representative = new Representative();
                     representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
-                    representative.Gender = Convert.ToChar(row["Gender"]);
+                    representative.Gender = row["Gender"].ToString();
                     representative.Residency = row["Residency"].ToString();
                     representative.Mail = row["Mail"].ToString();
                     representative.Phone = row["Phone"].ToString();
@@ -124,7 +124,7 @@ namespace DAO
             try
             {
                 SqlCommand search = new SqlCommand();
-                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Representatives WHERE RepresentativeID = " + id, connection);
+                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Representatives WHERE RepresentativeID = '" + id + "'", connection);
                 DataTable dtRepresentatives = new DataTable();
                 adp.Fill(dtRepresentatives);
                 List<Representative> representatives = new List<Representative>();
@@ -133,7 +133,7 @@ namespace DAO
                     Representative representative = new Representative();
                     representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
-                    representative.Gender = Convert.ToChar(row["Gender"]);
+                    representative.Gender = row["Gender"].ToString();
                     representative.Residency = row["Residency"].ToString();
                     representative.Mail = row["Mail"].ToString();
                     representative.Phone = row["Phone"].ToString();
@@ -168,7 +168,7 @@ namespace DAO
                     Representative representative = new Representative();
                     representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
-                    representative.Gender = Convert.ToChar(row["Gender"]);
+                    representative.Gender = row["Gender"].ToString();
                     representative.Residency = row["Residency"].ToString();
                     representative.Mail = row["Mail"].ToString();
                     representative.Phone = row["Phone"].ToString();
@@ -200,7 +200,7 @@ namespace DAO
                     Representative representative = new Representative();
                     representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
-                    representative.Gender = Convert.ToChar(row["Gender"]);
+                    representative.Gender =     row["Gender"].ToString();
                     representative.Residency = row["Residency"].ToString();
                     representative.Mail = row["Mail"].ToString();
                     representative.Phone = row["Phone"].ToString();
@@ -239,7 +239,7 @@ namespace DAO
                     Representative representative = new Representative();
                     representative.RepresentativeID = row["RepresentativeID"].ToString();
                     representative.Name = row["Name"].ToString();
-                    representative.Gender = Convert.ToChar(row["Gender"]);
+                    representative.Gender = row["Gender"].ToString();
                     representative.Residency = row["Residency"].ToString();
                     representative.Mail = row["Mail"].ToString();
                     representative.Phone = row["Phone"].ToString();

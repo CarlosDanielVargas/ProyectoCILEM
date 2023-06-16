@@ -43,7 +43,6 @@ Partial Class MdiMain
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.updateRepresentative = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -51,13 +50,12 @@ Partial Class MdiMain
         '
         'MenuStrip
         '
-        Me.MenuStrip.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Padding = New System.Windows.Forms.Padding(7, 2, 0, 2)
-        Me.MenuStrip.Size = New System.Drawing.Size(1422, 54)
+        Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 2, 0, 2)
+        Me.MenuStrip.Size = New System.Drawing.Size(843, 28)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -65,50 +63,50 @@ Partial Class MdiMain
         '
         Me.EstudiantesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddMinor, Me.menuItemShowStudents, Me.menuItemSearchStudent})
         Me.EstudiantesToolStripMenuItem.Name = "EstudiantesToolStripMenuItem"
-        Me.EstudiantesToolStripMenuItem.Size = New System.Drawing.Size(118, 50)
+        Me.EstudiantesToolStripMenuItem.Size = New System.Drawing.Size(98, 24)
         Me.EstudiantesToolStripMenuItem.Text = "Estudiantes"
         '
         'menuItemAddMinor
         '
         Me.menuItemAddMinor.Name = "menuItemAddMinor"
-        Me.menuItemAddMinor.Size = New System.Drawing.Size(273, 34)
+        Me.menuItemAddMinor.Size = New System.Drawing.Size(225, 26)
         Me.menuItemAddMinor.Text = "Agregar estudiantes"
         '
         'menuItemShowStudents
         '
         Me.menuItemShowStudents.Name = "menuItemShowStudents"
-        Me.menuItemShowStudents.Size = New System.Drawing.Size(273, 34)
+        Me.menuItemShowStudents.Size = New System.Drawing.Size(225, 26)
         Me.menuItemShowStudents.Text = "Mostrar estudiantes"
         '
         'menuItemSearchStudent
         '
         Me.menuItemSearchStudent.Name = "menuItemSearchStudent"
-        Me.menuItemSearchStudent.Size = New System.Drawing.Size(273, 34)
+        Me.menuItemSearchStudent.Size = New System.Drawing.Size(225, 26)
         Me.menuItemSearchStudent.Text = "Buscar estudiante"
         '
         'EncargadosLegalesToolStripMenuItem
         '
-        Me.EncargadosLegalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddRepresentative, Me.menuItemShowRepresentatives, Me.BuscarEncargadoToolStripMenuItem, Me.updateRepresentative})
+        Me.EncargadosLegalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddRepresentative, Me.menuItemShowRepresentatives, Me.BuscarEncargadoToolStripMenuItem})
         Me.EncargadosLegalesToolStripMenuItem.Name = "EncargadosLegalesToolStripMenuItem"
-        Me.EncargadosLegalesToolStripMenuItem.Size = New System.Drawing.Size(179, 50)
+        Me.EncargadosLegalesToolStripMenuItem.Size = New System.Drawing.Size(151, 24)
         Me.EncargadosLegalesToolStripMenuItem.Text = "Encargados legales"
         '
         'menuItemAddRepresentative
         '
         Me.menuItemAddRepresentative.Name = "menuItemAddRepresentative"
-        Me.menuItemAddRepresentative.Size = New System.Drawing.Size(404, 34)
+        Me.menuItemAddRepresentative.Size = New System.Drawing.Size(224, 26)
         Me.menuItemAddRepresentative.Text = "Agregar Encargado"
         '
         'menuItemShowRepresentatives
         '
         Me.menuItemShowRepresentatives.Name = "menuItemShowRepresentatives"
-        Me.menuItemShowRepresentatives.Size = New System.Drawing.Size(404, 34)
+        Me.menuItemShowRepresentatives.Size = New System.Drawing.Size(224, 26)
         Me.menuItemShowRepresentatives.Text = "Mostrar Encargados"
         '
         'BuscarEncargadoToolStripMenuItem
         '
         Me.BuscarEncargadoToolStripMenuItem.Name = "BuscarEncargadoToolStripMenuItem"
-        Me.BuscarEncargadoToolStripMenuItem.Size = New System.Drawing.Size(404, 34)
+        Me.BuscarEncargadoToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.BuscarEncargadoToolStripMenuItem.Text = "Buscar Encargado"
         '
         'NivelesToolStripMenuItem
@@ -134,9 +132,9 @@ Partial Class MdiMain
         '
         Me.ToolStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripSeparator2})
-        Me.ToolStrip.Location = New System.Drawing.Point(0, 81)
+        Me.ToolStrip.Location = New System.Drawing.Point(0, 28)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(1422, 57)
+        Me.ToolStrip.Size = New System.Drawing.Size(843, 27)
         Me.ToolStrip.TabIndex = 6
         Me.ToolStrip.Text = "ToolStrip"
         '
@@ -146,48 +144,42 @@ Partial Class MdiMain
         Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(34, 52)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(29, 24)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 57)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
         '
         'StatusStrip
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 666)
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 532)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 21, 0)
-        Me.StatusStrip.Size = New System.Drawing.Size(948, 32)
+        Me.StatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
+        Me.StatusStrip.Size = New System.Drawing.Size(843, 26)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
         'ToolStripStatusLabel
         '
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
-        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(66, 25)
+        Me.ToolStripStatusLabel.Size = New System.Drawing.Size(54, 20)
         Me.ToolStripStatusLabel.Text = "Estado"
-        '
-        'updateRepresentative
-        '
-        Me.updateRepresentative.Name = "updateRepresentative"
-        Me.updateRepresentative.Size = New System.Drawing.Size(404, 34)
-        Me.updateRepresentative.Text = "Actualizar información de Encargado"
         '
         'MdiMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(948, 698)
+        Me.ClientSize = New System.Drawing.Size(843, 558)
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "MdiMain"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -218,7 +210,6 @@ Partial Class MdiMain
     Friend WithEvents menuItemAddRepresentative As ToolStripMenuItem
     Friend WithEvents menuItemShowRepresentatives As ToolStripMenuItem
     Friend WithEvents BuscarEncargadoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents updateRepresentative As ToolStripMenuItem
     Friend WithEvents NivelesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AgregarNivelToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListarNivelesToolStripMenuItem As ToolStripMenuItem

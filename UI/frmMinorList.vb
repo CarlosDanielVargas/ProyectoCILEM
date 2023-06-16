@@ -73,8 +73,9 @@ Public Class frmMinorList
 			Dim minor As Minor = minors(rowIndex)
 			' Open the form for editing the minor using the minor object
 			' Example:
-			' Dim form As New frmEditMinor(minor)
-			' form.Show()
+			Dim frm As New frmInsertUpdateMinor(minor)
+			frm.MdiParent = Me.MdiParent
+			frm.Show()
 		End If
 	End Sub
 End Class

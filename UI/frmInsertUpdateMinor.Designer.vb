@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmNewMinor
+Partial Class frmInsertUpdateMinor
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -428,12 +428,12 @@ Partial Class frmNewMinor
         Me.cboxLevels.Size = New System.Drawing.Size(554, 28)
         Me.cboxLevels.TabIndex = 62
         '
-        'frmNewMinor
+        'frmInsertUpdateMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(866, 438)
+        Me.ClientSize = New System.Drawing.Size(887, 438)
         Me.Controls.Add(Me.cboxLevels)
         Me.Controls.Add(Me.lbLevel)
         Me.Controls.Add(Me.tbRecommendationMethod)
@@ -472,7 +472,7 @@ Partial Class frmNewMinor
         Me.Controls.Add(Me.lbName)
         Me.Controls.Add(Me.lbIndications)
         Me.Controls.Add(Me.btnSave)
-        Me.Name = "frmNewMinor"
+        Me.Name = "frmInsertUpdateMinor"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "Agregar menor"

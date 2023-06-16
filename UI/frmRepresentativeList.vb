@@ -74,10 +74,9 @@ Public Class frmRepresentativeList
             ' "Editar" button clicked
             Dim rowIndex As Integer = e.RowIndex
             Dim representative As Representative = representatives(rowIndex)
-            ' Open the form for editing the representative using the representative object
-            ' Example:
-            ' Dim form As New frmEditRepresentative(representative)
-            ' form.Show()
+            Dim form As New frmUpdateRepresentative(representative)
+            form.MdiParent = Me.MdiParent
+            form.Show()
         End If
     End Sub
 End Class

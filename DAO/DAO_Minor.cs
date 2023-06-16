@@ -29,7 +29,7 @@ namespace DAO
                     minor.BirthDate = Convert.ToDateTime(row["BirthDate"]);
                     minor.EnteredDate = Convert.ToDateTime(row["EnterDate"]);
                     minor.GraduationDate = Convert.ToDateTime(row["LeaveDate"]);
-                    minor.Gender = Convert.ToChar(row["Gender"]);
+                    minor.Gender = row["Gender"].ToString();
                     minor.HasSchoolarship = row["HasSchoolarship"].ToString();
                     //minor.RecommendationMethod = row["RecomendationMethod"].ToString();
                     minor.Residency = row["Residency"].ToString();
@@ -39,6 +39,10 @@ namespace DAO
                     // Get Level
                     DAO_Level daoLevel = new DAO_Level();
                     minor.Level = daoLevel.loadFromDB(minor.LevelID);
+
+                    // Get Representatives
+                    DAO_Representative DAO_Representative = new DAO_Representative();
+                    minor.Representatives = DAO_Representative.searchRepresentativesByMinorID(minor.MinorID);
                     minors.Add(minor);
                 }
                 return minors;
@@ -117,6 +121,24 @@ namespace DAO
                 update.ExecuteNonQuery();
 
                 connection.Close();
+
+                //Creation and insertion representativeMinors to DB
+                List<RepresentativeMinor> representativeMinors = minor.RepresentativeMinors;
+                SqlCommand insertRepresentativeMinors = new SqlCommand();
+                insertRepresentativeMinors.Connection = connection;
+                insertRepresentativeMinors.CommandText = "INSERT INTO RepresentativeMinors(MinorID, RepresentativeID, Relationship) VALUES @MinorID, @RepresentativeID, @Relationship";
+                foreach (RepresentativeMinor representativeMinor in representativeMinors)
+                {
+                    insertRepresentativeMinors.Parameters.AddWithValue("@MinorID", minor.MinorID);
+                    insertRepresentativeMinors.Parameters.AddWithValue("@RepresentativeID", representativeMinor.RepresentativeID);
+                    insertRepresentativeMinors.Parameters.AddWithValue("@Relationship", representativeMinor.Relationship);
+
+                    connection.Open();
+                    insertRepresentativeMinors.ExecuteNonQuery();
+
+                    connection.Close();
+                }
+
             }
             catch (Exception ex)
             {
@@ -172,9 +194,9 @@ namespace DAO
                     minor.MinorID = row["MinorID"].ToString();
                     minor.Name = row["Name"].ToString();
                     minor.BirthDate = Convert.ToDateTime(row["BirthDate"]);
-                    minor.EnteredDate = Convert.ToDateTime(row["EnteredDate"]);
-                    minor.GraduationDate = Convert.ToDateTime(row["GraduationDate"]);
-                    minor.Gender = Convert.ToChar(row["Gender"]);
+                    minor.EnteredDate = Convert.ToDateTime(row["EnterDate"]);
+                    minor.GraduationDate = Convert.ToDateTime(row["LeaveDate"]);
+                    minor.Gender = row["Gender"].ToString();
                     minor.RecommendationMethod = row["RecommendationMethod"].ToString();
                     minor.Residency = row["Residency"].ToString();
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
@@ -213,7 +235,7 @@ namespace DAO
                     minor.BirthDate = Convert.ToDateTime(row["BirthDate"]);
                     minor.EnteredDate = Convert.ToDateTime(row["EnterDate"]);
                     minor.GraduationDate = Convert.ToDateTime(row["LeaveDate"]);
-                    minor.Gender = Convert.ToChar(row["Gender"]);
+                    minor.Gender = row["Gender"].ToString();
                     //minor.RecommendationMethod = row["RecommendationMethod"].ToString();
                     minor.Relationship = row["Relationship"].ToString();
                     minor.Residency = row["Residency"].ToString();

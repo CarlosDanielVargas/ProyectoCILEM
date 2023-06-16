@@ -7,7 +7,7 @@
     Property EnteredDate As Date
     Property GraduationDate As Date
     Property Residency As String
-    Property Gender As Char
+    Property Gender As String
     Property RecommendationMethod As String
     Property LevelID As Integer
     Property HasSchoolarship As String
