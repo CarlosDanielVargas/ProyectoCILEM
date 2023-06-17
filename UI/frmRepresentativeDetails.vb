@@ -15,9 +15,9 @@ Public Class frmRepresentativeDetails
 
     Private Sub frmRepresentativeDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Load data
-        txtGenero.Text = representative.Gender
+        txtGenero.Text = representative.Gender.ToString()
         txtOcupacion.Text = representative.Occupation
-        txtEstadoCivil.Text = representative.MaritalStatus
+        txtEstadoCivil.Text = representative.MaritalStatus.ToString()
         txtTelefono.Text = representative.Phone
         txtLugarTrabajo.Text = representative.WorkPlace
         txtResidencia.Text = representative.Residency

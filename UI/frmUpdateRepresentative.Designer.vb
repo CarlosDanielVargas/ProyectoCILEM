@@ -65,10 +65,11 @@ Partial Class frmUpdateRepresentative
         '
         'cboxGender
         '
+        Me.cboxGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.cboxGender.FormattingEnabled = True
         Me.cboxGender.Location = New System.Drawing.Point(249, 546)
         Me.cboxGender.Name = "cboxGender"
-        Me.cboxGender.Size = New System.Drawing.Size(551, 24)
+        Me.cboxGender.Size = New System.Drawing.Size(551, 30)
         Me.cboxGender.TabIndex = 38
         '
         'lbGender
@@ -139,10 +140,11 @@ Partial Class frmUpdateRepresentative
         '
         'cboxMaritalStatus
         '
+        Me.cboxMaritalStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.cboxMaritalStatus.FormattingEnabled = True
         Me.cboxMaritalStatus.Location = New System.Drawing.Point(249, 264)
         Me.cboxMaritalStatus.Name = "cboxMaritalStatus"
-        Me.cboxMaritalStatus.Size = New System.Drawing.Size(551, 24)
+        Me.cboxMaritalStatus.Size = New System.Drawing.Size(551, 30)
         Me.cboxMaritalStatus.TabIndex = 30
         '
         'lbMaritalStatus

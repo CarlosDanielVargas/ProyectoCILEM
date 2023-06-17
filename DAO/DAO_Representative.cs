@@ -34,6 +34,18 @@ namespace DAO
                     representative.Occupation = row["Occupation"].ToString();
                     representative.WorkPlace = row["WorkPlace"].ToString();
                     representatives.Add(representative);
+
+                    // Get all minors of this representative
+                    List<Minor> minors = new List<Minor>();
+                    DAO_Minor daoMinor = new DAO_Minor();
+                    minors = daoMinor.searchMinorsByRepresentativeID(representative.RepresentativeID);
+                    representative.Minors = minors;
+
+                    // Get representativeMinors of this representative
+                    List<RepresentativeMinor> representativeMinors = new List<RepresentativeMinor>();
+                    DAO_RepresentativeMinor daoRepresentativeMinor = new DAO_RepresentativeMinor();
+                    representativeMinors = daoRepresentativeMinor.searchByRepresentative(representative.RepresentativeID);
+                    representative.RepresentativeMinors = representativeMinors;
                 }
                 return representatives;
             }
@@ -64,6 +76,7 @@ namespace DAO
                 insert.ExecuteNonQuery();
 
                 connection.Close();
+
             }
             catch (Exception ex)
             {

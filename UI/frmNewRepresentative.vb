@@ -10,19 +10,25 @@ Public Class frmNewRepresentative
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim repManager As New RepresentativeManager()
-        Dim rep As Representative = New Representative()
-        rep.Name = tbName.Text
-        rep.Mail = tbMail.Text
-        rep.Phone = tbPhone.Text
-        rep.MaritalStatus = cboxMaritalStatus.SelectedItem.ToString()
-        rep.RepresentativeID = tbIDCard.Text
-        rep.WorkPlace = tbWorkPlace.Text
-        rep.Occupation = tbOccupation.Text
-        rep.Gender = cboxGender.SelectedItem.ToString()
-        rep.Residency = tbResidency.Text
-        repManager.saveToDB(rep)
-        Me.Close()
+        Try
+            Dim repManager As New RepresentativeManager()
+            Dim rep As Representative = New Representative()
+            rep.Name = tbName.Text
+            rep.Mail = tbMail.Text
+            rep.Phone = tbPhone.Text
+            rep.MaritalStatus = cboxMaritalStatus.SelectedItem.ToString()
+            rep.RepresentativeID = tbIDCard.Text
+            rep.WorkPlace = tbWorkPlace.Text
+            rep.Occupation = tbOccupation.Text
+            rep.Gender = cboxGender.SelectedItem.ToString()
+            rep.Residency = tbResidency.Text
+            rep.ValidateAll()
+            repManager.saveToDB(rep)
+            MessageBox.Show("Representante guardado con éxito")
+            Me.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
 
 
 
