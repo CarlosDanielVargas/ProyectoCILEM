@@ -33,5 +33,4 @@ Public Class frmMinorDetails
         lboxRepresentatives.DisplayMember = "IDAndNameAndRelationship"
         lboxRepresentatives.SelectedIndex = -1
     End Sub
-
 End Class

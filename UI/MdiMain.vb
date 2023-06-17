@@ -25,4 +25,10 @@ Public Class MdiMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub menuItemAddMinor_Click(sender As Object, e As EventArgs) Handles menuItemAddMinor.Click
+        Dim form As New frmInsertUpdateMinor
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
