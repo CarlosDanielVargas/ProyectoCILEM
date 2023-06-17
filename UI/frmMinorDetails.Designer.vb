@@ -44,8 +44,8 @@ Partial Class frmMinorDetails
         Me.txtPago = New System.Windows.Forms.Label()
         Me.lbPago = New System.Windows.Forms.Label()
         Me.lbMetodoRecomendacion = New System.Windows.Forms.Label()
-        Me.lbRepresentatives = New System.Windows.Forms.Label()
         Me.txtMetodoRecomendacion = New System.Windows.Forms.Label()
+        Me.lbRepresentatives = New System.Windows.Forms.Label()
         Me.dgvRepresentatives = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -254,7 +254,7 @@ Partial Class frmMinorDetails
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.19403!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.80597!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 249.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 249.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.txtPago, 3, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lbPago, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.txtBeca, 3, 2)
@@ -323,17 +323,6 @@ Partial Class frmMinorDetails
         Me.lbMetodoRecomendacion.TabIndex = 25
         Me.lbMetodoRecomendacion.Text = "Método recomendación:"
         '
-        'lbRepresentatives
-        '
-        Me.lbRepresentatives.AutoSize = True
-        Me.lbRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbRepresentatives.Location = New System.Drawing.Point(11, 255)
-        Me.lbRepresentatives.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbRepresentatives.Name = "lbRepresentatives"
-        Me.lbRepresentatives.Size = New System.Drawing.Size(313, 25)
-        Me.lbRepresentatives.TabIndex = 25
-        Me.lbRepresentatives.Text = "Representantes legales del menor:"
-        '
         'txtMetodoRecomendacion
         '
         Me.txtMetodoRecomendacion.AutoSize = True
@@ -345,8 +334,20 @@ Partial Class frmMinorDetails
         Me.txtMetodoRecomendacion.TabIndex = 26
         Me.txtMetodoRecomendacion.Text = "Método recomendación:"
         '
+        'lbRepresentatives
+        '
+        Me.lbRepresentatives.AutoSize = True
+        Me.lbRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbRepresentatives.Location = New System.Drawing.Point(11, 255)
+        Me.lbRepresentatives.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbRepresentatives.Name = "lbRepresentatives"
+        Me.lbRepresentatives.Size = New System.Drawing.Size(313, 25)
+        Me.lbRepresentatives.TabIndex = 25
+        Me.lbRepresentatives.Text = "Representantes legales del menor:"
+        '
         'dgvRepresentatives
         '
+        Me.dgvRepresentatives.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvRepresentatives.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvRepresentatives.Location = New System.Drawing.Point(20, 292)
         Me.dgvRepresentatives.Name = "dgvRepresentatives"

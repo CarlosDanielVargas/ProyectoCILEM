@@ -38,6 +38,7 @@ Public Class frmInsertUpdateMinor
             dtpEnterDate.Value = minor.EnteredDate
             dtpLeaveDate.Value = minor.GraduationDate
             btnSave.Text = "Actualizar"
+            Me.Text = "Actualizar menor"
 
             ' Set the value of cboxGender to match the minor's gender
             Dim gender As Minor.GenderEnum = [Enum].Parse(GetType(Minor.GenderEnum), minor.Gender)
@@ -166,5 +167,141 @@ Public Class frmInsertUpdateMinor
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub lbName_Click(sender As Object, e As EventArgs) Handles lbName.Click
+
+    End Sub
+
+    Private Sub tbName_TextChanged(sender As Object, e As EventArgs) Handles tbName.TextChanged
+
+    End Sub
+
+    Private Sub lbIDCard_Click(sender As Object, e As EventArgs) Handles lbIDCard.Click
+
+    End Sub
+
+    Private Sub tbIDCard_TextChanged(sender As Object, e As EventArgs) Handles tbIDCard.TextChanged
+
+    End Sub
+
+    Private Sub lbEnterDate_Click(sender As Object, e As EventArgs) Handles lbEnterDate.Click
+
+    End Sub
+
+    Private Sub cboxGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxGender.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub lbGender_Click(sender As Object, e As EventArgs) Handles lbGender.Click
+
+    End Sub
+
+    Private Sub lbSchoolarship_Click(sender As Object, e As EventArgs) Handles lbSchoolarship.Click
+
+    End Sub
+
+    Private Sub tbResidency_TextChanged(sender As Object, e As EventArgs) Handles tbResidency.TextChanged
+
+    End Sub
+
+    Private Sub lbResidency_Click(sender As Object, e As EventArgs) Handles lbResidency.Click
+
+    End Sub
+
+    Private Sub tbCurrentPayment_TextChanged(sender As Object, e As EventArgs) Handles tbCurrentPayment.TextChanged
+
+    End Sub
+
+    Private Sub lbCurrentPayment_Click(sender As Object, e As EventArgs) Handles lbCurrentPayment.Click
+
+    End Sub
+
+    Private Sub lbLeaveDate_Click(sender As Object, e As EventArgs) Handles lbLeaveDate.Click
+
+    End Sub
+
+    Private Sub lbBirthDate_Click(sender As Object, e As EventArgs) Handles lbBirthDate.Click
+
+    End Sub
+
+    Private Sub dtpBirthDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpBirthDate.ValueChanged
+
+    End Sub
+
+    Private Sub dtpEnterDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpEnterDate.ValueChanged
+
+    End Sub
+
+    Private Sub dtpLeaveDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpLeaveDate.ValueChanged
+
+    End Sub
+
+    Private Sub cboxSchoolarship_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxSchoolarship.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub lbRepresentatives_Click(sender As Object, e As EventArgs) Handles lbRepresentatives.Click
+
+    End Sub
+
+    Private Sub tbRepresentativeName_TextChanged(sender As Object, e As EventArgs) Handles tbRepresentativeName.TextChanged
+
+    End Sub
+
+    Private Sub lbRepresentativeName_Click(sender As Object, e As EventArgs) Handles lbRepresentativeName.Click
+
+    End Sub
+
+    Private Sub lbFoundRepresentatives_Click(sender As Object, e As EventArgs) Handles lbFoundRepresentatives.Click
+
+    End Sub
+
+    Private Sub lbSelectedRepresentantText_Click(sender As Object, e As EventArgs) Handles lbSelectedRepresentantText.Click
+
+    End Sub
+
+    Private Sub tbSelectedRepresentative_TextChanged(sender As Object, e As EventArgs) Handles tbSelectedRepresentative.TextChanged
+
+    End Sub
+
+    Private Sub cbRelationship_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRelationship.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub lboxAssociatedRepresentatives_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxAssociatedRepresentatives.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub lbAssociatedRepresentatives_Click(sender As Object, e As EventArgs) Handles lbAssociatedRepresentatives.Click
+
+    End Sub
+
+    Private Sub lbRelation_Click(sender As Object, e As EventArgs) Handles lbRelation.Click
+
+    End Sub
+
+    Private Sub tbRecommendationMethod_TextChanged(sender As Object, e As EventArgs) Handles tbRecommendationMethod.TextChanged
+
+    End Sub
+
+    Private Sub lbRecommendationMethod_Click(sender As Object, e As EventArgs) Handles lbRecommendationMethod.Click
+
+    End Sub
+
+    Private Sub BindingSource1_CurrentChanged(sender As Object, e As EventArgs) Handles BindingSource1.CurrentChanged
+
+    End Sub
+
+    Private Sub BindingSource2_CurrentChanged(sender As Object, e As EventArgs) Handles BindingSource2.CurrentChanged
+
+    End Sub
+
+    Private Sub lbLevel_Click(sender As Object, e As EventArgs) Handles lbLevel.Click
+
+    End Sub
+
+    Private Sub cboxLevels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxLevels.SelectedIndexChanged
+
     End Sub
 End Class

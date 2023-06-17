@@ -25,6 +25,7 @@ Public Class frmMinorDetails
         txtGenero.Text = minor.Gender
         txtBeca.Text = minor.HasSchoolarship
         txtPago.Text = minor.CurrentPayment
+        txtMetodoRecomendacion.Text = minor.RecommendationMethod
         txtCedulaMenor.Text = minor.MinorID
 
         Dim representativeManager As New RepresentativeManager()
@@ -60,6 +61,16 @@ Public Class frmMinorDetails
         dgvRepresentatives.Columns.Add(btnDetallesColumn)
         dgvRepresentatives.Columns.Add(btnDeleteColumn)
         dgvRepresentatives.Columns.Add(btnEditColumn)
+
+        ' Add the representatives to the DataGridView
+        For Each representative As Representative In representatives
+            dgvRepresentatives.Rows.Add(representative.Name, representative.RepresentativeID, representative.Mail, representative.Phone)
+        Next
+
+        ' Disable editing for the DataGridView
+        dgvRepresentatives.ReadOnly = True
+
+
     End Sub
 
     Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRepresentatives.CellContentClick
