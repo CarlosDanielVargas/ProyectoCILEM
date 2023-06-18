@@ -9,6 +9,8 @@ Public Class frmInsertUpdateMinor
     Private minor As Minor
     Private isNew As Boolean
     Private preexistingRepresentatives As List(Of Representative)
+    Private preexistingRepresentativeMinors As List(Of RepresentativeMinor)
+    Private parent As frmMinorList
 
     Private Sub frmNewMinor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize the form controls and data
@@ -40,9 +42,14 @@ Public Class frmInsertUpdateMinor
             representatives = minor.Representatives
             representativeMinors = minor.RepresentativeMinors
             preexistingRepresentatives = New List(Of Representative)
+            preexistingRepresentativeMinors = New List(Of RepresentativeMinor)
             If representatives IsNot Nothing Then
                 preexistingRepresentatives.AddRange(minor.Representatives)
             End If
+            If representativeMinors IsNot Nothing Then
+                preexistingRepresentativeMinors.AddRange(minor.RepresentativeMinors)
+            End If
+
             poblateDataGridView()
 
             ' Set the value of cboxGender to match the minor's gender
@@ -60,6 +67,14 @@ Public Class frmInsertUpdateMinor
             isNew = True
         End If
         btnAddRepresentativeMinor.Enabled = False
+    End Sub
+
+    Public Sub New(minor As Minor, parent As frmMinorList)
+        ' Required method for the designer.
+        InitializeComponent()
+
+        Me.minor = minor
+        Me.parent = parent
     End Sub
 
     Public Sub New(minor As Minor)
@@ -161,8 +176,15 @@ Public Class frmInsertUpdateMinor
                 minorManager.saveToDB(minor)
                 MessageBox.Show(Me.MdiParent, "Se ha creado correctamente el estudiante")
             Else
+                minor.Representatives = representatives.Except(preexistingRepresentatives).ToList()
+                minor.RepresentativeMinors = representativeMinors.Except(preexistingRepresentativeMinors).ToList()
                 minorManager.updateToDB(minor)
                 MessageBox.Show(Me.MdiParent, "Se ha actualizado correctamente la información del estudiante")
+            End If
+
+            ' Refresh the minor list
+            If parent IsNot Nothing Then
+                parent.refreshMinorList()
             End If
 
             ' Close the form after successful save/update
@@ -241,6 +263,9 @@ Public Class frmInsertUpdateMinor
                         If preexistingRepresentatives.Contains(representative) Then
                             representativeMinor = representativeMinorManager.searchRepresentativeMinor(representative.RepresentativeID, minor.MinorID)
                             representativeMinorManager.deleteFromDB(representativeMinor)
+                            If preexistingRepresentativeMinors.Contains(representativeMinor) Then
+                                representativeMinors.Remove(representativeMinor)
+                            End If
                         End If
                     End If
                     representatives = representatives.Where(Function(x) x.RepresentativeID <> representative.RepresentativeID).ToList()

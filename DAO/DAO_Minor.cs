@@ -182,7 +182,7 @@ namespace DAO
             }
         }
 
-        public List<Minor> searchBy(string id, string name, string gender, string recommendationMethod, int levelID)
+        public Minor searchByID(string id)
         {
             try
             {
@@ -192,14 +192,6 @@ namespace DAO
                 // Add conditions based on the provided parameters
                 if (!string.IsNullOrEmpty(id))
                     query += " AND MinorID = '" + id + "'";
-                if (!string.IsNullOrEmpty(name))
-                    query += " AND Name = '" + name + "'";
-                if (!string.IsNullOrEmpty(gender))
-                    query += " AND Gender = '" + gender + "'";
-                if (!string.IsNullOrEmpty(recommendationMethod))
-                    query += " AND RecommendationMethod = '" + recommendationMethod + "'";
-                if (levelID != 0)
-                    query += " AND LevelID = '" + levelID + "'";
 
                 SqlDataAdapter adp = new SqlDataAdapter(query, connection);
                 adp.Fill(dtMinors);
@@ -218,7 +210,7 @@ namespace DAO
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
                     minors.Add(minor);
                 }
-                return minors;
+                return minors[0];
             }
             catch (Exception ex)
             {

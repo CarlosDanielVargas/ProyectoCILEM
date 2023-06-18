@@ -7,9 +7,6 @@ Public Class frmMinorList
 
     ' This event handler is called when the form is loaded
     Private Sub frmMinorList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Load the minors from the database
-        Dim minorManager As New MinorManager()
-        minors = minorManager.loadAllFromDB()
 
         ' Load the levels from the database
         Dim levelManager As New LevelManager()
@@ -61,14 +58,8 @@ Public Class frmMinorList
             column.ReadOnly = True ' Set individual columns to read-only
         Next
 
-        ' Add the relationship of the buttons to the Minor object
-        For Each minor As Minor In minors
-            Dim rowIndex As Integer = dgvMinors.Rows.Add()
-
-            dgvMinors.Rows(rowIndex).Cells("Nombre").Value = minor.Name
-            dgvMinors.Rows(rowIndex).Cells("Cédula").Value = minor.MinorID
-            dgvMinors.Rows(rowIndex).Cells("Nivel").Value = minor.Level.Name
-        Next
+        ' Refresh the minors list
+        refreshMinorList()
 
         ' Set message of filter label
         lbCurrentFilter.Text = "Se muestran todos los menores, un total de " & minors.Count & " menor(es)"
@@ -103,7 +94,7 @@ Public Class frmMinorList
             ' Get the Minor object from the list of minors using the row index
             Dim minor As Minor = minors(rowIndex)
             ' Open the form for editing the minor details using the minor object
-            Dim frm As New frmInsertUpdateMinor(minor)
+            Dim frm As New frmInsertUpdateMinor(minor, Me)
             frm.MdiParent = Me.MdiParent
             frm.Show()
         End If
@@ -197,6 +188,23 @@ Public Class frmMinorList
         ' Set all columns to read-only
         For Each column As DataGridViewColumn In dgvMinors.Columns
             column.ReadOnly = True
+        Next
+    End Sub
+
+    Public Sub refreshMinorList()
+        ' Load all minors from the database
+        Dim minorManager As New MinorManager()
+        minors = minorManager.loadAllFromDB()
+
+        dgvMinors.Rows.Clear()
+
+        ' Add the relationship of the buttons to the Minor object
+        For Each minor As Minor In minors
+            Dim rowIndex As Integer = dgvMinors.Rows.Add()
+
+            dgvMinors.Rows(rowIndex).Cells("Nombre").Value = minor.Name
+            dgvMinors.Rows(rowIndex).Cells("Cédula").Value = minor.MinorID
+            dgvMinors.Rows(rowIndex).Cells("Nivel").Value = minor.Level.Name
         Next
     End Sub
 End Class
