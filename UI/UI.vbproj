@@ -80,6 +80,12 @@
     <Compile Include="frmInsertUpdateMinor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmInsertUpdateUser.Designer.vb">
+      <DependentUpon>frmInsertUpdateUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInsertUpdateUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMinorDetails.Designer.vb">
       <DependentUpon>frmMinorDetails.vb</DependentUpon>
     </Compile>
@@ -142,6 +148,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmInsertUpdateMinor.resx">
       <DependentUpon>frmInsertUpdateMinor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInsertUpdateUser.resx">
+      <DependentUpon>frmInsertUpdateUser.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMinorDetails.resx">
       <DependentUpon>frmMinorDetails.vb</DependentUpon>

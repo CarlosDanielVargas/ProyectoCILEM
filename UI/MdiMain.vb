@@ -31,4 +31,10 @@ Public Class MdiMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub AgregarUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarUsuarioToolStripMenuItem.Click
+        Dim form As New frmInsertUpdateUser
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
