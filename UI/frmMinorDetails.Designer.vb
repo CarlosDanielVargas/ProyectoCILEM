@@ -43,9 +43,12 @@ Partial Class frmMinorDetails
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.txtPago = New System.Windows.Forms.Label()
         Me.lbPago = New System.Windows.Forms.Label()
+        Me.lbMetodoRecomendacion = New System.Windows.Forms.Label()
+        Me.txtMetodoRecomendacion = New System.Windows.Forms.Label()
         Me.lbRepresentatives = New System.Windows.Forms.Label()
-        Me.lboxRepresentatives = New System.Windows.Forms.ListBox()
+        Me.dgvRepresentatives = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbIndications
@@ -73,7 +76,7 @@ Partial Class frmMinorDetails
         '
         Me.lbBeca.AutoSize = True
         Me.lbBeca.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBeca.Location = New System.Drawing.Point(629, 60)
+        Me.lbBeca.Location = New System.Drawing.Point(540, 60)
         Me.lbBeca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbBeca.Name = "lbBeca"
         Me.lbBeca.Size = New System.Drawing.Size(145, 25)
@@ -84,7 +87,7 @@ Partial Class frmMinorDetails
         '
         Me.txtBeca.AutoSize = True
         Me.txtBeca.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBeca.Location = New System.Drawing.Point(791, 60)
+        Me.txtBeca.Location = New System.Drawing.Point(789, 60)
         Me.txtBeca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtBeca.Name = "txtBeca"
         Me.txtBeca.Size = New System.Drawing.Size(57, 25)
@@ -95,7 +98,7 @@ Partial Class frmMinorDetails
         '
         Me.lbNivel.AutoSize = True
         Me.lbNivel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNivel.Location = New System.Drawing.Point(629, 30)
+        Me.lbNivel.Location = New System.Drawing.Point(540, 30)
         Me.lbNivel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbNivel.Name = "lbNivel"
         Me.lbNivel.Size = New System.Drawing.Size(61, 25)
@@ -106,7 +109,7 @@ Partial Class frmMinorDetails
         '
         Me.txtNivel.AutoSize = True
         Me.txtNivel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNivel.Location = New System.Drawing.Point(791, 30)
+        Me.txtNivel.Location = New System.Drawing.Point(789, 30)
         Me.txtNivel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtNivel.Name = "txtNivel"
         Me.txtNivel.Size = New System.Drawing.Size(55, 25)
@@ -117,7 +120,7 @@ Partial Class frmMinorDetails
         '
         Me.lbResidencia.AutoSize = True
         Me.lbResidencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbResidencia.Location = New System.Drawing.Point(629, 0)
+        Me.lbResidencia.Location = New System.Drawing.Point(540, 0)
         Me.lbResidencia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbResidencia.Name = "lbResidencia"
         Me.lbResidencia.Size = New System.Drawing.Size(114, 25)
@@ -128,7 +131,7 @@ Partial Class frmMinorDetails
         '
         Me.txtResidencia.AutoSize = True
         Me.txtResidencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtResidencia.Location = New System.Drawing.Point(791, 0)
+        Me.txtResidencia.Location = New System.Drawing.Point(789, 0)
         Me.txtResidencia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtResidencia.Name = "txtResidencia"
         Me.txtResidencia.Size = New System.Drawing.Size(108, 25)
@@ -139,7 +142,7 @@ Partial Class frmMinorDetails
         '
         Me.txtFechaNacimiento.AutoSize = True
         Me.txtFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaNacimiento.Location = New System.Drawing.Point(200, 120)
+        Me.txtFechaNacimiento.Location = New System.Drawing.Point(198, 120)
         Me.txtFechaNacimiento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtFechaNacimiento.Name = "txtFechaNacimiento"
         Me.txtFechaNacimiento.Size = New System.Drawing.Size(169, 25)
@@ -150,7 +153,7 @@ Partial Class frmMinorDetails
         '
         Me.txtFechaIngreso.AutoSize = True
         Me.txtFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaIngreso.Location = New System.Drawing.Point(200, 90)
+        Me.txtFechaIngreso.Location = New System.Drawing.Point(198, 90)
         Me.txtFechaIngreso.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtFechaIngreso.Name = "txtFechaIngreso"
         Me.txtFechaIngreso.Size = New System.Drawing.Size(136, 25)
@@ -161,7 +164,7 @@ Partial Class frmMinorDetails
         '
         Me.txtFechaEgreso.AutoSize = True
         Me.txtFechaEgreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaEgreso.Location = New System.Drawing.Point(200, 60)
+        Me.txtFechaEgreso.Location = New System.Drawing.Point(198, 60)
         Me.txtFechaEgreso.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtFechaEgreso.Name = "txtFechaEgreso"
         Me.txtFechaEgreso.Size = New System.Drawing.Size(134, 25)
@@ -172,7 +175,7 @@ Partial Class frmMinorDetails
         '
         Me.txtGenero.AutoSize = True
         Me.txtGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGenero.Location = New System.Drawing.Point(200, 30)
+        Me.txtGenero.Location = New System.Drawing.Point(198, 30)
         Me.txtGenero.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtGenero.Name = "txtGenero"
         Me.txtGenero.Size = New System.Drawing.Size(77, 25)
@@ -183,7 +186,7 @@ Partial Class frmMinorDetails
         '
         Me.txtNombreCompleto.AutoSize = True
         Me.txtNombreCompleto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombreCompleto.Location = New System.Drawing.Point(200, 0)
+        Me.txtNombreCompleto.Location = New System.Drawing.Point(198, 0)
         Me.txtNombreCompleto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtNombreCompleto.Name = "txtNombreCompleto"
         Me.txtNombreCompleto.Size = New System.Drawing.Size(81, 25)
@@ -248,10 +251,10 @@ Partial Class frmMinorDetails
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 4
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.46067!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.53933!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 246.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.19403!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.80597!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 249.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 249.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.txtPago, 3, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lbPago, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.txtBeca, 3, 2)
@@ -260,16 +263,18 @@ Partial Class frmMinorDetails
         Me.TableLayoutPanel1.Controls.Add(Me.txtNivel, 3, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.lbNivel, 2, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.lbFechaEgreso, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.lbFechaIngreso, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.txtResidencia, 3, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lbResidencia, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.lbFechaNacimiento, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.txtNombreCompleto, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.txtGenero, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.txtFechaEgreso, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.txtFechaIngreso, 1, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.txtFechaNacimiento, 1, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.lbBeca, 2, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.lbFechaIngreso, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.lbMetodoRecomendacion, 1, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.txtMetodoRecomendacion, 2, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.txtFechaNacimiento, 1, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.lbFechaNacimiento, 0, 4)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(16, 90)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -289,7 +294,7 @@ Partial Class frmMinorDetails
         '
         Me.txtPago.AutoSize = True
         Me.txtPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPago.Location = New System.Drawing.Point(791, 90)
+        Me.txtPago.Location = New System.Drawing.Point(789, 90)
         Me.txtPago.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtPago.Name = "txtPago"
         Me.txtPago.Size = New System.Drawing.Size(58, 25)
@@ -300,12 +305,34 @@ Partial Class frmMinorDetails
         '
         Me.lbPago.AutoSize = True
         Me.lbPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbPago.Location = New System.Drawing.Point(629, 90)
+        Me.lbPago.Location = New System.Drawing.Point(540, 90)
         Me.lbPago.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbPago.Name = "lbPago"
         Me.lbPago.Size = New System.Drawing.Size(143, 25)
         Me.lbPago.TabIndex = 23
         Me.lbPago.Text = "Pago mensual:"
+        '
+        'lbMetodoRecomendacion
+        '
+        Me.lbMetodoRecomendacion.AutoSize = True
+        Me.lbMetodoRecomendacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbMetodoRecomendacion.Location = New System.Drawing.Point(540, 120)
+        Me.lbMetodoRecomendacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbMetodoRecomendacion.Name = "lbMetodoRecomendacion"
+        Me.lbMetodoRecomendacion.Size = New System.Drawing.Size(223, 25)
+        Me.lbMetodoRecomendacion.TabIndex = 25
+        Me.lbMetodoRecomendacion.Text = "Método recomendación:"
+        '
+        'txtMetodoRecomendacion
+        '
+        Me.txtMetodoRecomendacion.AutoSize = True
+        Me.txtMetodoRecomendacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMetodoRecomendacion.Location = New System.Drawing.Point(789, 120)
+        Me.txtMetodoRecomendacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.txtMetodoRecomendacion.Name = "txtMetodoRecomendacion"
+        Me.txtMetodoRecomendacion.Size = New System.Drawing.Size(223, 25)
+        Me.txtMetodoRecomendacion.TabIndex = 26
+        Me.txtMetodoRecomendacion.Text = "Método recomendación:"
         '
         'lbRepresentatives
         '
@@ -318,22 +345,23 @@ Partial Class frmMinorDetails
         Me.lbRepresentatives.TabIndex = 25
         Me.lbRepresentatives.Text = "Representantes legales del menor:"
         '
-        'lboxRepresentatives
+        'dgvRepresentatives
         '
-        Me.lboxRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lboxRepresentatives.FormattingEnabled = True
-        Me.lboxRepresentatives.ItemHeight = 22
-        Me.lboxRepresentatives.Location = New System.Drawing.Point(12, 289)
-        Me.lboxRepresentatives.Name = "lboxRepresentatives"
-        Me.lboxRepresentatives.Size = New System.Drawing.Size(1039, 334)
-        Me.lboxRepresentatives.TabIndex = 26
+        Me.dgvRepresentatives.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvRepresentatives.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRepresentatives.Location = New System.Drawing.Point(20, 292)
+        Me.dgvRepresentatives.Name = "dgvRepresentatives"
+        Me.dgvRepresentatives.RowHeadersWidth = 51
+        Me.dgvRepresentatives.RowTemplate.Height = 24
+        Me.dgvRepresentatives.Size = New System.Drawing.Size(1019, 327)
+        Me.dgvRepresentatives.TabIndex = 26
         '
         'frmMinorDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1063, 631)
-        Me.Controls.Add(Me.lboxRepresentatives)
+        Me.ClientSize = New System.Drawing.Size(1068, 631)
+        Me.Controls.Add(Me.dgvRepresentatives)
         Me.Controls.Add(Me.lbRepresentatives)
         Me.Controls.Add(Me.lbIndications)
         Me.Controls.Add(Me.TableLayoutPanel1)
@@ -343,6 +371,7 @@ Partial Class frmMinorDetails
         Me.Text = "Detalles de estudiante"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
+        CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -369,5 +398,7 @@ Partial Class frmMinorDetails
     Friend WithEvents txtPago As Label
     Friend WithEvents lbPago As Label
     Friend WithEvents lbRepresentatives As Label
-    Friend WithEvents lboxRepresentatives As ListBox
+    Friend WithEvents lbMetodoRecomendacion As Label
+    Friend WithEvents txtMetodoRecomendacion As Label
+    Friend WithEvents dgvRepresentatives As DataGridView
 End Class

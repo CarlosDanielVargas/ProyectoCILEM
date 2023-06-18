@@ -86,16 +86,16 @@
     <Compile Include="frmMinorDetails.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewLevel.Designer.vb">
-      <DependentUpon>frmNewLevel.vb</DependentUpon>
+    <Compile Include="frmManageLevels.Designer.vb">
+      <DependentUpon>frmManageLevels.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmNewLevel.vb">
+    <Compile Include="frmManageLevels.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewRepresentative.Designer.vb">
-      <DependentUpon>frmNewRepresentative.vb</DependentUpon>
+    <Compile Include="frmInsertUpdateRepresentative.Designer.vb">
+      <DependentUpon>frmInsertUpdateRepresentative.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmNewRepresentative.vb">
+    <Compile Include="frmInsertUpdateRepresentative.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRepresentativeDetails.Designer.vb">
@@ -114,12 +114,6 @@
       <DependentUpon>frmRepresentativeList.vb</DependentUpon>
     </Compile>
     <Compile Include="frmRepresentativeList.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUpdateRepresentative.Designer.vb">
-      <DependentUpon>frmUpdateRepresentative.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmUpdateRepresentative.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MdiMain.Designer.vb">
@@ -152,11 +146,11 @@
     <EmbeddedResource Include="frmMinorDetails.resx">
       <DependentUpon>frmMinorDetails.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewLevel.resx">
-      <DependentUpon>frmNewLevel.vb</DependentUpon>
+    <EmbeddedResource Include="frmManageLevels.resx">
+      <DependentUpon>frmManageLevels.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewRepresentative.resx">
-      <DependentUpon>frmNewRepresentative.vb</DependentUpon>
+    <EmbeddedResource Include="frmInsertUpdateRepresentative.resx">
+      <DependentUpon>frmInsertUpdateRepresentative.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepresentativeDetails.resx">
       <DependentUpon>frmRepresentativeDetails.vb</DependentUpon>
@@ -166,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepresentativeList.resx">
       <DependentUpon>frmRepresentativeList.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdateRepresentative.resx">
-      <DependentUpon>frmUpdateRepresentative.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiMain.resx">
       <DependentUpon>MdiMain.vb</DependentUpon>

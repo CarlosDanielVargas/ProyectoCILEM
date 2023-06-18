@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO_Level.cs" />
+    <Compile Include="DAO_RepresentativeMinor.cs" />
     <Compile Include="DAO_Representative.cs" />
     <Compile Include="DAO_Minor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

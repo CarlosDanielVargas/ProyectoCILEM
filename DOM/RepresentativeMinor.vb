@@ -34,4 +34,15 @@
             Return False
         End If
     End Function
+
+    'Validate all the properties and returns a error message
+    Public Function Validate() As String
+        Dim message As String = ""
+
+        If Not ValidateRelationship() Then
+            message += "La relación no puede estar vacía." & vbCrLf
+        End If
+
+        Return message
+    End Function
 End Class

@@ -306,12 +306,13 @@ Partial Class frmRepresentativeDetails
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(820, 665)
+        Me.ClientSize = New System.Drawing.Size(814, 665)
         Me.Controls.Add(Me.lboxMinors)
         Me.Controls.Add(Me.lbMinors)
         Me.Controls.Add(Me.lbIndications)
         Me.Controls.Add(Me.tbLPnlRepresentative)
         Me.Controls.Add(Me.txtCedula)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmRepresentativeDetails"
         Me.Text = "Detalles de representante legal"

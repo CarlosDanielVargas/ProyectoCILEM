@@ -48,9 +48,28 @@ namespace BL
             }
         }
 
-        public List<Minor> MinorList()
+        public void deleteFromDB(Minor minor)
         {
-            return new DAO_Minor().loadAllFromDB();
+            try
+            {
+                daoMinor.deleteFromDB(minor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Minor searchByID(string id)
+        {
+            try
+            {
+                return daoMinor.searchByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Minor> searchByRepresentativeID(string id)

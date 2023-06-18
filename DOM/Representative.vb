@@ -13,6 +13,8 @@ Public Class Representative
     Property Occupation As String
     Property WorkPlace As String
     Property Relationship As String
+    Property Minors As List(Of Minor)
+    Property RepresentativeMinors As List(Of RepresentativeMinor)
 
     Public ReadOnly Property IDAndName As String
         Get

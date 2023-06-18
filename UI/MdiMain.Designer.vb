@@ -29,14 +29,11 @@ Partial Class MdiMain
         Me.EstudiantesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemAddMinor = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemShowStudents = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuItemSearchStudent = New System.Windows.Forms.ToolStripMenuItem()
         Me.EncargadosLegalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemAddRepresentative = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemShowRepresentatives = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BuscarEncargadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NivelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AgregarNivelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListarNivelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -60,7 +57,7 @@ Partial Class MdiMain
         '
         'EstudiantesToolStripMenuItem
         '
-        Me.EstudiantesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddMinor, Me.menuItemShowStudents, Me.menuItemSearchStudent})
+        Me.EstudiantesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddMinor, Me.menuItemShowStudents})
         Me.EstudiantesToolStripMenuItem.Name = "EstudiantesToolStripMenuItem"
         Me.EstudiantesToolStripMenuItem.Size = New System.Drawing.Size(98, 24)
         Me.EstudiantesToolStripMenuItem.Text = "Estudiantes"
@@ -77,15 +74,9 @@ Partial Class MdiMain
         Me.menuItemShowStudents.Size = New System.Drawing.Size(225, 26)
         Me.menuItemShowStudents.Text = "Mostrar estudiantes"
         '
-        'menuItemSearchStudent
-        '
-        Me.menuItemSearchStudent.Name = "menuItemSearchStudent"
-        Me.menuItemSearchStudent.Size = New System.Drawing.Size(225, 26)
-        Me.menuItemSearchStudent.Text = "Buscar estudiante"
-        '
         'EncargadosLegalesToolStripMenuItem
         '
-        Me.EncargadosLegalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddRepresentative, Me.menuItemShowRepresentatives, Me.BuscarEncargadoToolStripMenuItem})
+        Me.EncargadosLegalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddRepresentative, Me.menuItemShowRepresentatives})
         Me.EncargadosLegalesToolStripMenuItem.Name = "EncargadosLegalesToolStripMenuItem"
         Me.EncargadosLegalesToolStripMenuItem.Size = New System.Drawing.Size(151, 24)
         Me.EncargadosLegalesToolStripMenuItem.Text = "Encargados legales"
@@ -102,15 +93,9 @@ Partial Class MdiMain
         Me.menuItemShowRepresentatives.Size = New System.Drawing.Size(224, 26)
         Me.menuItemShowRepresentatives.Text = "Mostrar Encargados"
         '
-        'BuscarEncargadoToolStripMenuItem
-        '
-        Me.BuscarEncargadoToolStripMenuItem.Name = "BuscarEncargadoToolStripMenuItem"
-        Me.BuscarEncargadoToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.BuscarEncargadoToolStripMenuItem.Text = "Buscar Encargado"
-        '
         'NivelesToolStripMenuItem
         '
-        Me.NivelesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarNivelToolStripMenuItem, Me.ListarNivelesToolStripMenuItem})
+        Me.NivelesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarNivelToolStripMenuItem})
         Me.NivelesToolStripMenuItem.Name = "NivelesToolStripMenuItem"
         Me.NivelesToolStripMenuItem.Size = New System.Drawing.Size(71, 24)
         Me.NivelesToolStripMenuItem.Text = "Niveles"
@@ -118,14 +103,8 @@ Partial Class MdiMain
         'AgregarNivelToolStripMenuItem
         '
         Me.AgregarNivelToolStripMenuItem.Name = "AgregarNivelToolStripMenuItem"
-        Me.AgregarNivelToolStripMenuItem.Size = New System.Drawing.Size(184, 26)
-        Me.AgregarNivelToolStripMenuItem.Text = "Agregar Nivel"
-        '
-        'ListarNivelesToolStripMenuItem
-        '
-        Me.ListarNivelesToolStripMenuItem.Name = "ListarNivelesToolStripMenuItem"
-        Me.ListarNivelesToolStripMenuItem.Size = New System.Drawing.Size(184, 26)
-        Me.ListarNivelesToolStripMenuItem.Text = "Listar Niveles"
+        Me.AgregarNivelToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.AgregarNivelToolStripMenuItem.Text = "Administrar niveles"
         '
         'ToolStrip
         '
@@ -204,12 +183,9 @@ Partial Class MdiMain
     Friend WithEvents ToolStripButton1 As ToolStripButton
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents menuItemShowStudents As ToolStripMenuItem
-    Friend WithEvents menuItemSearchStudent As ToolStripMenuItem
     Friend WithEvents EncargadosLegalesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menuItemAddRepresentative As ToolStripMenuItem
     Friend WithEvents menuItemShowRepresentatives As ToolStripMenuItem
-    Friend WithEvents BuscarEncargadoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NivelesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AgregarNivelToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ListarNivelesToolStripMenuItem As ToolStripMenuItem
 End Class

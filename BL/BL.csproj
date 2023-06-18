@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LevelManager.cs" />
+    <Compile Include="RepresentativeMinorManager.cs" />
     <Compile Include="RepresentativeManager.cs" />
     <Compile Include="MinorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
