@@ -95,7 +95,7 @@ Public Class frmMinorDetails
             ' "Editar" button clicked
             Dim rowIndex As Integer = e.RowIndex
             Dim representative As Representative = representatives(rowIndex)
-            Dim form As New frmUpdateRepresentative(representative)
+            Dim form As New frmInsertUpdateRepresentative(representative)
             form.MdiParent = Me.MdiParent
             form.Show()
         End If

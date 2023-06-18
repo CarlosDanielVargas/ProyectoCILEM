@@ -9,7 +9,7 @@ Public Class MdiMain
     End Sub
 
     Private Sub menuItemAddRepresentative_Click(sender As Object, e As EventArgs) Handles menuItemAddRepresentative.Click
-        Dim form As New frmNewRepresentative
+        Dim form As New frmInsertUpdateRepresentative
         form.MdiParent = Me
         form.Show()
     End Sub
