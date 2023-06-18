@@ -170,6 +170,7 @@ Partial Class frmMinorList
         Me.Controls.Add(Me.lbFilters)
         Me.Controls.Add(Me.dgvMinors)
         Me.Controls.Add(Me.lbIndications)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmMinorList"
         Me.ShowIcon = False

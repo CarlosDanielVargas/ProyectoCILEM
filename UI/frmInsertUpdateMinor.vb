@@ -8,6 +8,7 @@ Public Class frmInsertUpdateMinor
     Private representatives As List(Of Representative)
     Private minor As Minor
     Private isNew As Boolean
+    Private preexistingRepresentatives As List(Of Representative)
 
     Private Sub frmNewMinor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize the form controls and data
@@ -26,9 +27,6 @@ Public Class frmInsertUpdateMinor
         If minor IsNot Nothing Then
             isNew = False
             cboxLevels.SelectedValue = minor.LevelID
-            lboxAssociatedRepresentatives.DataSource = minor.Representatives
-            lboxAssociatedRepresentatives.DisplayMember = "IDAndName"
-            lboxAssociatedRepresentatives.SelectedIndex = -1
             tbIDCard.Text = minor.MinorID
             tbName.Text = minor.Name
             tbResidency.Text = minor.Residency
@@ -39,6 +37,13 @@ Public Class frmInsertUpdateMinor
             dtpLeaveDate.Value = minor.GraduationDate
             btnSave.Text = "Actualizar"
             Me.Text = "Actualizar menor"
+            representatives = minor.Representatives
+            representativeMinors = minor.RepresentativeMinors
+            preexistingRepresentatives = New List(Of Representative)
+            If representatives IsNot Nothing Then
+                preexistingRepresentatives.AddRange(minor.Representatives)
+            End If
+            poblateDataGridView()
 
             ' Set the value of cboxGender to match the minor's gender
             Dim gender As Minor.GenderEnum = [Enum].Parse(GetType(Minor.GenderEnum), minor.Gender)
@@ -89,6 +94,7 @@ Public Class frmInsertUpdateMinor
             Dim rep As Representative = lboxFoundRepresentants.SelectedItem
             tbSelectedRepresentative.Text = rep.Name
             selectedRepresentative = rep
+            selectedRepresentative.Relationship = cbRelationship.SelectedItem.ToString()
             btnAddRepresentativeMinor.Enabled = True
             cbRelationship.DataSource = [Enum].GetValues(GetType(Representative.RelationshipEnum))
         End If
@@ -102,8 +108,6 @@ Public Class frmInsertUpdateMinor
         representativeMinor.RepresentativeID = selectedRepresentative.RepresentativeID
         representativeMinor.Relationship = cbRelationship.SelectedItem.ToString()
 
-        lboxAssociatedRepresentatives.Items.Add(selectedRepresentative)
-
         ' Add the representative-minor association to the list
         If representativeMinors Is Nothing Then
             representativeMinors = New List(Of RepresentativeMinor)
@@ -115,6 +119,7 @@ Public Class frmInsertUpdateMinor
             representatives = New List(Of Representative)
         End If
         representatives.Add(selectedRepresentative)
+        poblateDataGridView()
 
         ' Remove the selected representative from the filtered list
         filteredRepresentatives.Remove(selectedRepresentative)
@@ -125,8 +130,6 @@ Public Class frmInsertUpdateMinor
 
         btnAddRepresentativeMinor.Enabled = False
         tbSelectedRepresentative.Text = ""
-        lboxAssociatedRepresentatives.SelectedIndex = -1
-        lboxAssociatedRepresentatives.DisplayMember = "IDandName"
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -169,139 +172,90 @@ Public Class frmInsertUpdateMinor
         End Try
     End Sub
 
-    Private Sub lbName_Click(sender As Object, e As EventArgs) Handles lbName.Click
+    Private Sub poblateDataGridView()
+        ' Populate the DataGridView with the representatives associated with the minor
+        dgvRepresentatives.Columns.Clear()
+        dgvRepresentatives.ReadOnly = True ' Set the DataGridView to read-only
+        dgvRepresentatives.AllowUserToAddRows = False ' Disable the ability to add new rows
+
+
+        dgvRepresentatives.Columns.Add("Nombre", "Nombre")
+        dgvRepresentatives.Columns.Add("Cédula", "Cédula")
+        dgvRepresentatives.Columns.Add("Teléfono", "Teléfono")
+        dgvRepresentatives.Columns.Add("Rol", "Rol")
+
+        Dim btnDetallesColumn As New DataGridViewButtonColumn()
+        btnDetallesColumn.HeaderText = "Detalles"
+        btnDetallesColumn.Name = "Detalles"
+        btnDetallesColumn.Text = "Detalles"
+        btnDetallesColumn.UseColumnTextForButtonValue = True
+
+        Dim btnDeleteColumn As New DataGridViewButtonColumn()
+        btnDeleteColumn.HeaderText = "Eliminar"
+        btnDeleteColumn.Name = "Eliminar"
+        btnDeleteColumn.Text = "Eliminar"
+        btnDeleteColumn.UseColumnTextForButtonValue = True
+
+
+        dgvRepresentatives.Columns.Add(btnDetallesColumn)
+        dgvRepresentatives.Columns.Add(btnDeleteColumn)
+
+        For Each column As DataGridViewColumn In dgvRepresentatives.Columns
+            column.ReadOnly = True ' Set individual columns to read-only
+        Next
+
+        dgvRepresentatives.Rows.Clear()
+
+        For Each representative As Representative In representatives
+            dgvRepresentatives.Rows.Add(representative.Name, representative.RepresentativeID, representative.Phone, representative.Relationship)
+        Next
 
     End Sub
 
-    Private Sub tbName_TextChanged(sender As Object, e As EventArgs) Handles tbName.TextChanged
-
-    End Sub
-
-    Private Sub lbIDCard_Click(sender As Object, e As EventArgs) Handles lbIDCard.Click
-
-    End Sub
-
-    Private Sub tbIDCard_TextChanged(sender As Object, e As EventArgs) Handles tbIDCard.TextChanged
-
-    End Sub
-
-    Private Sub lbEnterDate_Click(sender As Object, e As EventArgs) Handles lbEnterDate.Click
-
-    End Sub
-
-    Private Sub cboxGender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxGender.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub lbGender_Click(sender As Object, e As EventArgs) Handles lbGender.Click
-
-    End Sub
-
-    Private Sub lbSchoolarship_Click(sender As Object, e As EventArgs) Handles lbSchoolarship.Click
-
-    End Sub
-
-    Private Sub tbResidency_TextChanged(sender As Object, e As EventArgs) Handles tbResidency.TextChanged
-
-    End Sub
-
-    Private Sub lbResidency_Click(sender As Object, e As EventArgs) Handles lbResidency.Click
-
-    End Sub
-
-    Private Sub tbCurrentPayment_TextChanged(sender As Object, e As EventArgs) Handles tbCurrentPayment.TextChanged
-
-    End Sub
-
-    Private Sub lbCurrentPayment_Click(sender As Object, e As EventArgs) Handles lbCurrentPayment.Click
-
-    End Sub
-
-    Private Sub lbLeaveDate_Click(sender As Object, e As EventArgs) Handles lbLeaveDate.Click
-
-    End Sub
-
-    Private Sub lbBirthDate_Click(sender As Object, e As EventArgs) Handles lbBirthDate.Click
-
-    End Sub
-
-    Private Sub dtpBirthDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpBirthDate.ValueChanged
-
-    End Sub
-
-    Private Sub dtpEnterDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpEnterDate.ValueChanged
-
-    End Sub
-
-    Private Sub dtpLeaveDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpLeaveDate.ValueChanged
-
-    End Sub
-
-    Private Sub cboxSchoolarship_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxSchoolarship.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub lbRepresentatives_Click(sender As Object, e As EventArgs) Handles lbRepresentatives.Click
-
-    End Sub
-
-    Private Sub tbRepresentativeName_TextChanged(sender As Object, e As EventArgs) Handles tbRepresentativeName.TextChanged
-
-    End Sub
-
-    Private Sub lbRepresentativeName_Click(sender As Object, e As EventArgs) Handles lbRepresentativeName.Click
-
-    End Sub
-
-    Private Sub lbFoundRepresentatives_Click(sender As Object, e As EventArgs) Handles lbFoundRepresentatives.Click
-
-    End Sub
-
-    Private Sub lbSelectedRepresentantText_Click(sender As Object, e As EventArgs) Handles lbSelectedRepresentantText.Click
-
-    End Sub
-
-    Private Sub tbSelectedRepresentative_TextChanged(sender As Object, e As EventArgs) Handles tbSelectedRepresentative.TextChanged
-
-    End Sub
-
-    Private Sub cbRelationship_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRelationship.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub lboxAssociatedRepresentatives_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxAssociatedRepresentatives.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub lbAssociatedRepresentatives_Click(sender As Object, e As EventArgs) Handles lbAssociatedRepresentatives.Click
-
-    End Sub
-
-    Private Sub lbRelation_Click(sender As Object, e As EventArgs) Handles lbRelation.Click
-
-    End Sub
-
-    Private Sub tbRecommendationMethod_TextChanged(sender As Object, e As EventArgs) Handles tbRecommendationMethod.TextChanged
-
-    End Sub
-
-    Private Sub lbRecommendationMethod_Click(sender As Object, e As EventArgs) Handles lbRecommendationMethod.Click
-
-    End Sub
-
-    Private Sub BindingSource1_CurrentChanged(sender As Object, e As EventArgs) Handles BindingSource1.CurrentChanged
-
-    End Sub
-
-    Private Sub BindingSource2_CurrentChanged(sender As Object, e As EventArgs) Handles BindingSource2.CurrentChanged
-
-    End Sub
-
-    Private Sub lbLevel_Click(sender As Object, e As EventArgs) Handles lbLevel.Click
-
-    End Sub
-
-    Private Sub cboxLevels_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboxLevels.SelectedIndexChanged
-
+    Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRepresentatives.CellContentClick
+        ' Check if the clicked cell is a button cell and the corresponding column index
+        If e.ColumnIndex = dgvRepresentatives.Columns("Detalles").Index AndAlso e.RowIndex >= 0 Then
+            ' "Detalles" button clicked
+            Dim rowIndex As Integer = e.RowIndex
+            Dim representative As Representative = representatives(rowIndex)
+            Dim form As New frmRepresentativeDetails(representative)
+            form.MdiParent = Me.MdiParent
+            form.Show()
+        ElseIf e.ColumnIndex = dgvRepresentatives.Columns("Eliminar").Index AndAlso e.RowIndex >= 0 Then
+            ' "Eliminar" button clicked
+            Dim rowIndex As Integer = e.RowIndex
+            Dim representative As Representative = representatives(rowIndex)
+            Try
+                ' Perform delete action using the representative object
+                Dim result As DialogResult = MessageBox.Show("¿Estás seguro de que deseas eliminar al representante?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                ' If the user confirms the deletion, perform the delete action
+                If result = DialogResult.Yes Then
+                    ' Perform delete action using the representative object
+                    Dim representativeMinor As RepresentativeMinor
+                    Dim representativeMinorManager As New RepresentativeMinorManager()
+
+                    ' Delete the representative-minor association from the database
+                    If Not isNew Then
+                        ' If representative is in prexistingrepresentatives, delete it from the database
+                        If preexistingRepresentatives.Contains(representative) Then
+                            representativeMinor = representativeMinorManager.searchRepresentativeMinor(representative.RepresentativeID, minor.MinorID)
+                            representativeMinorManager.deleteFromDB(representativeMinor)
+                        End If
+                    End If
+                    representatives = representatives.Where(Function(x) x.RepresentativeID <> representative.RepresentativeID).ToList()
+                    representativeMinors = representativeMinors.Where(Function(x) x.RepresentativeID <> representative.RepresentativeID).ToList()
+
+                    MessageBox.Show("Se ha eliminado correctamente la relación entre este representante legal y el menor")
+
+                    ' Reload the DataGridView data after deletion
+                    poblateDataGridView()
+
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+
+        End If
     End Sub
 End Class

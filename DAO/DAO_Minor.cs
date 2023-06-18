@@ -115,8 +115,8 @@ namespace DAO
                 update.Parameters.AddWithValue("@MinorID", minor.MinorID);
                 update.Parameters.AddWithValue("@Name", minor.Name);
                 update.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
-                update.Parameters.AddWithValue("@EnterDate", minor.EnteredDate);
-                update.Parameters.AddWithValue("@LeaveDate", minor.GraduationDate);
+                update.Parameters.AddWithValue("@EnteredDate", minor.EnteredDate);
+                update.Parameters.AddWithValue("@GraduationDate", minor.GraduationDate);
                 update.Parameters.AddWithValue("@Gender", minor.Gender);
                 update.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
                 update.Parameters.AddWithValue("@Residency", minor.Residency);
@@ -131,7 +131,7 @@ namespace DAO
                 List<RepresentativeMinor> representativeMinors = minor.RepresentativeMinors;
                 SqlCommand insertRepresentativeMinors = new SqlCommand();
                 insertRepresentativeMinors.Connection = connection;
-                insertRepresentativeMinors.CommandText = "INSERT INTO RepresentativeMinors(MinorID, RepresentativeID, Relationship) VALUES @MinorID, @RepresentativeID, @Relationship";
+                insertRepresentativeMinors.CommandText = "INSERT INTO RepresentativeMinors(MinorID, RepresentativeID, Relationship) VALUES (@MinorID, @RepresentativeID, @Relationship)";
                 foreach (RepresentativeMinor representativeMinor in representativeMinors)
                 {
                     insertRepresentativeMinors.Parameters.AddWithValue("@MinorID", minor.MinorID);

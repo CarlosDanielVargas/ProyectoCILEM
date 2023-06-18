@@ -54,7 +54,6 @@ Partial Class frmInsertUpdateMinor
         Me.tbSelectedRepresentative = New System.Windows.Forms.TextBox()
         Me.cbRelationship = New System.Windows.Forms.ComboBox()
         Me.btnAddRepresentativeMinor = New System.Windows.Forms.Button()
-        Me.lboxAssociatedRepresentatives = New System.Windows.Forms.ListBox()
         Me.lbAssociatedRepresentatives = New System.Windows.Forms.Label()
         Me.lbRelation = New System.Windows.Forms.Label()
         Me.tbRecommendationMethod = New System.Windows.Forms.TextBox()
@@ -63,8 +62,10 @@ Partial Class frmInsertUpdateMinor
         Me.BindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.lbLevel = New System.Windows.Forms.Label()
         Me.cboxLevels = New System.Windows.Forms.ComboBox()
+        Me.dgvRepresentatives = New System.Windows.Forms.DataGridView()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbEnterDate
@@ -83,7 +84,7 @@ Partial Class frmInsertUpdateMinor
         Me.cboxGender.FormattingEnabled = True
         Me.cboxGender.Location = New System.Drawing.Point(253, 512)
         Me.cboxGender.Name = "cboxGender"
-        Me.cboxGender.Size = New System.Drawing.Size(557, 28)
+        Me.cboxGender.Size = New System.Drawing.Size(820, 28)
         Me.cboxGender.TabIndex = 38
         '
         'lbGender
@@ -112,7 +113,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbResidency.Location = New System.Drawing.Point(256, 324)
         Me.tbResidency.Multiline = True
         Me.tbResidency.Name = "tbResidency"
-        Me.tbResidency.Size = New System.Drawing.Size(554, 110)
+        Me.tbResidency.Size = New System.Drawing.Size(817, 110)
         Me.tbResidency.TabIndex = 34
         '
         'lbResidency
@@ -130,7 +131,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbCurrentPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.tbCurrentPayment.Location = New System.Drawing.Point(253, 250)
         Me.tbCurrentPayment.Name = "tbCurrentPayment"
-        Me.tbCurrentPayment.Size = New System.Drawing.Size(554, 30)
+        Me.tbCurrentPayment.Size = New System.Drawing.Size(817, 30)
         Me.tbCurrentPayment.TabIndex = 32
         '
         'lbCurrentPayment
@@ -168,7 +169,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbIDCard.Location = New System.Drawing.Point(253, 110)
         Me.tbIDCard.Name = "tbIDCard"
-        Me.tbIDCard.Size = New System.Drawing.Size(554, 28)
+        Me.tbIDCard.Size = New System.Drawing.Size(817, 28)
         Me.tbIDCard.TabIndex = 26
         '
         'lbIDCard
@@ -186,7 +187,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbName.Location = New System.Drawing.Point(253, 76)
         Me.tbName.Name = "tbName"
-        Me.tbName.Size = New System.Drawing.Size(554, 28)
+        Me.tbName.Size = New System.Drawing.Size(817, 28)
         Me.tbName.TabIndex = 24
         '
         'lbName
@@ -212,9 +213,9 @@ Partial Class frmInsertUpdateMinor
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(357, 1066)
+        Me.btnSave.Location = New System.Drawing.Point(476, 1066)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(129, 40)
+        Me.btnSave.Size = New System.Drawing.Size(199, 40)
         Me.btnSave.TabIndex = 21
         Me.btnSave.Text = "Guardar"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -225,7 +226,7 @@ Partial Class frmInsertUpdateMinor
         Me.dtpBirthDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.dtpBirthDate.Location = New System.Drawing.Point(253, 144)
         Me.dtpBirthDate.Name = "dtpBirthDate"
-        Me.dtpBirthDate.Size = New System.Drawing.Size(554, 28)
+        Me.dtpBirthDate.Size = New System.Drawing.Size(817, 28)
         Me.dtpBirthDate.TabIndex = 41
         '
         'dtpEnterDate
@@ -234,7 +235,7 @@ Partial Class frmInsertUpdateMinor
         Me.dtpEnterDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.dtpEnterDate.Location = New System.Drawing.Point(253, 178)
         Me.dtpEnterDate.Name = "dtpEnterDate"
-        Me.dtpEnterDate.Size = New System.Drawing.Size(554, 28)
+        Me.dtpEnterDate.Size = New System.Drawing.Size(817, 28)
         Me.dtpEnterDate.TabIndex = 42
         '
         'dtpLeaveDate
@@ -243,7 +244,7 @@ Partial Class frmInsertUpdateMinor
         Me.dtpLeaveDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.dtpLeaveDate.Location = New System.Drawing.Point(253, 215)
         Me.dtpLeaveDate.Name = "dtpLeaveDate"
-        Me.dtpLeaveDate.Size = New System.Drawing.Size(554, 28)
+        Me.dtpLeaveDate.Size = New System.Drawing.Size(817, 28)
         Me.dtpLeaveDate.TabIndex = 43
         '
         'cboxSchoolarship
@@ -252,7 +253,7 @@ Partial Class frmInsertUpdateMinor
         Me.cboxSchoolarship.FormattingEnabled = True
         Me.cboxSchoolarship.Location = New System.Drawing.Point(256, 477)
         Me.cboxSchoolarship.Name = "cboxSchoolarship"
-        Me.cboxSchoolarship.Size = New System.Drawing.Size(554, 28)
+        Me.cboxSchoolarship.Size = New System.Drawing.Size(817, 28)
         Me.cboxSchoolarship.TabIndex = 44
         '
         'lbRepresentatives
@@ -270,7 +271,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbRepresentativeName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbRepresentativeName.Location = New System.Drawing.Point(262, 627)
         Me.tbRepresentativeName.Name = "tbRepresentativeName"
-        Me.tbRepresentativeName.Size = New System.Drawing.Size(420, 28)
+        Me.tbRepresentativeName.Size = New System.Drawing.Size(664, 28)
         Me.tbRepresentativeName.TabIndex = 47
         '
         'lbRepresentativeName
@@ -286,7 +287,7 @@ Partial Class frmInsertUpdateMinor
         'btnSearchRepresentative
         '
         Me.btnSearchRepresentative.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSearchRepresentative.Location = New System.Drawing.Point(701, 622)
+        Me.btnSearchRepresentative.Location = New System.Drawing.Point(961, 622)
         Me.btnSearchRepresentative.Name = "btnSearchRepresentative"
         Me.btnSearchRepresentative.Size = New System.Drawing.Size(112, 36)
         Me.btnSearchRepresentative.TabIndex = 48
@@ -301,7 +302,7 @@ Partial Class frmInsertUpdateMinor
         Me.lboxFoundRepresentants.Location = New System.Drawing.Point(56, 697)
         Me.lboxFoundRepresentants.Name = "lboxFoundRepresentants"
         Me.lboxFoundRepresentants.ScrollAlwaysVisible = True
-        Me.lboxFoundRepresentants.Size = New System.Drawing.Size(757, 92)
+        Me.lboxFoundRepresentants.Size = New System.Drawing.Size(1017, 92)
         Me.lboxFoundRepresentants.TabIndex = 49
         '
         'lbFoundRepresentatives
@@ -330,7 +331,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbSelectedRepresentative.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbSelectedRepresentative.Location = New System.Drawing.Point(324, 805)
         Me.tbSelectedRepresentative.Name = "tbSelectedRepresentative"
-        Me.tbSelectedRepresentative.Size = New System.Drawing.Size(489, 28)
+        Me.tbSelectedRepresentative.Size = New System.Drawing.Size(749, 28)
         Me.tbSelectedRepresentative.TabIndex = 52
         '
         'cbRelationship
@@ -339,29 +340,18 @@ Partial Class frmInsertUpdateMinor
         Me.cbRelationship.FormattingEnabled = True
         Me.cbRelationship.Location = New System.Drawing.Point(324, 850)
         Me.cbRelationship.Name = "cbRelationship"
-        Me.cbRelationship.Size = New System.Drawing.Size(489, 28)
+        Me.cbRelationship.Size = New System.Drawing.Size(749, 28)
         Me.cbRelationship.TabIndex = 54
         '
         'btnAddRepresentativeMinor
         '
         Me.btnAddRepresentativeMinor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnAddRepresentativeMinor.Location = New System.Drawing.Point(583, 896)
+        Me.btnAddRepresentativeMinor.Location = New System.Drawing.Point(838, 895)
         Me.btnAddRepresentativeMinor.Name = "btnAddRepresentativeMinor"
         Me.btnAddRepresentativeMinor.Size = New System.Drawing.Size(232, 36)
         Me.btnAddRepresentativeMinor.TabIndex = 55
         Me.btnAddRepresentativeMinor.Text = "Asociar representante"
         Me.btnAddRepresentativeMinor.UseVisualStyleBackColor = True
-        '
-        'lboxAssociatedRepresentatives
-        '
-        Me.lboxAssociatedRepresentatives.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lboxAssociatedRepresentatives.FormattingEnabled = True
-        Me.lboxAssociatedRepresentatives.ItemHeight = 22
-        Me.lboxAssociatedRepresentatives.Location = New System.Drawing.Point(56, 968)
-        Me.lboxAssociatedRepresentatives.Name = "lboxAssociatedRepresentatives"
-        Me.lboxAssociatedRepresentatives.ScrollAlwaysVisible = True
-        Me.lboxAssociatedRepresentatives.Size = New System.Drawing.Size(756, 92)
-        Me.lboxAssociatedRepresentatives.TabIndex = 56
         '
         'lbAssociatedRepresentatives
         '
@@ -388,7 +378,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbRecommendationMethod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.tbRecommendationMethod.Location = New System.Drawing.Point(253, 288)
         Me.tbRecommendationMethod.Name = "tbRecommendationMethod"
-        Me.tbRecommendationMethod.Size = New System.Drawing.Size(554, 30)
+        Me.tbRecommendationMethod.Size = New System.Drawing.Size(817, 30)
         Me.tbRecommendationMethod.TabIndex = 60
         '
         'lbRecommendationMethod
@@ -400,12 +390,6 @@ Partial Class frmInsertUpdateMinor
         Me.lbRecommendationMethod.Size = New System.Drawing.Size(159, 25)
         Me.lbRecommendationMethod.TabIndex = 59
         Me.lbRecommendationMethod.Text = "Recomendación:"
-        '
-        'BindingSource1
-        '
-        '
-        'BindingSource2
-        '
         '
         'lbLevel
         '
@@ -423,22 +407,33 @@ Partial Class frmInsertUpdateMinor
         Me.cboxLevels.FormattingEnabled = True
         Me.cboxLevels.Location = New System.Drawing.Point(256, 440)
         Me.cboxLevels.Name = "cboxLevels"
-        Me.cboxLevels.Size = New System.Drawing.Size(554, 28)
+        Me.cboxLevels.Size = New System.Drawing.Size(817, 28)
         Me.cboxLevels.TabIndex = 62
+        '
+        'dgvRepresentatives
+        '
+        Me.dgvRepresentatives.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvRepresentatives.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRepresentatives.Location = New System.Drawing.Point(56, 968)
+        Me.dgvRepresentatives.Name = "dgvRepresentatives"
+        Me.dgvRepresentatives.RowHeadersWidth = 51
+        Me.dgvRepresentatives.RowTemplate.Height = 24
+        Me.dgvRepresentatives.Size = New System.Drawing.Size(1014, 92)
+        Me.dgvRepresentatives.TabIndex = 63
         '
         'frmInsertUpdateMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(866, 640)
+        Me.ClientSize = New System.Drawing.Size(1122, 640)
+        Me.Controls.Add(Me.dgvRepresentatives)
         Me.Controls.Add(Me.cboxLevels)
         Me.Controls.Add(Me.lbLevel)
         Me.Controls.Add(Me.tbRecommendationMethod)
         Me.Controls.Add(Me.lbRecommendationMethod)
         Me.Controls.Add(Me.lbRelation)
         Me.Controls.Add(Me.lbAssociatedRepresentatives)
-        Me.Controls.Add(Me.lboxAssociatedRepresentatives)
         Me.Controls.Add(Me.btnAddRepresentativeMinor)
         Me.Controls.Add(Me.cbRelationship)
         Me.Controls.Add(Me.tbSelectedRepresentative)
@@ -476,6 +471,7 @@ Partial Class frmInsertUpdateMinor
         Me.Text = "Agregar menor"
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -511,7 +507,6 @@ Partial Class frmInsertUpdateMinor
     Friend WithEvents tbSelectedRepresentative As TextBox
     Friend WithEvents cbRelationship As ComboBox
     Friend WithEvents btnAddRepresentativeMinor As Button
-    Friend WithEvents lboxAssociatedRepresentatives As ListBox
     Friend WithEvents lbAssociatedRepresentatives As Label
     Friend WithEvents lbRelation As Label
     Friend WithEvents tbRecommendationMethod As TextBox
@@ -520,4 +515,5 @@ Partial Class frmInsertUpdateMinor
     Friend WithEvents BindingSource2 As BindingSource
     Friend WithEvents lbLevel As Label
     Friend WithEvents cboxLevels As ComboBox
+    Friend WithEvents dgvRepresentatives As DataGridView
 End Class

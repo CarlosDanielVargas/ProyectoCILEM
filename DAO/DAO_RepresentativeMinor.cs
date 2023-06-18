@@ -155,5 +155,34 @@ namespace DAO
                 throw ex;
             }
         }
+
+        public RepresentativeMinor searchInDB(string representativeID, string minorID)
+        {
+            try
+            {
+                string query = "SELECT * FROM RepresentativeMinors WHERE RepresentativeID = @RepresentativeID AND MinorID = @MinorID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@RepresentativeID", representativeID);
+                command.Parameters.AddWithValue("@MinorID", minorID);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dtRepresentativeMinors = new DataTable();
+                adapter.Fill(dtRepresentativeMinors);
+
+                RepresentativeMinor representativeMinor = new RepresentativeMinor();
+                foreach (DataRow row in dtRepresentativeMinors.Rows)
+                {
+                    representativeMinor.RepresentativeID = row["RepresentativeID"].ToString();
+                    representativeMinor.MinorID = row["MinorID"].ToString();
+                    representativeMinor.Relationship = row["Relationship"].ToString();
+                }
+
+                return representativeMinor;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
