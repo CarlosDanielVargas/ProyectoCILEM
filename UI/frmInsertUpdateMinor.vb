@@ -25,6 +25,10 @@ Public Class frmInsertUpdateMinor
         cboxLevels.DisplayMember = "Name"
         cboxLevels.ValueMember = "LevelID"
 
+        dgvRepresentatives.ReadOnly = True
+        dgvRepresentatives.AllowUserToAddRows = False
+        dgvRepresentatives.AllowUserToDeleteRows = False
+
         ' Populate the form with the existing minor data if available
         If minor IsNot Nothing Then
             isNew = False

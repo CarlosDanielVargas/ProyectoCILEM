@@ -48,6 +48,18 @@ namespace BL
             }
         }
 
+        public void deleteFromDB(Minor minor)
+        {
+            try
+            {
+                daoMinor.deleteFromDB(minor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Minor searchByID(string id)
         {
             try

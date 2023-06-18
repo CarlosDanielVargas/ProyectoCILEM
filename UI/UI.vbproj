@@ -86,10 +86,10 @@
     <Compile Include="frmMinorDetails.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewLevel.Designer.vb">
-      <DependentUpon>frmNewLevel.vb</DependentUpon>
+    <Compile Include="frmManageLevels.Designer.vb">
+      <DependentUpon>frmManageLevels.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmNewLevel.vb">
+    <Compile Include="frmManageLevels.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInsertUpdateRepresentative.Designer.vb">
@@ -146,8 +146,8 @@
     <EmbeddedResource Include="frmMinorDetails.resx">
       <DependentUpon>frmMinorDetails.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewLevel.resx">
-      <DependentUpon>frmNewLevel.vb</DependentUpon>
+    <EmbeddedResource Include="frmManageLevels.resx">
+      <DependentUpon>frmManageLevels.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInsertUpdateRepresentative.resx">
       <DependentUpon>frmInsertUpdateRepresentative.vb</DependentUpon>

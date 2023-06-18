@@ -6,12 +6,10 @@ Public Class frmRepresentativeList
     Private filteredRepresentatives As List(Of Representative)
 
     Private Sub frmRepresentativeList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim representativeManager As New RepresentativeManager()
-        representatives = representativeManager.loadAllFromDB()
-        filteredRepresentatives = representatives ' Initialize the filtered list with all representatives
 
         dgvRepresentatives.ReadOnly = True ' Set the DataGridView to read-only
         dgvRepresentatives.AllowUserToAddRows = False ' Disable the ability to add new rows
+        dgvRepresentatives.AllowUserToDeleteRows = False ' Disable the ability to delete rows
 
         dgvRepresentatives.Columns.Add("Nombre", "Nombre")
         dgvRepresentatives.Columns.Add("Cédula", "Cédula")
@@ -40,6 +38,8 @@ Public Class frmRepresentativeList
         dgvRepresentatives.Columns.Add(btnDeleteColumn)
         dgvRepresentatives.Columns.Add(btnEditColumn)
 
+        refreshDataGridView() ' Update the DataGridView with all representatives
+
         For Each column As DataGridViewColumn In dgvRepresentatives.Columns
             column.ReadOnly = True ' Set individual columns to read-only
         Next
@@ -50,7 +50,7 @@ Public Class frmRepresentativeList
         cboxMaritalStatus.DataSource = [Enum].GetValues(GetType(Representative.MaritalStatusEnum))
         cboxMaritalStatus.SelectedIndex = 0
 
-        RefreshDataGridView() ' Update the DataGridView with all representatives
+        refreshDataGridView() ' Update the DataGridView with all representatives
     End Sub
 
     Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRepresentatives.CellContentClick
@@ -76,14 +76,14 @@ Public Class frmRepresentativeList
             End Try
             representatives = representativeManager.loadAllFromDB()
             filteredRepresentatives = representatives ' Initialize the filtered list with all representatives
-            RefreshDataGridView() ' Update the DataGridView with the filtered representatives
+            refreshDataGridView() ' Update the DataGridView with the filtered representatives
 
 
         ElseIf e.ColumnIndex = dgvRepresentatives.Columns("Editar").Index AndAlso e.RowIndex >= 0 Then
             ' "Editar" button clicked
             Dim rowIndex As Integer = e.RowIndex
             Dim representative As Representative = filteredRepresentatives(rowIndex)
-            Dim form As New frmInsertUpdateRepresentative(representative)
+            Dim form As New frmInsertUpdateRepresentative(representative, Me)
             form.MdiParent = Me.MdiParent
             form.Show()
         End If
@@ -98,7 +98,7 @@ Public Class frmRepresentativeList
         ' Apply filters
         filteredRepresentatives = representatives.Where(Function(r) r.RepresentativeID <> IDCard AndAlso r.Gender = gender AndAlso r.MaritalStatus = maritalStatus).ToList()
 
-        RefreshDataGridView() ' Update the DataGridView with the filtered representatives
+        refreshDataGridView() ' Update the DataGridView with the filtered representatives
     End Sub
 
     Private Sub btnClearFilters_Click(sender As Object, e As EventArgs) Handles btnClearFilters.Click
@@ -109,10 +109,13 @@ Public Class frmRepresentativeList
         cboxGender.SelectedIndex = 0
         cboxMaritalStatus.SelectedIndex = 0
 
-        RefreshDataGridView() ' Update the DataGridView with all representatives
+        refreshDataGridView() ' Update the DataGridView with all representatives
     End Sub
 
-    Private Sub RefreshDataGridView()
+    Public Sub refreshDataGridView()
+        Dim representativeManager As New RepresentativeManager()
+        representatives = representativeManager.loadAllFromDB()
+        filteredRepresentatives = representatives ' Initialize the filtered list with all representatives
         dgvRepresentatives.Rows.Clear() ' Clear existing rows
 
         For Each representative As Representative In filteredRepresentatives

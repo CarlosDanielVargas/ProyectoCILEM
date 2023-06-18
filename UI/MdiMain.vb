@@ -15,7 +15,7 @@ Public Class MdiMain
     End Sub
 
     Private Sub AgregarNivelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNivelToolStripMenuItem.Click
-        Dim form As New frmNewLevel
+        Dim form As New frmManageLevels
         form.MdiParent = Me
         form.Show()
     End Sub

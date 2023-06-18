@@ -23,6 +23,7 @@ Public Class frmMinorList
 
         dgvMinors.ReadOnly = True ' Set the DataGridView to read-only
         dgvMinors.AllowUserToAddRows = False ' Disable the ability to add new rows
+        dgvMinors.AllowUserToDeleteRows = False ' Disable the ability to delete rows
 
         ' Add the columns to the DataGridView
         dgvMinors.Columns.Add("Nombre", "Nombre")
@@ -83,10 +84,15 @@ Public Class frmMinorList
             Dim rowIndex As Integer = e.RowIndex
             Dim minor As Minor = minors(rowIndex)
             ' Perform delete action using the minor object
-            ' Example:
-            ' minorManager.deleteFromDB(minor.MinorID)
-            ' Reload the DataGridView data after deletion
-
+            Try
+                Dim minorManager As New MinorManager()
+                minorManager.deleteFromDB(minor)
+                MessageBox.Show("Se eliminó el menor", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MessageBox.Show("No se pudo eliminar el menor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            ' Refresh the minors list
+            refreshMinorList()
         ElseIf e.ColumnIndex = dgvMinors.Columns("Editar").Index AndAlso e.RowIndex >= 0 Then
             ' "Editar" button clicked
             ' Get the row index of the clicked cell

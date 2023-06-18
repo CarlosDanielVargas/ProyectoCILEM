@@ -4,6 +4,7 @@ Public Class frmInsertUpdateRepresentative
 
     Private representative As Representative
     Private isNew As Boolean
+    Private parent As frmRepresentativeList
 
     Public Sub New(representative As Representative)
 
@@ -12,6 +13,17 @@ Public Class frmInsertUpdateRepresentative
 
         Me.representative = representative
         Me.isNew = False
+
+    End Sub
+
+    Public Sub New(representative As Representative, parent As frmRepresentativeList)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        Me.representative = representative
+        Me.isNew = False
+        Me.parent = parent
 
     End Sub
 
@@ -65,6 +77,7 @@ Public Class frmInsertUpdateRepresentative
                 repManager.saveToDB(representative)
             Else
                 repManager.updateToDB(representative)
+                parent.refreshDataGridView()
             End If
             MessageBox.Show("Representante guardado con éxito")
             Me.Close()
