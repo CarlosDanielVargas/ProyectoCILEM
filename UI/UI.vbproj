@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmUserList.Designer.vb">
+      <DependentUpon>frmUserList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInsertUpdateMinor.Designer.vb">
       <DependentUpon>frmInsertUpdateMinor.vb</DependentUpon>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepresentativeList.resx">
       <DependentUpon>frmRepresentativeList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserList.resx">
+      <DependentUpon>frmUserList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiMain.resx">
       <DependentUpon>MdiMain.vb</DependentUpon>

@@ -37,4 +37,10 @@ Public Class MdiMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub ListarUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListarUsuarioToolStripMenuItem.Click
+        Dim form As New frmUserList
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

@@ -1,21 +1,23 @@
 ﻿Imports System.ComponentModel
 
 Public Class User
-    Property UserId As Integer
+    Property UserID As Integer
     Property Name As String
     Property Password As String
     Property PasswordConfirm As String
-    Property Role As String
+    Property Role As Integer
     Property IsLogged As Integer
     Property IsActive As Integer
     Property HasChangedPassword As Integer
+    Property IDCard As String
 
     Public Sub New()
         UserId = 0
         Name = ""
         Password = ""
         PasswordConfirm = ""
-        Role = ""
+        IDCard = ""
+        Role = 0
         IsLogged = 0
         IsActive = 1
         HasChangedPassword = 0
@@ -23,8 +25,8 @@ Public Class User
 
     'Enums
     Public Enum Roles
-        Admin
-        User
+        Administrador = 0
+        Usuario = 1
     End Enum
 
     Public Enum IsLoggedIn
@@ -72,6 +74,24 @@ Public Class User
         End If
     End Function
 
+    'Validate name
+    Public Function ValidateName() As Boolean
+        If Name.Length > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    'Validate ID card
+    Public Function ValidateIDCard() As Boolean
+        If IDCard.Length > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
     'Methods
 
     'Encrypt password
@@ -87,7 +107,23 @@ Public Class User
     End Function
 
     'Validate all and return message with errors
-    Public Function ValidateAllChangePassword() As String
+    Public Function ValidateAll()
+        Dim message As String = ""
+        If Not ValidateName() Then
+            message += "El nombre no puede estar vacío. "
+        End If
+        If Not ValidateIDCard() Then
+            message += "El número de cédula no puede estar vacío. "
+        End If
+        If message = "" Then
+            Password = EncryptPassword()
+        Else
+            Throw New Exception(message)
+        End If
+    End Function
+
+    'Validate all and return message with errors
+    Public Function ValidateAllChangePassword()
         Dim message As String = ""
         If Not ValidatePasswords() Then
             message += "Las contraseñas no coinciden. "
@@ -98,15 +134,19 @@ Public Class User
         If Not ValidatePasswordComplexity() Then
             message += "La contraseña debe tener al menos una letra mayúscula, una minúscula, un número y un caracter especial. "
         End If
-        Return message
+        If message = "" Then
+            Password = EncryptPassword()
+        Else
+            Throw New Exception(message)
+        End If
     End Function
 
     'Generate first random password
-    Public Function GenerateRandomPassword() As String
+    Public Function GenerateRandomPassword()
         Dim chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,"
         Dim random = New Random()
         Dim result = New String(Enumerable.Repeat(chars, 8).[Select](Function(s) s(random.[Next](s.Length))).ToArray())
-        Return result
+        Password = result
     End Function
 
 End Class
