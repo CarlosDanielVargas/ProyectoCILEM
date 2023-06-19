@@ -33,16 +33,17 @@ Partial Class MdiMain
         Me.menuItemAddRepresentative = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemShowRepresentatives = New System.Windows.Forms.ToolStripMenuItem()
         Me.NivelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgregarNivelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuItemManageLevels = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgregarUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListarUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuItemAddUser = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuItemListUsers = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.menuItemMyAccount = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -51,7 +52,7 @@ Partial Class MdiMain
         'MenuStrip
         '
         Me.MenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem, Me.UsuariosToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.menuItemMyAccount})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(843, 28)
@@ -98,35 +99,35 @@ Partial Class MdiMain
         '
         'NivelesToolStripMenuItem
         '
-        Me.NivelesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarNivelToolStripMenuItem})
+        Me.NivelesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemManageLevels})
         Me.NivelesToolStripMenuItem.Name = "NivelesToolStripMenuItem"
         Me.NivelesToolStripMenuItem.Size = New System.Drawing.Size(71, 24)
         Me.NivelesToolStripMenuItem.Text = "Niveles"
         '
-        'AgregarNivelToolStripMenuItem
+        'menuItemManageLevels
         '
-        Me.AgregarNivelToolStripMenuItem.Name = "AgregarNivelToolStripMenuItem"
-        Me.AgregarNivelToolStripMenuItem.Size = New System.Drawing.Size(218, 26)
-        Me.AgregarNivelToolStripMenuItem.Text = "Administrar niveles"
+        Me.menuItemManageLevels.Name = "menuItemManageLevels"
+        Me.menuItemManageLevels.Size = New System.Drawing.Size(218, 26)
+        Me.menuItemManageLevels.Text = "Administrar niveles"
         '
         'UsuariosToolStripMenuItem
         '
-        Me.UsuariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarUsuarioToolStripMenuItem, Me.ListarUsuarioToolStripMenuItem})
+        Me.UsuariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuItemAddUser, Me.menuItemListUsers})
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
         Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
-        'AgregarUsuarioToolStripMenuItem
+        'menuItemAddUser
         '
-        Me.AgregarUsuarioToolStripMenuItem.Name = "AgregarUsuarioToolStripMenuItem"
-        Me.AgregarUsuarioToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.AgregarUsuarioToolStripMenuItem.Text = "Agregar usuario"
+        Me.menuItemAddUser.Name = "menuItemAddUser"
+        Me.menuItemAddUser.Size = New System.Drawing.Size(198, 26)
+        Me.menuItemAddUser.Text = "Agregar usuario"
         '
-        'ListarUsuarioToolStripMenuItem
+        'menuItemListUsers
         '
-        Me.ListarUsuarioToolStripMenuItem.Name = "ListarUsuarioToolStripMenuItem"
-        Me.ListarUsuarioToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.ListarUsuarioToolStripMenuItem.Text = "Listar usuarios"
+        Me.menuItemListUsers.Name = "menuItemListUsers"
+        Me.menuItemListUsers.Size = New System.Drawing.Size(198, 26)
+        Me.menuItemListUsers.Text = "Listar usuarios"
         '
         'ToolStrip
         '
@@ -169,6 +170,12 @@ Partial Class MdiMain
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(54, 20)
         Me.ToolStripStatusLabel.Text = "Estado"
         '
+        'menuItemMyAccount
+        '
+        Me.menuItemMyAccount.Name = "menuItemMyAccount"
+        Me.menuItemMyAccount.Size = New System.Drawing.Size(88, 24)
+        Me.menuItemMyAccount.Text = "Mi cuenta"
+        '
         'MdiMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -209,8 +216,9 @@ Partial Class MdiMain
     Friend WithEvents menuItemAddRepresentative As ToolStripMenuItem
     Friend WithEvents menuItemShowRepresentatives As ToolStripMenuItem
     Friend WithEvents NivelesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AgregarNivelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents menuItemManageLevels As ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AgregarUsuarioToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ListarUsuarioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents menuItemAddUser As ToolStripMenuItem
+    Friend WithEvents menuItemListUsers As ToolStripMenuItem
+    Friend WithEvents menuItemMyAccount As ToolStripMenuItem
 End Class

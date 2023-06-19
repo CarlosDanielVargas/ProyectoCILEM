@@ -150,7 +150,7 @@ namespace DAO
                 DataTable dtUsers = new DataTable();
                 string query = "SELECT * FROM Users WHERE UserID = @id";
                 SqlDataAdapter adp = new SqlDataAdapter(query, connection);
-                adp.SelectCommand.Parameters.AddWithValue("@IDCard", id);
+                adp.SelectCommand.Parameters.AddWithValue("@id", id);
                 adp.Fill(dtUsers);
                 if (dtUsers.Rows.Count > 0)
                 {
@@ -238,7 +238,7 @@ namespace DAO
             {
                 SqlCommand authenticateUser = new SqlCommand();
                 authenticateUser.Connection = connection;
-                authenticateUser.CommandText = "SELECT IDCard, Name FROM Users WHERE IDCard = @IDCard AND Password = @Password AND IsActive = 1";
+                authenticateUser.CommandText = "SELECT UserID FROM Users WHERE IDCard = @IDCard AND Password = @Password AND IsActive = 1";
                 authenticateUser.Parameters.AddWithValue("@IDCard", IDCard);
                 authenticateUser.Parameters.AddWithValue("@Password", password);
 
@@ -250,19 +250,19 @@ namespace DAO
                 {
                     userID = reader.GetInt32(0);
                     isAuthenticated = true;
+                }
+                connection.Close();
 
+                if (isAuthenticated)
+                {
                     // Update IsLogged to 1
                     SqlCommand updateIsLogged = new SqlCommand();
                     updateIsLogged.Connection = connection;
                     updateIsLogged.CommandText = "UPDATE Users SET IsLogged = 1 WHERE UserID = @UserID";
                     updateIsLogged.Parameters.AddWithValue("@UserID", userID);
+                    connection.Open();
                     updateIsLogged.ExecuteNonQuery();
-                }
-
-                connection.Close();
-
-                if (isAuthenticated)
-                {
+                    connection.Close();
                     return SearchByID(userID);
                 }
 

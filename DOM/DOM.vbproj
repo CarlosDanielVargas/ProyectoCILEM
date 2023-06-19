@@ -65,6 +65,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Globals.vb" />
     <Compile Include="Level.vb" />
     <Compile Include="Representative.vb" />
     <Compile Include="Minor.vb" />

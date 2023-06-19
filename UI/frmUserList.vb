@@ -28,20 +28,22 @@ Public Class frmUserList
         ' Add the buttons column to the DataGridView
         ' This columns will contain the "Eliminar" and "Editar" buttons
 
-        Dim btnDeleteColumn As New DataGridViewButtonColumn()
-        btnDeleteColumn.HeaderText = "Eliminar"
-        btnDeleteColumn.Name = "Eliminar"
-        btnDeleteColumn.Text = "Eliminar"
-        btnDeleteColumn.UseColumnTextForButtonValue = True
+        If (Globals.current_user.Role = 0) Then
+            Dim btnDeleteColumn As New DataGridViewButtonColumn()
+            btnDeleteColumn.HeaderText = "Eliminar"
+            btnDeleteColumn.Name = "Eliminar"
+            btnDeleteColumn.Text = "Eliminar"
+            btnDeleteColumn.UseColumnTextForButtonValue = True
 
-        Dim btnEditColumn As New DataGridViewButtonColumn()
-        btnEditColumn.HeaderText = "Editar"
-        btnEditColumn.Name = "Editar"
-        btnEditColumn.Text = "Editar"
-        btnEditColumn.UseColumnTextForButtonValue = True
+            Dim btnEditColumn As New DataGridViewButtonColumn()
+            btnEditColumn.HeaderText = "Editar"
+            btnEditColumn.Name = "Editar"
+            btnEditColumn.Text = "Editar"
+            btnEditColumn.UseColumnTextForButtonValue = True
 
-        dgvUsers.Columns.Add(btnDeleteColumn)
-        dgvUsers.Columns.Add(btnEditColumn)
+            dgvUsers.Columns.Add(btnDeleteColumn)
+            dgvUsers.Columns.Add(btnEditColumn)
+        End If
 
         ' Refresh the users list
         refreshUserList()

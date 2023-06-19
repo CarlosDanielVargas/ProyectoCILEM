@@ -38,21 +38,26 @@ Public Class frmMinorList
         btnDetallesColumn.Text = "Detalles"
         btnDetallesColumn.UseColumnTextForButtonValue = True
 
-        Dim btnDeleteColumn As New DataGridViewButtonColumn()
-        btnDeleteColumn.HeaderText = "Eliminar"
-        btnDeleteColumn.Name = "Eliminar"
-        btnDeleteColumn.Text = "Eliminar"
-        btnDeleteColumn.UseColumnTextForButtonValue = True
+        If (Globals.current_user.Role = 0) Then
+            Dim btnDeleteColumn As New DataGridViewButtonColumn()
+            btnDeleteColumn.HeaderText = "Eliminar"
+            btnDeleteColumn.Name = "Eliminar"
+            btnDeleteColumn.Text = "Eliminar"
+            btnDeleteColumn.UseColumnTextForButtonValue = True
 
-        Dim btnEditColumn As New DataGridViewButtonColumn()
-        btnEditColumn.HeaderText = "Editar"
-        btnEditColumn.Name = "Editar"
-        btnEditColumn.Text = "Editar"
-        btnEditColumn.UseColumnTextForButtonValue = True
+            Dim btnEditColumn As New DataGridViewButtonColumn()
+            btnEditColumn.HeaderText = "Editar"
+            btnEditColumn.Name = "Editar"
+            btnEditColumn.Text = "Editar"
+            btnEditColumn.UseColumnTextForButtonValue = True
+
+
+
+            dgvMinors.Columns.Add(btnDeleteColumn)
+            dgvMinors.Columns.Add(btnEditColumn)
+        End If
 
         dgvMinors.Columns.Add(btnDetallesColumn)
-        dgvMinors.Columns.Add(btnDeleteColumn)
-        dgvMinors.Columns.Add(btnEditColumn)
 
         ' Add the minors to the DataGridView
         For Each column As DataGridViewColumn In dgvMinors.Columns

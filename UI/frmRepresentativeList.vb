@@ -22,21 +22,24 @@ Public Class frmRepresentativeList
         btnDetallesColumn.Text = "Detalles"
         btnDetallesColumn.UseColumnTextForButtonValue = True
 
-        Dim btnDeleteColumn As New DataGridViewButtonColumn()
-        btnDeleteColumn.HeaderText = "Eliminar"
-        btnDeleteColumn.Name = "Eliminar"
-        btnDeleteColumn.Text = "Eliminar"
-        btnDeleteColumn.UseColumnTextForButtonValue = True
+        If (Globals.current_user.Role = 0) Then
+            Dim btnDeleteColumn As New DataGridViewButtonColumn()
+            btnDeleteColumn.HeaderText = "Eliminar"
+            btnDeleteColumn.Name = "Eliminar"
+            btnDeleteColumn.Text = "Eliminar"
+            btnDeleteColumn.UseColumnTextForButtonValue = True
 
-        Dim btnEditColumn As New DataGridViewButtonColumn()
-        btnEditColumn.HeaderText = "Editar"
-        btnEditColumn.Name = "Editar"
-        btnEditColumn.Text = "Editar"
-        btnEditColumn.UseColumnTextForButtonValue = True
+            Dim btnEditColumn As New DataGridViewButtonColumn()
+            btnEditColumn.HeaderText = "Editar"
+            btnEditColumn.Name = "Editar"
+            btnEditColumn.Text = "Editar"
+            btnEditColumn.UseColumnTextForButtonValue = True
+
+            dgvRepresentatives.Columns.Add(btnDeleteColumn)
+            dgvRepresentatives.Columns.Add(btnEditColumn)
+        End If
 
         dgvRepresentatives.Columns.Add(btnDetallesColumn)
-        dgvRepresentatives.Columns.Add(btnDeleteColumn)
-        dgvRepresentatives.Columns.Add(btnEditColumn)
 
         refreshDataGridView() ' Update the DataGridView with all representatives
 

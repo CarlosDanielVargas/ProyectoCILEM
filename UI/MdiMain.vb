@@ -1,4 +1,5 @@
 Imports System.Windows.Forms
+Imports DOM
 
 Public Class MdiMain
 
@@ -14,7 +15,7 @@ Public Class MdiMain
         form.Show()
     End Sub
 
-    Private Sub AgregarNivelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarNivelToolStripMenuItem.Click
+    Private Sub menuItemManageLevels_Click(sender As Object, e As EventArgs) Handles menuItemManageLevels.Click
         Dim form As New frmManageLevels
         form.MdiParent = Me
         form.Show()
@@ -32,14 +33,37 @@ Public Class MdiMain
         form.Show()
     End Sub
 
-    Private Sub AgregarUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarUsuarioToolStripMenuItem.Click
+    Private Sub menuItemAddUser_Click(sender As Object, e As EventArgs) Handles menuItemAddUser.Click
         Dim form As New frmInsertUpdateUser
         form.MdiParent = Me
         form.Show()
     End Sub
 
-    Private Sub ListarUsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListarUsuarioToolStripMenuItem.Click
+    Private Sub menuItemShowUsers(sender As Object, e As EventArgs) Handles menuItemListUsers.Click
         Dim form As New frmUserList
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub MdiMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If (Globals.current_user.Role = 1) Then
+            NivelesToolStripMenuItem.Visible = False
+            menuItemAddUser.Visible = False
+            menuItemAddUser.Visible = False
+            menuItemAddMinor.Visible = False
+            menuItemAddRepresentative.Visible = False
+        Else
+            NivelesToolStripMenuItem.Visible = True
+            menuItemAddUser.Visible = True
+            menuItemAddUser.Visible = True
+            menuItemAddMinor.Visible = True
+            menuItemAddRepresentative.Visible = True
+        End If
+    End Sub
+
+    Private Sub menuItemMyAccount_Click(sender As Object, e As EventArgs) Handles menuItemMyAccount.Click
+        Dim user As User = Globals.current_user
+        Dim form As New frmInsertUpdateUser(user)
         form.MdiParent = Me
         form.Show()
     End Sub

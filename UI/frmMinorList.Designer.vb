@@ -49,9 +49,13 @@ Partial Class frmMinorList
         '
         'dgvMinors
         '
+        Me.dgvMinors.AllowUserToAddRows = False
+        Me.dgvMinors.AllowUserToDeleteRows = False
+        Me.dgvMinors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvMinors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMinors.Location = New System.Drawing.Point(12, 159)
         Me.dgvMinors.Name = "dgvMinors"
+        Me.dgvMinors.ReadOnly = True
         Me.dgvMinors.RowHeadersWidth = 51
         Me.dgvMinors.RowTemplate.Height = 24
         Me.dgvMinors.Size = New System.Drawing.Size(855, 505)

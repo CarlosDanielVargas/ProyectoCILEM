@@ -16,11 +16,8 @@ Public Class frmInsertUpdateMinor
         ' Initialize the form controls and data
         Dim levelManager As New LevelManager()
         cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
-        cboxGender.SelectedIndex = 0
         cboxSchoolarship.DataSource = [Enum].GetValues(GetType(Minor.HasSchoolarshipEnum))
-        cboxSchoolarship.SelectedIndex = 0
         cbRelationship.DataSource = [Enum].GetValues(GetType(Representative.RelationshipEnum))
-        cbRelationship.SelectedIndex = 0
         cboxLevels.DataSource = levelManager.loadAllFromDB()
         cboxLevels.DisplayMember = "Name"
         cboxLevels.ValueMember = "LevelID"

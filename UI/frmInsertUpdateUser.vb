@@ -23,6 +23,12 @@ Public Class frmInsertUpdateUser
         Me.parent = parent
     End Sub
 
+    Public Sub New(user As User)
+        InitializeComponent()
+        Me.user = user
+        isNew = False
+    End Sub
+
     Private Sub frmInsertUpdateUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler lbPassword.VisibleChanged, AddressOf ElementVisibleChanged
         AddHandler lbPasswordConfirmation.VisibleChanged, AddressOf ElementVisibleChanged
@@ -31,9 +37,7 @@ Public Class frmInsertUpdateUser
 
         'Load as insert mode
         cboxIsActive.DataSource = [Enum].GetValues(GetType(User.IsActived))
-        cboxIsActive.SelectedIndex = 0
         cboxRole.DataSource = [Enum].GetValues(GetType(User.Roles))
-        cboxRole.SelectedIndex = 0
         If isNew Then
             Me.Text = "Insertar usuario"
             lbPasswordConfirmation.Visible = False
@@ -44,10 +48,27 @@ Public Class frmInsertUpdateUser
             tblpPanel.RowStyles(5).Height = 0
         Else
             Me.Text = "Actualizar usuario"
-            tbIDCard.Text = user.Name
+            tbIDCard.Text = user.IDCard
+            tbName.Text = user.Name
             tbIDCard.Enabled = False
             cboxRole.SelectedIndex = user.Role
             cboxIsActive.SelectedIndex = user.IsActive
+            If user.Name = Globals.current_user.Name Then
+                cboxIsActive.Visible = False
+                cboxRole.Visible = False
+                tblpPanel.RowStyles(2).Height = 0
+                tblpPanel.RowStyles(3).Height = 0
+
+            Else
+                cboxIsActive.Enabled = True
+                cboxRole.Enabled = True
+                lbPasswordConfirmation.Visible = False
+                tbPasswordConfirmation.Visible = False
+                lbPassword.Visible = False
+                tbPassword.Visible = False
+                tblpPanel.RowStyles(4).Height = 0
+                tblpPanel.RowStyles(5).Height = 0
+            End If
         End If
 
         ' Establecer el AutoSizeMode del formulario en GrowAndShrink
@@ -84,14 +105,17 @@ Public Class frmInsertUpdateUser
             user.IsActive = cboxIsActive.SelectedIndex
             user.ValidateAll()
             If Not isNew Then
-                user.Password = tbPassword.Text
-                user.PasswordConfirm = tbPasswordConfirmation.Text
-                user.ValidateAllChangePassword()
-                user.HasChangedPassword = User.ChangedPassword.Sí
+                If user.Name = Globals.current_user.Name Then
+                    user.Password = tbPassword.Text
+                    user.PasswordConfirm = tbPasswordConfirmation.Text
+                    user.ValidateAllChangePassword()
+                    user.HasChangedPassword = User.ChangedPassword.Sí
+                Else
+                    parent.refreshUserList()
+                End If
                 userManager.UpdateToDB(user)
-                parent.refreshUserList()
             Else
-                user.GenerateRandomPassword()
+                    user.GenerateRandomPassword()
                 user.HasChangedPassword = User.ChangedPassword.No
                 userManager.SaveToDB(user)
             End If
