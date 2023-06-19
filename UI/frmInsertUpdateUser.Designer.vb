@@ -63,9 +63,9 @@ Partial Class frmInsertUpdateUser
         'tbIDCard
         '
         Me.tbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.tbIDCard.Location = New System.Drawing.Point(285, 3)
+        Me.tbIDCard.Location = New System.Drawing.Point(331, 3)
         Me.tbIDCard.Name = "tbIDCard"
-        Me.tbIDCard.Size = New System.Drawing.Size(618, 28)
+        Me.tbIDCard.Size = New System.Drawing.Size(572, 28)
         Me.tbIDCard.TabIndex = 2
         '
         'lbRole
@@ -82,18 +82,18 @@ Partial Class frmInsertUpdateUser
         '
         Me.cboxRole.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.cboxRole.FormattingEnabled = True
-        Me.cboxRole.Location = New System.Drawing.Point(285, 92)
+        Me.cboxRole.Location = New System.Drawing.Point(331, 92)
         Me.cboxRole.Name = "cboxRole"
-        Me.cboxRole.Size = New System.Drawing.Size(618, 30)
+        Me.cboxRole.Size = New System.Drawing.Size(572, 30)
         Me.cboxRole.TabIndex = 4
         '
         'cboxIsActive
         '
         Me.cboxIsActive.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.cboxIsActive.FormattingEnabled = True
-        Me.cboxIsActive.Location = New System.Drawing.Point(285, 131)
+        Me.cboxIsActive.Location = New System.Drawing.Point(331, 131)
         Me.cboxIsActive.Name = "cboxIsActive"
-        Me.cboxIsActive.Size = New System.Drawing.Size(618, 30)
+        Me.cboxIsActive.Size = New System.Drawing.Size(572, 30)
         Me.cboxIsActive.TabIndex = 6
         '
         'Estado
@@ -119,17 +119,17 @@ Partial Class frmInsertUpdateUser
         'tbPassword
         '
         Me.tbPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.tbPassword.Location = New System.Drawing.Point(285, 213)
+        Me.tbPassword.Location = New System.Drawing.Point(331, 213)
         Me.tbPassword.Name = "tbPassword"
-        Me.tbPassword.Size = New System.Drawing.Size(618, 28)
+        Me.tbPassword.Size = New System.Drawing.Size(572, 28)
         Me.tbPassword.TabIndex = 8
         '
         'tbPasswordConfirmation
         '
         Me.tbPasswordConfirmation.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.tbPasswordConfirmation.Location = New System.Drawing.Point(285, 176)
+        Me.tbPasswordConfirmation.Location = New System.Drawing.Point(331, 176)
         Me.tbPasswordConfirmation.Name = "tbPasswordConfirmation"
-        Me.tbPasswordConfirmation.Size = New System.Drawing.Size(618, 28)
+        Me.tbPasswordConfirmation.Size = New System.Drawing.Size(572, 28)
         Me.tbPasswordConfirmation.TabIndex = 10
         '
         'lbPasswordConfirmation
@@ -155,8 +155,8 @@ Partial Class frmInsertUpdateUser
         'tblpPanel
         '
         Me.tblpPanel.ColumnCount = 2
-        Me.tblpPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.12583!))
-        Me.tblpPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.87417!))
+        Me.tblpPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.20309!))
+        Me.tblpPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.79691!))
         Me.tblpPanel.Controls.Add(Me.tbName, 1, 1)
         Me.tblpPanel.Controls.Add(Me.lbName, 0, 1)
         Me.tblpPanel.Controls.Add(Me.lbIDCard, 0, 0)
@@ -185,9 +185,9 @@ Partial Class frmInsertUpdateUser
         'tbName
         '
         Me.tbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.tbName.Location = New System.Drawing.Point(285, 49)
+        Me.tbName.Location = New System.Drawing.Point(331, 49)
         Me.tbName.Name = "tbName"
-        Me.tbName.Size = New System.Drawing.Size(618, 28)
+        Me.tbName.Size = New System.Drawing.Size(572, 28)
         Me.tbName.TabIndex = 12
         '
         'lbName
