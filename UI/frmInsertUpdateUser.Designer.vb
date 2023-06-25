@@ -22,6 +22,7 @@ Partial Class frmInsertUpdateUser
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInsertUpdateUser))
         Me.lbInstructions = New System.Windows.Forms.Label()
         Me.lbIDCard = New System.Windows.Forms.Label()
         Me.tbIDCard = New System.Windows.Forms.TextBox()
@@ -144,13 +145,16 @@ Partial Class frmInsertUpdateUser
         '
         'btnSave
         '
+        Me.btnSave.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(160, Byte), Integer))
+        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.btnSave.Location = New System.Drawing.Point(389, 354)
+        Me.btnSave.ForeColor = System.Drawing.Color.White
+        Me.btnSave.Location = New System.Drawing.Point(809, 364)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(114, 35)
         Me.btnSave.TabIndex = 11
         Me.btnSave.Text = "Guardar"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.btnSave.UseVisualStyleBackColor = False
         '
         'tblpPanel
         '
@@ -206,11 +210,15 @@ Partial Class frmInsertUpdateUser
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(932, 411)
         Me.Controls.Add(Me.tblpPanel)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.lbInstructions)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmInsertUpdateUser"
         Me.Text = "Agregar usuario nuevo"
         Me.tblpPanel.ResumeLayout(False)

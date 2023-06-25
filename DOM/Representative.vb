@@ -35,6 +35,10 @@ Public Class Representative
         Padre
         Madre
         Tutor
+        Tío
+        Tía
+        Abuelo
+        Abuela
         Otro
     End Enum
 

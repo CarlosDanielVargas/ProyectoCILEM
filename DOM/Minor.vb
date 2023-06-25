@@ -33,6 +33,15 @@
         Masculino
         Femenino
     End Enum
+
+    Enum RecommendationMethodEnum
+        UCR_Administativo
+        UCR_Profesor
+        UCR_Estudiante
+        Comunidad
+        Otro
+    End Enum
+
     'Constructors
 
     'Empty constructor

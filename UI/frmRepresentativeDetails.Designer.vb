@@ -22,6 +22,7 @@ Partial Class frmRepresentativeDetails
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRepresentativeDetails))
         Me.lbIndications = New System.Windows.Forms.Label()
         Me.tbLPnlRepresentative = New System.Windows.Forms.TableLayoutPanel()
         Me.lbNombreCompleto = New System.Windows.Forms.Label()
@@ -306,14 +307,18 @@ Partial Class frmRepresentativeDetails
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(814, 665)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(821, 665)
         Me.Controls.Add(Me.lboxMinors)
         Me.Controls.Add(Me.lbMinors)
         Me.Controls.Add(Me.lbIndications)
         Me.Controls.Add(Me.tbLPnlRepresentative)
         Me.Controls.Add(Me.txtCedula)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmRepresentativeDetails"
         Me.Text = "Detalles de representante legal"
         Me.tbLPnlRepresentative.ResumeLayout(False)

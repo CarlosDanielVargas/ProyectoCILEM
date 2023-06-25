@@ -67,6 +67,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -235,6 +236,10 @@
       <Project>{410f5ea0-f730-4e69-9761-98a4e4be64ec}</Project>
       <Name>DOM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UT\UT.vbproj">
+      <Project>{eacd628b-713f-4ad6-8c73-f9769032a135}</Project>
+      <Name>UT</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -247,6 +252,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\favicon.ico" />
+    <Content Include="Icons\logo-san-ramon.png" />
+    <Content Include="Icons\logo-san-ramon_33_op.png" />
+    <Content Include="Icons\logo-san-ramon_upscaled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

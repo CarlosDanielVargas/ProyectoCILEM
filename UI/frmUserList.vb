@@ -95,7 +95,7 @@ Public Class frmUserList
             Dim role As String = ""
             role = If(user.Role = 0, "Administrador", "Usuario")
             Dim isActive As String = ""
-            isActive = If(user.IsActive = 0, "Activo", "Inactivo")
+            isActive = If(user.IsActive = 1, "Activo", "Inactivo")
             dgvUsers.Rows.Add(user.Name, user.IDCard, role, isActive)
         Next
     End Sub
@@ -124,7 +124,7 @@ Public Class frmUserList
         Dim userRole As String = ""
         userRole = If(role = 0, "Administrador", "Usuario")
         Dim userStatus As String = ""
-        userStatus = If(isActive, "Activo", "Inactivo")
+        userStatus = If(isActive > 0, "Activo", "Inactivo")
 
         ' Clear the existing rows in the DataGridView
         dgvUsers.Rows.Clear()
@@ -136,5 +136,9 @@ Public Class frmUserList
 
         ' Set message of filter label
         lbCurrentFilter.Text = "Filtro aplicado: cédula = " & IDCard & ", rol = " & userRole & ", Estado = " & userStatus & " - Se muestran " & filteredUsers.Count() & " usuario(s)"
+    End Sub
+
+    Private Sub btnClearFilters_Click(sender As Object, e As EventArgs) Handles btnClearFilters.Click
+
     End Sub
 End Class

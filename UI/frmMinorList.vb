@@ -1,5 +1,7 @@
 ﻿Imports DOM
 Imports BL
+Imports UT
+
 Public Class frmMinorList
     ' This form is used to display a list of minors
     Private minors As List(Of Minor)
@@ -11,19 +13,35 @@ Public Class frmMinorList
         ' Load the levels from the database
         Dim levelManager As New LevelManager()
         levels = levelManager.loadAllFromDB()
+
+        ' Add "Todos" option to the levels list
+        Dim allLevel As New Level()
+        allLevel.LevelID = 0
+        allLevel.Name = "Todos"
+        levels.Insert(0, allLevel)
+
         cboxLevel.DataSource = levels
         cboxLevel.DisplayMember = "Name"
         cboxLevel.ValueMember = "LevelID"
         cboxLevel.SelectedIndex = 0
 
         ' Load genders
-        cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
+        Dim genders As Array = [Enum].GetValues(GetType(Minor.GenderEnum))
+
+        ' Create a list to store gender options
+        Dim genderOptions As New List(Of String)()
+
+        ' Add "Todos" option to the list
+        genderOptions.Add("Todos")
+
+        ' Add enum values to the list as strings
+        For Each gender As Minor.GenderEnum In genders
+            genderOptions.Add(gender.ToString())
+        Next
+
+        ' Set the data source for the combobox
+        cboxGender.DataSource = genderOptions
         cboxGender.SelectedIndex = 0
-
-
-        dgvMinors.ReadOnly = True ' Set the DataGridView to read-only
-        dgvMinors.AllowUserToAddRows = False ' Disable the ability to add new rows
-        dgvMinors.AllowUserToDeleteRows = False ' Disable the ability to delete rows
 
         ' Add the columns to the DataGridView
         dgvMinors.Columns.Add("Nombre", "Nombre")
@@ -51,8 +69,6 @@ Public Class frmMinorList
             btnEditColumn.Text = "Editar"
             btnEditColumn.UseColumnTextForButtonValue = True
 
-
-
             dgvMinors.Columns.Add(btnDeleteColumn)
             dgvMinors.Columns.Add(btnEditColumn)
         End If
@@ -69,7 +85,6 @@ Public Class frmMinorList
 
         ' Set message of filter label
         lbCurrentFilter.Text = "Se muestran todos los menores, un total de " & minors.Count & " menor(es)"
-
     End Sub
 
     Private Sub dgvMinors_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvMinors.CellContentClick
@@ -112,25 +127,25 @@ Public Class frmMinorList
     End Sub
 
     Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
-        Dim filteredMinors As New List(Of Minor)
+        Dim filteredMinors As List(Of Minor) = minors
 
-        Dim IDFilter As String = tbIDCard.Text
+        Dim nameFilter As String = tbName.Text.Trim()
         Dim levelFilter As Integer = cboxLevel.SelectedValue
         Dim genderFilter As String = cboxGender.SelectedValue?.ToString()
 
         ' Filter by ID
-        If Not String.IsNullOrEmpty(IDFilter) Then
-            filteredMinors = filteredMinors.FindAll(Function(minor) minor.MinorID <> IDFilter)
+        If Not String.IsNullOrEmpty(nameFilter) Then
+            filteredMinors = filteredMinors.FindAll(Function(minor) minor.Name.Contains(nameFilter))
         End If
 
         ' Filter by level
         If levelFilter <> 0 Then
-            filteredMinors = minors.FindAll(Function(minor) minor.Level.LevelID = levelFilter)
+            filteredMinors = filteredMinors.FindAll(Function(minor) minor.Level.LevelID = levelFilter)
         End If
 
         ' Filter by gender
-        If Not String.IsNullOrEmpty(genderFilter) Then
-            filteredMinors = filteredMinors.FindAll(Function(minor) minor.Gender = genderFilter)
+        If Not String.IsNullOrEmpty(genderFilter) AndAlso genderFilter <> "Todos" Then
+            filteredMinors = filteredMinors.FindAll(Function(minor) minor.Gender.ToString() = genderFilter)
         End If
 
         dgvMinors.Rows.Clear()
@@ -152,8 +167,8 @@ Public Class frmMinorList
         ' Change the filter message
         Dim filterMessage As String = "Filtrado por: "
 
-        If Not String.IsNullOrEmpty(IDFilter) Then
-            filterMessage += "Cédula: " + IDFilter + ", "
+        If Not String.IsNullOrEmpty(nameFilter) Then
+            filterMessage += "Nombre: " + nameFilter + ", "
         End If
 
         If levelFilter <> 0 Then
@@ -163,7 +178,7 @@ Public Class frmMinorList
             End If
         End If
 
-        If Not String.IsNullOrEmpty(genderFilter) Then
+        If Not String.IsNullOrEmpty(genderFilter) AndAlso genderFilter <> "Todos" Then
             filterMessage += "Género: " + genderFilter + ", "
         End If
 
@@ -178,23 +193,15 @@ Public Class frmMinorList
         ' Clear the filter values and reset the DataGridView
 
         ' Clear the filter text boxes
-        tbIDCard.Text = String.Empty
-        cboxLevel.SelectedIndex = -1
-        cboxGender.SelectedIndex = -1
+        tbName.Text = String.Empty
+        cboxLevel.SelectedIndex = 0
+        cboxGender.SelectedIndex = 0
 
         ' Clear the filter message
         lbCurrentFilter.Text = "Se muestran todos los menores, un total de " & minors.Count & " menor(es)"
 
         ' Refresh the DataGridView to show all minors
-        dgvMinors.Rows.Clear()
-
-        For Each minor As Minor In minors
-            Dim rowIndex As Integer = dgvMinors.Rows.Add()
-
-            dgvMinors.Rows(rowIndex).Cells("Nombre").Value = minor.Name
-            dgvMinors.Rows(rowIndex).Cells("Cédula").Value = minor.MinorID
-            dgvMinors.Rows(rowIndex).Cells("Nivel").Value = minor.Level.Name
-        Next
+        refreshMinorList()
 
         ' Set all columns to read-only
         For Each column As DataGridViewColumn In dgvMinors.Columns
@@ -217,5 +224,9 @@ Public Class frmMinorList
             dgvMinors.Rows(rowIndex).Cells("Cédula").Value = minor.MinorID
             dgvMinors.Rows(rowIndex).Cells("Nivel").Value = minor.Level.Name
         Next
+    End Sub
+
+    Private Sub btnExportToExcel_Click(sender As Object, e As EventArgs) Handles btnExportToExcel.Click
+        ExcelUtility.ExportDataGridViewToExcel(dgvMinors, "Estudiantes")
     End Sub
 End Class

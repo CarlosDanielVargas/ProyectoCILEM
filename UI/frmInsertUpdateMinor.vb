@@ -18,6 +18,7 @@ Public Class frmInsertUpdateMinor
         cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
         cboxSchoolarship.DataSource = [Enum].GetValues(GetType(Minor.HasSchoolarshipEnum))
         cbRelationship.DataSource = [Enum].GetValues(GetType(Representative.RelationshipEnum))
+        cboxRecommendationMethod.DataSource = [Enum].GetValues(GetType(Minor.RecommendationMethodEnum))
         cboxLevels.DataSource = levelManager.loadAllFromDB()
         cboxLevels.DisplayMember = "Name"
         cboxLevels.ValueMember = "LevelID"
@@ -33,7 +34,6 @@ Public Class frmInsertUpdateMinor
             tbIDCard.Text = minor.MinorID
             tbName.Text = minor.Name
             tbResidency.Text = minor.Residency
-            tbRecommendationMethod.Text = minor.RecommendationMethod
             tbCurrentPayment.Text = minor.CurrentPayment
             dtpBirthDate.Value = minor.BirthDate
             dtpEnterDate.Value = minor.EnteredDate
@@ -52,6 +52,10 @@ Public Class frmInsertUpdateMinor
             End If
 
             poblateDataGridView()
+
+            ' Set the value of cboxRecommendationMethod to match the minor's recommendation method
+            Dim recommendationMethod As Minor.RecommendationMethodEnum = [Enum].Parse(GetType(Minor.RecommendationMethodEnum), minor.RecommendationMethod)
+            cboxRecommendationMethod.SelectedItem = recommendationMethod
 
             ' Set the value of cboxGender to match the minor's gender
             Dim gender As Minor.GenderEnum = [Enum].Parse(GetType(Minor.GenderEnum), minor.Gender)
@@ -161,7 +165,7 @@ Public Class frmInsertUpdateMinor
             minor.EnteredDate = dtpEnterDate.Value
             minor.GraduationDate = dtpLeaveDate.Value
             minor.HasSchoolarship = cboxSchoolarship.SelectedItem.ToString()
-            minor.RecommendationMethod = tbRecommendationMethod.Text
+            minor.RecommendationMethod = cboxRecommendationMethod.SelectedItem.ToString()
             minor.Residency = tbResidency.Text
             minor.Gender = cboxGender.SelectedItem.ToString()
             minor.CurrentPayment = Double.Parse(tbCurrentPayment.Text)

@@ -6,6 +6,7 @@ Public Class frmInsertUpdateUser
     Private user As User
     Private isNew As Boolean
     Private parent As frmUserList
+    Private toChangePassword As Boolean = False
 
     'Constructor
     'Insert mode
@@ -27,6 +28,7 @@ Public Class frmInsertUpdateUser
         InitializeComponent()
         Me.user = user
         isNew = False
+        toChangePassword = True
     End Sub
 
     Private Sub frmInsertUpdateUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -53,7 +55,7 @@ Public Class frmInsertUpdateUser
             tbIDCard.Enabled = False
             cboxRole.SelectedIndex = user.Role
             cboxIsActive.SelectedIndex = user.IsActive
-            If user.Name = Globals.current_user.Name Then
+            If user.Name = Globals.current_user.Name And toChangePassword Then
                 cboxIsActive.Visible = False
                 cboxRole.Visible = False
                 tblpPanel.RowStyles(2).Height = 0

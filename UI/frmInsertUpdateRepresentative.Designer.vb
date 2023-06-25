@@ -22,6 +22,7 @@ Partial Class frmInsertUpdateRepresentative
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInsertUpdateRepresentative))
         Me.btnSave = New System.Windows.Forms.Button()
         Me.lbIndications = New System.Windows.Forms.Label()
         Me.lbName = New System.Windows.Forms.Label()
@@ -46,13 +47,16 @@ Partial Class frmInsertUpdateRepresentative
         '
         'btnSave
         '
+        Me.btnSave.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(160, Byte), Integer))
+        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(347, 591)
+        Me.btnSave.ForeColor = System.Drawing.Color.White
+        Me.btnSave.Location = New System.Drawing.Point(729, 724)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(129, 40)
         Me.btnSave.TabIndex = 1
         Me.btnSave.Text = "Guardar"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.btnSave.UseVisualStyleBackColor = False
         '
         'lbIndications
         '
@@ -68,173 +72,178 @@ Partial Class frmInsertUpdateRepresentative
         '
         Me.lbName.AutoSize = True
         Me.lbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbName.Location = New System.Drawing.Point(39, 90)
+        Me.lbName.Location = New System.Drawing.Point(57, 105)
         Me.lbName.Name = "lbName"
-        Me.lbName.Size = New System.Drawing.Size(171, 25)
+        Me.lbName.Size = New System.Drawing.Size(81, 25)
         Me.lbName.TabIndex = 3
-        Me.lbName.Text = "Nombre completo:"
+        Me.lbName.Text = "Nombre"
         '
         'tbName
         '
-        Me.tbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbName.Location = New System.Drawing.Point(233, 88)
+        Me.tbName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbName.Location = New System.Drawing.Point(230, 102)
         Me.tbName.Name = "tbName"
-        Me.tbName.Size = New System.Drawing.Size(551, 28)
+        Me.tbName.Size = New System.Drawing.Size(628, 30)
         Me.tbName.TabIndex = 4
         '
         'tbIDCard
         '
-        Me.tbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbIDCard.Location = New System.Drawing.Point(233, 127)
+        Me.tbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbIDCard.Location = New System.Drawing.Point(230, 157)
         Me.tbIDCard.Name = "tbIDCard"
-        Me.tbIDCard.Size = New System.Drawing.Size(551, 28)
+        Me.tbIDCard.Size = New System.Drawing.Size(628, 30)
         Me.tbIDCard.TabIndex = 6
         '
         'lbIDCard
         '
         Me.lbIDCard.AutoSize = True
         Me.lbIDCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIDCard.Location = New System.Drawing.Point(39, 128)
+        Me.lbIDCard.Location = New System.Drawing.Point(57, 160)
         Me.lbIDCard.Name = "lbIDCard"
-        Me.lbIDCard.Size = New System.Drawing.Size(81, 25)
+        Me.lbIDCard.Size = New System.Drawing.Size(113, 25)
         Me.lbIDCard.TabIndex = 5
-        Me.lbIDCard.Text = "Cédula:"
+        Me.lbIDCard.Text = "Cédula (ID)"
         '
         'tbPhone
         '
-        Me.tbPhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPhone.Location = New System.Drawing.Point(233, 168)
+        Me.tbPhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPhone.Location = New System.Drawing.Point(230, 210)
         Me.tbPhone.Name = "tbPhone"
-        Me.tbPhone.Size = New System.Drawing.Size(551, 28)
+        Me.tbPhone.Size = New System.Drawing.Size(628, 30)
         Me.tbPhone.TabIndex = 8
         '
         'lbPhone
         '
         Me.lbPhone.AutoSize = True
         Me.lbPhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbPhone.Location = New System.Drawing.Point(39, 170)
+        Me.lbPhone.Location = New System.Drawing.Point(57, 213)
         Me.lbPhone.Name = "lbPhone"
-        Me.lbPhone.Size = New System.Drawing.Size(175, 25)
+        Me.lbPhone.Size = New System.Drawing.Size(89, 25)
         Me.lbPhone.TabIndex = 7
-        Me.lbPhone.Text = "Número telefónico:"
+        Me.lbPhone.Text = "Teléfono"
         '
         'lbMaritalStatus
         '
         Me.lbMaritalStatus.AutoSize = True
         Me.lbMaritalStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbMaritalStatus.Location = New System.Drawing.Point(39, 245)
+        Me.lbMaritalStatus.Location = New System.Drawing.Point(57, 265)
         Me.lbMaritalStatus.Name = "lbMaritalStatus"
-        Me.lbMaritalStatus.Size = New System.Drawing.Size(116, 25)
+        Me.lbMaritalStatus.Size = New System.Drawing.Size(110, 25)
         Me.lbMaritalStatus.TabIndex = 9
-        Me.lbMaritalStatus.Text = "Estado civil:"
+        Me.lbMaritalStatus.Text = "Estado civil"
         '
         'cboxMaritalStatus
         '
-        Me.cboxMaritalStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
+        Me.cboxMaritalStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxMaritalStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboxMaritalStatus.FormattingEnabled = True
-        Me.cboxMaritalStatus.Location = New System.Drawing.Point(233, 248)
+        Me.cboxMaritalStatus.Items.AddRange(New Object() {"Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"})
+        Me.cboxMaritalStatus.Location = New System.Drawing.Point(230, 262)
         Me.cboxMaritalStatus.Name = "cboxMaritalStatus"
-        Me.cboxMaritalStatus.Size = New System.Drawing.Size(551, 30)
+        Me.cboxMaritalStatus.Size = New System.Drawing.Size(628, 33)
         Me.cboxMaritalStatus.TabIndex = 10
         '
         'lbOccupation
         '
         Me.lbOccupation.AutoSize = True
         Me.lbOccupation.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbOccupation.Location = New System.Drawing.Point(39, 283)
+        Me.lbOccupation.Location = New System.Drawing.Point(57, 318)
         Me.lbOccupation.Name = "lbOccupation"
-        Me.lbOccupation.Size = New System.Drawing.Size(113, 25)
+        Me.lbOccupation.Size = New System.Drawing.Size(107, 25)
         Me.lbOccupation.TabIndex = 11
-        Me.lbOccupation.Text = "Ocupación:"
+        Me.lbOccupation.Text = "Ocupación"
         '
         'tbOccupation
         '
-        Me.tbOccupation.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbOccupation.Location = New System.Drawing.Point(233, 283)
+        Me.tbOccupation.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbOccupation.Location = New System.Drawing.Point(230, 315)
         Me.tbOccupation.Name = "tbOccupation"
-        Me.tbOccupation.Size = New System.Drawing.Size(551, 28)
+        Me.tbOccupation.Size = New System.Drawing.Size(628, 30)
         Me.tbOccupation.TabIndex = 12
         '
         'lbResidency
         '
         Me.lbResidency.AutoSize = True
         Me.lbResidency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbResidency.Location = New System.Drawing.Point(39, 330)
+        Me.lbResidency.Location = New System.Drawing.Point(57, 370)
         Me.lbResidency.Name = "lbResidency"
-        Me.lbResidency.Size = New System.Drawing.Size(114, 25)
+        Me.lbResidency.Size = New System.Drawing.Size(108, 25)
         Me.lbResidency.TabIndex = 13
-        Me.lbResidency.Text = "Residencia:"
+        Me.lbResidency.Text = "Residencia"
         '
         'tbResidency
         '
-        Me.tbResidency.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbResidency.Location = New System.Drawing.Point(233, 330)
+        Me.tbResidency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbResidency.Location = New System.Drawing.Point(230, 367)
         Me.tbResidency.Multiline = True
         Me.tbResidency.Name = "tbResidency"
-        Me.tbResidency.Size = New System.Drawing.Size(551, 82)
+        Me.tbResidency.Size = New System.Drawing.Size(628, 91)
         Me.tbResidency.TabIndex = 14
         '
         'tbWorkPlace
         '
-        Me.tbWorkPlace.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbWorkPlace.Location = New System.Drawing.Point(233, 427)
+        Me.tbWorkPlace.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbWorkPlace.Location = New System.Drawing.Point(230, 481)
         Me.tbWorkPlace.Multiline = True
         Me.tbWorkPlace.Name = "tbWorkPlace"
-        Me.tbWorkPlace.Size = New System.Drawing.Size(551, 82)
+        Me.tbWorkPlace.Size = New System.Drawing.Size(628, 103)
         Me.tbWorkPlace.TabIndex = 16
         '
         'lbWorkPlace
         '
         Me.lbWorkPlace.AutoSize = True
         Me.lbWorkPlace.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbWorkPlace.Location = New System.Drawing.Point(39, 427)
+        Me.lbWorkPlace.Location = New System.Drawing.Point(57, 484)
         Me.lbWorkPlace.Name = "lbWorkPlace"
-        Me.lbWorkPlace.Size = New System.Drawing.Size(159, 25)
+        Me.lbWorkPlace.Size = New System.Drawing.Size(153, 25)
         Me.lbWorkPlace.TabIndex = 15
-        Me.lbWorkPlace.Text = "Lugar de trabajo:"
+        Me.lbWorkPlace.Text = "Lugar de trabajo"
         '
         'cboxGender
         '
-        Me.cboxGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
+        Me.cboxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboxGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboxGender.FormattingEnabled = True
-        Me.cboxGender.Location = New System.Drawing.Point(233, 530)
+        Me.cboxGender.Items.AddRange(New Object() {"Masculino", "Femenino"})
+        Me.cboxGender.Location = New System.Drawing.Point(230, 603)
         Me.cboxGender.Name = "cboxGender"
-        Me.cboxGender.Size = New System.Drawing.Size(551, 30)
+        Me.cboxGender.Size = New System.Drawing.Size(628, 33)
         Me.cboxGender.TabIndex = 18
         '
         'lbGender
         '
         Me.lbGender.AutoSize = True
         Me.lbGender.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbGender.Location = New System.Drawing.Point(39, 526)
+        Me.lbGender.Location = New System.Drawing.Point(57, 606)
         Me.lbGender.Name = "lbGender"
-        Me.lbGender.Size = New System.Drawing.Size(83, 25)
+        Me.lbGender.Size = New System.Drawing.Size(77, 25)
         Me.lbGender.TabIndex = 17
-        Me.lbGender.Text = "Género:"
+        Me.lbGender.Text = "Género"
         '
         'tbMail
         '
-        Me.tbMail.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMail.Location = New System.Drawing.Point(233, 207)
+        Me.tbMail.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMail.Location = New System.Drawing.Point(230, 656)
         Me.tbMail.Name = "tbMail"
-        Me.tbMail.Size = New System.Drawing.Size(551, 28)
+        Me.tbMail.Size = New System.Drawing.Size(628, 30)
         Me.tbMail.TabIndex = 20
         '
         'lbMail
         '
         Me.lbMail.AutoSize = True
         Me.lbMail.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbMail.Location = New System.Drawing.Point(39, 207)
+        Me.lbMail.Location = New System.Drawing.Point(57, 659)
         Me.lbMail.Name = "lbMail"
-        Me.lbMail.Size = New System.Drawing.Size(177, 25)
+        Me.lbMail.Size = New System.Drawing.Size(60, 25)
         Me.lbMail.TabIndex = 19
-        Me.lbMail.Text = "Correo electrónico:"
+        Me.lbMail.Text = "Email"
         '
-        'frmNewRepresentative
+        'frmInsertUpdateRepresentative
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(847, 643)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(903, 780)
         Me.Controls.Add(Me.tbMail)
         Me.Controls.Add(Me.lbMail)
         Me.Controls.Add(Me.cboxGender)
@@ -255,13 +264,18 @@ Partial Class frmInsertUpdateRepresentative
         Me.Controls.Add(Me.lbName)
         Me.Controls.Add(Me.lbIndications)
         Me.Controls.Add(Me.btnSave)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Name = "frmNewRepresentative"
-        Me.Text = "Agregar Representante"
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "frmInsertUpdateRepresentative"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Agregar/Actualizar Representante"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
+
     Friend WithEvents btnSave As Button
     Friend WithEvents lbIndications As Label
     Friend WithEvents lbName As Label

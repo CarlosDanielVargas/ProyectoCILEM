@@ -29,7 +29,8 @@ Public Class frmMinorDetails
         txtCedulaMenor.Text = minor.MinorID
 
         Dim representativeManager As New RepresentativeManager()
-        representatives = representativeManager.loadAllFromDB()
+        representatives = representativeManager.searchByMinorID(minor.MinorID
+                                                                )
 
         dgvRepresentatives.ReadOnly = True ' Set the DataGridView to read-only
         dgvRepresentatives.AllowUserToAddRows = False ' Disable the ability to add new rows

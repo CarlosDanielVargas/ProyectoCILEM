@@ -16,6 +16,7 @@ Public Class frmLoggin
             If user.HasChangedPassword = 0 Then
                 MessageBox.Show("Debe cambiar su contraseña, dentro de la sección Mi cuenta")
             End If
+            frmMain.TopMost = True ' Mostrar por encima de las demás ventanas
             Me.WindowState = FormWindowState.Minimized
             frmMain.ShowDialog()
             userManager.LogoutUser(user.UserID)
@@ -23,5 +24,9 @@ Public Class frmLoggin
         Else
             MessageBox.Show("Usuario o contraseña incorrectos")
         End If
+    End Sub
+
+    Private Sub frmLoggin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

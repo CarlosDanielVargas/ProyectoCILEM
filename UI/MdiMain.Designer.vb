@@ -37,13 +37,13 @@ Partial Class MdiMain
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemAddUser = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuItemListUsers = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuItemMyAccount = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.menuItemMyAccount = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -55,7 +55,7 @@ Partial Class MdiMain
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.menuItemMyAccount})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(843, 28)
+        Me.MenuStrip.Size = New System.Drawing.Size(975, 28)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -129,13 +129,19 @@ Partial Class MdiMain
         Me.menuItemListUsers.Size = New System.Drawing.Size(198, 26)
         Me.menuItemListUsers.Text = "Listar usuarios"
         '
+        'menuItemMyAccount
+        '
+        Me.menuItemMyAccount.Name = "menuItemMyAccount"
+        Me.menuItemMyAccount.Size = New System.Drawing.Size(88, 24)
+        Me.menuItemMyAccount.Text = "Mi cuenta"
+        '
         'ToolStrip
         '
         Me.ToolStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripSeparator2})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 28)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(843, 27)
+        Me.ToolStrip.Size = New System.Drawing.Size(975, 27)
         Me.ToolStrip.TabIndex = 6
         Me.ToolStrip.Text = "ToolStrip"
         '
@@ -157,10 +163,10 @@ Partial Class MdiMain
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 532)
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 447)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.StatusStrip.Size = New System.Drawing.Size(843, 26)
+        Me.StatusStrip.Size = New System.Drawing.Size(975, 26)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -170,25 +176,23 @@ Partial Class MdiMain
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(54, 20)
         Me.ToolStripStatusLabel.Text = "Estado"
         '
-        'menuItemMyAccount
-        '
-        Me.menuItemMyAccount.Name = "menuItemMyAccount"
-        Me.menuItemMyAccount.Size = New System.Drawing.Size(88, 24)
-        Me.menuItemMyAccount.Text = "Mi cuenta"
-        '
         'MdiMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(843, 558)
+        Me.BackColor = System.Drawing.SystemColors.Window
+        Me.BackgroundImage = Global.UI.My.Resources.Resources.logo_san_ramon_33_op
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.ClientSize = New System.Drawing.Size(975, 473)
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
+        Me.DoubleBuffered = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "MdiMain"
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro de Estudiantes CILEM"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
