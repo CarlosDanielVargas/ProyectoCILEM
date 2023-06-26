@@ -43,8 +43,10 @@ Partial Class frmRepresentativeDetails
         Me.txtCorreoElectronico = New System.Windows.Forms.Label()
         Me.txtCedula = New System.Windows.Forms.Label()
         Me.lbMinors = New System.Windows.Forms.Label()
-        Me.lboxMinors = New System.Windows.Forms.ListBox()
+        Me.btnExport = New System.Windows.Forms.Button()
+        Me.dgvMinors = New System.Windows.Forms.DataGridView()
         Me.tbLPnlRepresentative.SuspendLayout()
+        CType(Me.dgvMinors, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbIndications
@@ -291,16 +293,33 @@ Partial Class frmRepresentativeDetails
         Me.lbMinors.TabIndex = 9
         Me.lbMinors.Text = "Menores asociados y relación que tiene el representante:"
         '
-        'lboxMinors
+        'btnExport
         '
-        Me.lboxMinors.Enabled = False
-        Me.lboxMinors.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.lboxMinors.FormattingEnabled = True
-        Me.lboxMinors.ItemHeight = 22
-        Me.lboxMinors.Location = New System.Drawing.Point(12, 429)
-        Me.lboxMinors.Name = "lboxMinors"
-        Me.lboxMinors.Size = New System.Drawing.Size(788, 224)
-        Me.lboxMinors.TabIndex = 10
+        Me.btnExport.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(160, Byte), Integer))
+        Me.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExport.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExport.ForeColor = System.Drawing.Color.White
+        Me.btnExport.Location = New System.Drawing.Point(536, 36)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Size = New System.Drawing.Size(243, 35)
+        Me.btnExport.TabIndex = 30
+        Me.btnExport.Text = "Descargar informe"
+        Me.btnExport.UseVisualStyleBackColor = False
+        '
+        'dgvMinors
+        '
+        Me.dgvMinors.AllowUserToAddRows = False
+        Me.dgvMinors.AllowUserToDeleteRows = False
+        Me.dgvMinors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvMinors.BackgroundColor = System.Drawing.SystemColors.Window
+        Me.dgvMinors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvMinors.Location = New System.Drawing.Point(12, 429)
+        Me.dgvMinors.Name = "dgvMinors"
+        Me.dgvMinors.ReadOnly = True
+        Me.dgvMinors.RowHeadersWidth = 51
+        Me.dgvMinors.RowTemplate.Height = 24
+        Me.dgvMinors.Size = New System.Drawing.Size(767, 221)
+        Me.dgvMinors.TabIndex = 31
         '
         'frmRepresentativeDetails
         '
@@ -308,8 +327,9 @@ Partial Class frmRepresentativeDetails
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(821, 665)
-        Me.Controls.Add(Me.lboxMinors)
+        Me.ClientSize = New System.Drawing.Size(796, 665)
+        Me.Controls.Add(Me.dgvMinors)
+        Me.Controls.Add(Me.btnExport)
         Me.Controls.Add(Me.lbMinors)
         Me.Controls.Add(Me.lbIndications)
         Me.Controls.Add(Me.tbLPnlRepresentative)
@@ -323,6 +343,7 @@ Partial Class frmRepresentativeDetails
         Me.Text = "Detalles de representante legal"
         Me.tbLPnlRepresentative.ResumeLayout(False)
         Me.tbLPnlRepresentative.PerformLayout()
+        CType(Me.dgvMinors, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -348,5 +369,6 @@ Partial Class frmRepresentativeDetails
 	Friend WithEvents txtEstadoCivil As Label
 	Friend WithEvents txtCorreoElectronico As Label
     Friend WithEvents lbMinors As Label
-    Friend WithEvents lboxMinors As ListBox
+    Friend WithEvents btnExport As Button
+    Friend WithEvents dgvMinors As DataGridView
 End Class

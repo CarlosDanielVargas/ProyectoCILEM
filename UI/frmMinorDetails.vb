@@ -2,8 +2,9 @@
 Imports DOM
 
 Public Class frmMinorDetails
-    Private minor As Minor
+    Property minor As Minor
     Private representatives As List(Of Representative)
+    Private payments As List(Of MonthlyPayment)
 
 
     ' Constructor para recibir los datos del niño y el encargado legal
@@ -24,14 +25,15 @@ Public Class frmMinorDetails
         txtNivel.Text = minor.Level.Name
         txtGenero.Text = minor.Gender
         txtBeca.Text = minor.HasSchoolarship
-        txtPago.Text = minor.CurrentPayment
         txtMetodoRecomendacion.Text = minor.RecommendationMethod
         txtCedulaMenor.Text = minor.MinorID
 
         Dim representativeManager As New RepresentativeManager()
-        representatives = representativeManager.searchByMinorID(minor.MinorID
-                                                                )
+        representatives = representativeManager.searchByMinorID(minor.MinorID)
 
+        payments = minor.Payments
+
+        ' Poblate the DataGridView with the representatives
         dgvRepresentatives.ReadOnly = True ' Set the DataGridView to read-only
         dgvRepresentatives.AllowUserToAddRows = False ' Disable the ability to add new rows
 
@@ -68,16 +70,28 @@ Public Class frmMinorDetails
 
         dgvRepresentatives.Columns.Add(btnDetallesColumn)
 
-
-
         ' Add the representatives to the DataGridView
         For Each representative As Representative In representatives
             dgvRepresentatives.Rows.Add(representative.Name, representative.RepresentativeID, representative.Mail, representative.Phone)
         Next
 
-        ' Disable editing for the DataGridView
-        dgvRepresentatives.ReadOnly = True
+        ' Poblate the DataGridView with the payments
+        dgvPayments.ReadOnly = True ' Set the DataGridView to read-only
+        dgvPayments.AllowUserToAddRows = False ' Disable the ability to add new rows
 
+        dgvPayments.Columns.Add("Fecha", "Fecha")
+        dgvPayments.Columns.Add("Monto", "Monto")
+        dgvPayments.Columns.Add("Mes cancelado", "Mes cancelado")
+        dgvPayments.Columns.Add("Observaciones", "Observaciones")
+        dgvPayments.Columns.Add("Nº Depósito", "Nº Depósito")
+
+        For Each column As DataGridViewColumn In dgvPayments.Columns
+            column.ReadOnly = True ' Set individual columns to read-only
+        Next
+
+        For Each payment As MonthlyPayment In payments
+            dgvPayments.Rows.Add(payment.PaymentDate, payment.Value, payment.Month, payment.Observation, payment.DepositNumber)
+        Next
 
     End Sub
 
@@ -107,5 +121,9 @@ Public Class frmMinorDetails
             form.MdiParent = Me.MdiParent
             form.Show()
         End If
+    End Sub
+
+    Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
+        ExcelUtility.ExportMinorDetailsToExcel(Me)
     End Sub
 End Class

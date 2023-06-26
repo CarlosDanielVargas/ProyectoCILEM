@@ -107,7 +107,7 @@ Public Class User
     End Function
 
     'Validate all and return message with errors
-    Public Function ValidateAll()
+    Public Sub ValidateAll()
         Dim message As String = ""
         If Not ValidateName() Then
             message += "El nombre no puede estar vacío. "
@@ -120,10 +120,10 @@ Public Class User
         Else
             Throw New Exception(message)
         End If
-    End Function
+    End Sub
 
     'Validate all and return message with errors
-    Public Function ValidateAllChangePassword()
+    Public Sub ValidateAllChangePassword()
         Dim message As String = ""
         If Not ValidatePasswords() Then
             message += "Las contraseñas no coinciden. "
@@ -139,14 +139,13 @@ Public Class User
         Else
             Throw New Exception(message)
         End If
-    End Function
+    End Sub
 
     'Generate first random password
-    Public Function GenerateRandomPassword()
-        Dim chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,"
-        Dim random = New Random()
-        Dim result = New String(Enumerable.Repeat(chars, 8).[Select](Function(s) s(random.[Next](s.Length))).ToArray())
+    Public Sub GenerateRandomPassword()
+        Dim result As String = "Contra" + IDCard
         Password = result
-    End Function
+        Password = EncryptPassword()
+    End Sub
 
 End Class

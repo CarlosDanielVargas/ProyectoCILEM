@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="Globals.vb" />
     <Compile Include="Level.vb" />
-    <Compile Include="MonthlyPayments.vb" />
+    <Compile Include="MonthlyPayment.vb" />
     <Compile Include="Representative.vb" />
     <Compile Include="Minor.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

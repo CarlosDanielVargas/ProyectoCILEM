@@ -1,13 +1,13 @@
-﻿Public Class MonthlyPayments
+﻿Public Class MonthlyPayment
     ' Attributes
     Public Property MonthlyPaymentID As Integer
     Public Property Value As Double
     Public Property PaymentDate As Date
     Public Property Month As String
-    Public Property Description As String
+    Public Property Observation As String
     Public Property MinorID As String
     Public Property Minor As Minor
-    Public Property TransferNumber As String
+    Public Property DepositNumber As String
 
     ' Constructor
     Public Sub New()
@@ -15,10 +15,10 @@
         Me.Value = 0
         Me.PaymentDate = Date.Now
         Me.Month = ""
-        Me.Description = ""
+        Me.Observation = ""
         Me.MinorID = ""
         Me.Minor = New Minor()
-        Me.TransferNumber = ""
+        Me.DepositNumber = ""
     End Sub
 
     ' Validations
@@ -55,7 +55,7 @@
     End Function
 
     Public Function ValidateTransferNumber() As Boolean
-        If Me.TransferNumber <> "" Then
+        If Me.DepositNumber <> "" Then
             Return True
         Else
             Return False

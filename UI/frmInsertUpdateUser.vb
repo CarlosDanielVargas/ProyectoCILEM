@@ -117,7 +117,7 @@ Public Class frmInsertUpdateUser
                 End If
                 userManager.UpdateToDB(user)
             Else
-                    user.GenerateRandomPassword()
+                user.GenerateRandomPassword()
                 user.HasChangedPassword = User.ChangedPassword.No
                 userManager.SaveToDB(user)
             End If

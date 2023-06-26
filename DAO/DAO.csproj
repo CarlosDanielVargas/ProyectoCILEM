@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOMonthlyPayments.cs" />
     <Compile Include="DAO_Level.cs" />
     <Compile Include="DAO_RepresentativeMinor.cs" />
     <Compile Include="DAO_Representative.cs" />
