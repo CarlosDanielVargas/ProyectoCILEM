@@ -40,7 +40,7 @@ namespace BL
         {
             try
             {
-                daoMinor.updateToDB(minor);
+                daoMinor.UpdateToDB(minor);
             }
             catch (Exception ex)
             {

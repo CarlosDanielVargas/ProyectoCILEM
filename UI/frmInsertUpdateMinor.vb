@@ -6,55 +6,80 @@ Public Class frmInsertUpdateMinor
     Private representativeMinors As List(Of RepresentativeMinor)
     Private filteredRepresentatives As List(Of Representative)
     Private representatives As List(Of Representative)
+    Private payments As List(Of MonthlyPayment)
     Private minor As Minor
-    Private isNew As Boolean
+    Private isNew As Boolean = False
     Private preexistingRepresentatives As List(Of Representative)
     Private preexistingRepresentativeMinors As List(Of RepresentativeMinor)
+    Private preexistingPayments As List(Of MonthlyPayment)
     Private parent As frmMinorList
 
     Private Sub frmNewMinor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Size the form to fit the screen
+        Me.MaximumSize = New Size(Me.Width, 700)
+        Me.MinimumSize = New Size(Me.Width, 700)
+
         ' Initialize the form controls and data
         Dim levelManager As New LevelManager()
         cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
-        cboxGender.SelectedIndex = 0
         cboxSchoolarship.DataSource = [Enum].GetValues(GetType(Minor.HasSchoolarshipEnum))
-        cboxSchoolarship.SelectedIndex = 0
         cbRelationship.DataSource = [Enum].GetValues(GetType(Representative.RelationshipEnum))
-        cbRelationship.SelectedIndex = 0
+        cboxRecommendationMethod.DataSource = [Enum].GetValues(GetType(Minor.RecommendationMethodEnum))
         cboxLevels.DataSource = levelManager.loadAllFromDB()
         cboxLevels.DisplayMember = "Name"
         cboxLevels.ValueMember = "LevelID"
+        tbValue.Text = "0"
+        cboxWorkDay.DataSource = [Enum].GetValues(GetType(Minor.WorkingDayEnum))
+        cboxWorkDay.SelectedItem = Minor.WorkingDayEnum.Medio_Tiempo
 
         dgvRepresentatives.ReadOnly = True
         dgvRepresentatives.AllowUserToAddRows = False
         dgvRepresentatives.AllowUserToDeleteRows = False
 
+        ' Create a new Minor object if none exists
+        If minor Is Nothing Then
+            minor = New Minor()
+            isNew = True
+        End If
+
+        representatives = minor.Representatives
+        representativeMinors = minor.RepresentativeMinors
+        payments = minor.Payments
+
         ' Populate the form with the existing minor data if available
-        If minor IsNot Nothing Then
+        If minor IsNot Nothing And Not isNew Then
             isNew = False
             cboxLevels.SelectedValue = minor.LevelID
             tbIDCard.Text = minor.MinorID
             tbName.Text = minor.Name
             tbResidency.Text = minor.Residency
-            tbRecommendationMethod.Text = minor.RecommendationMethod
-            tbCurrentPayment.Text = minor.CurrentPayment
             dtpBirthDate.Value = minor.BirthDate
             dtpEnterDate.Value = minor.EnteredDate
             dtpLeaveDate.Value = minor.GraduationDate
             btnSave.Text = "Actualizar"
             Me.Text = "Actualizar menor"
-            representatives = minor.Representatives
-            representativeMinors = minor.RepresentativeMinors
             preexistingRepresentatives = New List(Of Representative)
             preexistingRepresentativeMinors = New List(Of RepresentativeMinor)
+            preexistingPayments = New List(Of MonthlyPayment)
             If representatives IsNot Nothing Then
                 preexistingRepresentatives.AddRange(minor.Representatives)
             End If
             If representativeMinors IsNot Nothing Then
                 preexistingRepresentativeMinors.AddRange(minor.RepresentativeMinors)
             End If
+            If minor.Payments IsNot Nothing Then
+                preexistingPayments.AddRange(minor.Payments)
+            End If
 
-            poblateDataGridView()
+            ' Populate the form with the minor's representatives
+            poblateRepresentativesDataGridView()
+
+            ' Populate the form with the minor's payments
+            PoblatePaymentDataGridView()
+
+            ' Set the value of cboxRecommendationMethod to match the minor's recommendation method
+            Dim recommendationMethod As Minor.RecommendationMethodEnum = [Enum].Parse(GetType(Minor.RecommendationMethodEnum), minor.RecommendationMethod)
+            cboxRecommendationMethod.SelectedItem = recommendationMethod
 
             ' Set the value of cboxGender to match the minor's gender
             Dim gender As Minor.GenderEnum = [Enum].Parse(GetType(Minor.GenderEnum), minor.Gender)
@@ -63,13 +88,13 @@ Public Class frmInsertUpdateMinor
             ' Set the value of cboxSchoolarship to match the minor's schoolarship status
             Dim schoolarship As Minor.HasSchoolarshipEnum = [Enum].Parse(GetType(Minor.HasSchoolarshipEnum), minor.HasSchoolarship)
             cboxSchoolarship.SelectedItem = schoolarship
+
+            ' Set the value of cboxWorkDay to match the minor's working day
+            Dim workDay As Minor.WorkingDayEnum = [Enum].Parse(GetType(Minor.WorkingDayEnum), minor.WorkingDay)
+            cboxWorkDay.SelectedItem = workDay
         End If
 
-        ' Create a new Minor object if none exists
-        If minor Is Nothing Then
-            minor = New Minor()
-            isNew = True
-        End If
+
         btnAddRepresentativeMinor.Enabled = False
     End Sub
 
@@ -107,7 +132,7 @@ Public Class frmInsertUpdateMinor
         lboxFoundRepresentants.DisplayMember = "IDAndName"
     End Sub
 
-    Private Sub lboxFoundRepresentants_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxFoundRepresentants.SelectedIndexChanged
+    Private Sub lboxFoundRepresentants_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dgvRepresentatives.Click, lboxFoundRepresentants.SelectedIndexChanged
         ' Event handler when an item is selected in the lboxFoundRepresentants ListBox
         If lboxFoundRepresentants.SelectedItem IsNot Nothing Then
             Dim rep As Representative = lboxFoundRepresentants.SelectedItem
@@ -138,7 +163,7 @@ Public Class frmInsertUpdateMinor
             representatives = New List(Of Representative)
         End If
         representatives.Add(selectedRepresentative)
-        poblateDataGridView()
+        poblateRepresentativesDataGridView()
 
         ' Remove the selected representative from the filtered list
         filteredRepresentatives.Remove(selectedRepresentative)
@@ -164,13 +189,14 @@ Public Class frmInsertUpdateMinor
             minor.EnteredDate = dtpEnterDate.Value
             minor.GraduationDate = dtpLeaveDate.Value
             minor.HasSchoolarship = cboxSchoolarship.SelectedItem.ToString()
-            minor.RecommendationMethod = tbRecommendationMethod.Text
+            minor.RecommendationMethod = cboxRecommendationMethod.SelectedItem.ToString()
             minor.Residency = tbResidency.Text
             minor.Gender = cboxGender.SelectedItem.ToString()
-            minor.CurrentPayment = Double.Parse(tbCurrentPayment.Text)
             minor.RepresentativeMinors = representativeMinors
             minor.Representatives = representatives
+            minor.Payments = payments
             minor.LevelID = cboxLevels.SelectedItem.LevelID
+            minor.WorkingDay = cboxWorkDay.SelectedItem.ToString()
 
             ' Validate the minor object
             minor.ValidateAll()
@@ -182,6 +208,7 @@ Public Class frmInsertUpdateMinor
             Else
                 minor.Representatives = representatives.Except(preexistingRepresentatives).ToList()
                 minor.RepresentativeMinors = representativeMinors.Except(preexistingRepresentativeMinors).ToList()
+                minor.Payments = payments.Except(preexistingPayments).ToList()
                 minorManager.updateToDB(minor)
                 MessageBox.Show(Me.MdiParent, "Se ha actualizado correctamente la información del estudiante")
             End If
@@ -198,7 +225,7 @@ Public Class frmInsertUpdateMinor
         End Try
     End Sub
 
-    Private Sub poblateDataGridView()
+    Private Sub poblateRepresentativesDataGridView()
         ' Populate the DataGridView with the representatives associated with the minor
         dgvRepresentatives.Columns.Clear()
         dgvRepresentatives.ReadOnly = True ' Set the DataGridView to read-only
@@ -238,7 +265,29 @@ Public Class frmInsertUpdateMinor
 
     End Sub
 
-    Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRepresentatives.CellContentClick
+    Private Sub PoblatePaymentDataGridView()
+        dgvPayments.Columns.Clear()
+        dgvPayments.ReadOnly = True ' Set the DataGridView to read-only
+        dgvPayments.AllowUserToAddRows = False ' Disable the ability to add new rows
+
+        dgvPayments.Columns.Add("Fecha", "Fecha")
+        dgvPayments.Columns.Add("Monto", "Monto")
+        dgvPayments.Columns.Add("Mes cancelado", "Mes cancelado")
+        dgvPayments.Columns.Add("Observaciones", "Observaciones")
+        dgvPayments.Columns.Add("Nº Depósito", "Nº Depósito")
+
+        For Each column As DataGridViewColumn In dgvPayments.Columns
+            column.ReadOnly = True ' Set individual columns to read-only
+        Next
+
+        dgvPayments.Rows.Clear()
+
+        For Each payment As MonthlyPayment In payments
+            dgvPayments.Rows.Add(payment.PaymentDate, payment.Value, payment.Month, payment.Observation, payment.DepositNumber)
+        Next
+    End Sub
+
+    Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
         ' Check if the clicked cell is a button cell and the corresponding column index
         If e.ColumnIndex = dgvRepresentatives.Columns("Detalles").Index AndAlso e.RowIndex >= 0 Then
             ' "Detalles" button clicked
@@ -278,7 +327,7 @@ Public Class frmInsertUpdateMinor
                     MessageBox.Show("Se ha eliminado correctamente la relación entre este representante legal y el menor")
 
                     ' Reload the DataGridView data after deletion
-                    poblateDataGridView()
+                    poblateRepresentativesDataGridView()
 
                 End If
             Catch ex As Exception
@@ -286,5 +335,35 @@ Public Class frmInsertUpdateMinor
             End Try
 
         End If
+    End Sub
+
+    Private Sub btnAddPayment_Click(sender As Object, e As EventArgs) Handles btnAddPayment.Click
+        Try
+            ' Ask if the user wants to add a new payment because this is an irreversible action
+            Dim result As DialogResult = MessageBox.Show("¿Estás seguro de que deseas agregar un nuevo pago? Estos registros no pueden eliminarse o editarse", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim montlyPayment As MonthlyPayment = New MonthlyPayment()
+            montlyPayment.PaymentDate = dtpDayPaid.Value
+            montlyPayment.Value = tbValue.Text
+            montlyPayment.Month = tbMonth.Text
+            montlyPayment.Observation = tbObservation.Text
+            montlyPayment.DepositNumber = tbDepositNumber.Text
+            montlyPayment.Validate()
+
+            If result = DialogResult.Yes Then
+                ' Add the payment to the list
+                payments.Add(montlyPayment)
+
+                ' Reload the DataGridView data after addition
+                PoblatePaymentDataGridView()
+
+                ' Clear the textboxes
+                tbValue.Text = "0"
+                tbMonth.Text = ""
+                tbObservation.Text = ""
+                tbDepositNumber.Text = ""
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 End Class

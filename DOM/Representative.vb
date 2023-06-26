@@ -35,6 +35,10 @@ Public Class Representative
         Padre
         Madre
         Tutor
+        Tío
+        Tía
+        Abuelo
+        Abuela
         Otro
     End Enum
 
@@ -165,7 +169,7 @@ Public Class Representative
     'Methods
 
     'Validate if the representative is valid and creates the error message
-    Public Function ValidateAll()
+    Public Sub ValidateAll()
         Dim errorMessage As String = ""
         If Not ValidateName() Then
             errorMessage += "El nombre no puede estar vacío." + vbCrLf
@@ -197,7 +201,7 @@ Public Class Representative
         If errorMessage <> "" Then
             Throw New Exception(errorMessage)
         End If
-    End Function
+    End Sub
 
 
 

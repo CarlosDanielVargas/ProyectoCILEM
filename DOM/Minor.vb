@@ -11,19 +11,18 @@
     Property RecommendationMethod As String
     Property LevelID As Integer
     Property HasSchoolarship As String
-    Property CurrentPayment As Double
     Property Relationship As String
+    Property WorkingDay As String
+    Property Payments As List(Of MonthlyPayment)
     Property Representatives As List(Of Representative)
     Property RepresentativeMinors As List(Of RepresentativeMinor)
     Property Level As Level
-    Public ReadOnly Property IdAndNameAndRelationship As String
-        Get
-            Return Me.MinorID & " - " & Me.Name & " - " & Me.Relationship
-        End Get
-    End Property
-
 
     'Enums
+    Enum WorkingDayEnum
+        Medio_Tiempo
+        Tiempo_Completo
+    End Enum
     Enum HasSchoolarshipEnum
         Sí
         No
@@ -33,16 +32,26 @@
         Masculino
         Femenino
     End Enum
+
+    Enum RecommendationMethodEnum
+        UCR_Administativo
+        UCR_Profesor
+        UCR_Estudiante
+        Comunidad
+        Otro
+    End Enum
+
     'Constructors
 
     'Empty constructor
     Public Sub New()
         Me.Representatives = New List(Of Representative)
         Me.RepresentativeMinors = New List(Of RepresentativeMinor)
+        Me.Payments = New List(Of MonthlyPayment)
     End Sub
 
     'Constructor with all the parameters
-    Public Sub New(ByVal minorID As String, ByVal name As String, ByVal birthDate As Date, ByVal enteredDate As Date, ByVal graduationDate As Date, ByVal residency As String, ByVal gender As Char, ByVal recommendationMethod As String, ByVal level As Integer, ByVal hasSchoolarship As String, ByVal currentPayment As Double, ByVal representatives As List(Of Representative))
+    Public Sub New(ByVal minorID As String, ByVal name As String, ByVal birthDate As Date, ByVal enteredDate As Date, ByVal graduationDate As Date, ByVal residency As String, ByVal gender As Char, ByVal recommendationMethod As String, ByVal level As Integer, ByVal hasSchoolarship As String, ByVal representatives As List(Of Representative))
         Me.MinorID = minorID
         Me.Name = name
         Me.BirthDate = birthDate
@@ -53,7 +62,6 @@
         Me.RecommendationMethod = recommendationMethod
         Me.LevelID = level
         Me.HasSchoolarship = hasSchoolarship
-        Me.CurrentPayment = currentPayment
         Me.Representatives = representatives
     End Sub
 
@@ -155,24 +163,6 @@
         End If
     End Function
 
-    'Validate if the current payment is not empty
-    Public Function ValidateCurrentPayment() As Boolean
-        If Me.CurrentPayment <> 0 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
-    'Validate if the current payment is equal or greater than 0
-    Public Function ValidateCurrentPaymentValue() As Boolean
-        If Me.CurrentPayment >= 0 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
     'Validate if the list of representatives is not empty
     Public Function ValidateRepresentatives() As Boolean
         If Me.Representatives.Count <> 0 Then
@@ -220,17 +210,11 @@
         If ValidateRecommendationMethod() = False Then
             exceptionError += "El método de recomendación del menor no puede estar vacío." + vbNewLine
         End If
-        'If ValidateLevel() = False Then
-        '    exceptionError += "El nivel del menor no puede estar vacío." + vbNewLine
-        'End If
+        If ValidateLevel() = False Then
+            exceptionError += "El nivel del menor no puede estar vacío." + vbNewLine
+        End If
         If ValidateHasSchoolarship() = False Then
             exceptionError += "El menor debe tener o no beca." + vbNewLine
-        End If
-        If ValidateCurrentPayment() = False Then
-            exceptionError += "El pago actual del menor no puede estar vacío." + vbNewLine
-        End If
-        If ValidateCurrentPaymentValue() = False Then
-            exceptionError += "El pago actual del menor no puede ser menor a 0." + vbNewLine
         End If
         If ValidateRepresentatives() = False Then
             exceptionError += "El menor debe tener al menos un representante." + vbNewLine

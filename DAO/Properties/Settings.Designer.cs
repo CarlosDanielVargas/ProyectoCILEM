@@ -33,5 +33,27 @@ namespace DAO.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-EGCK7MJ;Initial Catalog=Registro_CILEM;Integrated Security=Tr" +
+            "ue")]
+        public string ConnectionString_Copy {
+            get {
+                return ((string)(this["ConnectionString_Copy"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.0.185,1433;Initial Catalog=Registro_CILEM;User ID=usuario_cil" +
+            "em;Password=Password")]
+        public string Valor {
+            get {
+                return ((string)(this["Valor"]));
+            }
+        }
     }
 }

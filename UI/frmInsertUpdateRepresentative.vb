@@ -39,9 +39,7 @@ Public Class frmInsertUpdateRepresentative
 
     Private Sub frmNewRepresentative_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboxGender.DataSource = [Enum].GetValues(GetType(Representative.GenderEnum))
-        cboxGender.SelectedIndex = 0
         cboxMaritalStatus.DataSource = [Enum].GetValues(GetType(Representative.MaritalStatusEnum))
-        cboxMaritalStatus.SelectedIndex = 0
 
         If Not isNew Then
             tbIDCard.Text = representative.RepresentativeID

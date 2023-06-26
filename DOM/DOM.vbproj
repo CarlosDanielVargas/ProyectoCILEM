@@ -65,7 +65,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Globals.vb" />
     <Compile Include="Level.vb" />
+    <Compile Include="MonthlyPayment.vb" />
     <Compile Include="Representative.vb" />
     <Compile Include="Minor.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -85,6 +87,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RepresentativeMinor.vb" />
+    <Compile Include="User.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

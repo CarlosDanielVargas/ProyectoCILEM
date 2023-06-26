@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{A4A2
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UI", "UI\UI.vbproj", "{D3585674-52C4-4FD7-BB00-16230AFD27EA}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{29AF114B-CFB2-4F42-8122-87F9182D1467}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,10 +38,12 @@ Global
 		{A4A2072D-E9E0-4C52-A585-02F784C2AD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4A2072D-E9E0-4C52-A585-02F784C2AD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4A2072D-E9E0-4C52-A585-02F784C2AD3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3585674-52C4-4FD7-BB00-16230AFD27EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3585674-52C4-4FD7-BB00-16230AFD27EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3585674-52C4-4FD7-BB00-16230AFD27EA}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{D3585674-52C4-4FD7-BB00-16230AFD27EA}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{D3585674-52C4-4FD7-BB00-16230AFD27EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3585674-52C4-4FD7-BB00-16230AFD27EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29AF114B-CFB2-4F42-8122-87F9182D1467}.Debug|Any CPU.ActiveCfg = Debug
+		{29AF114B-CFB2-4F42-8122-87F9182D1467}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
