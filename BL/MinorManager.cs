@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +40,31 @@ namespace BL
         {
             try
             {
-                daoMinor.updateToDB(minor);
+                daoMinor.UpdateToDB(minor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void deleteFromDB(Minor minor)
+        {
+            try
+            {
+                daoMinor.deleteFromDB(minor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Minor searchByID(string id)
+        {
+            try
+            {
+                return daoMinor.searchByID(id);
             }
             catch (Exception ex)
             {

@@ -9,10 +9,12 @@ Public Class Representative
     Property Phone As String
     Property MaritalStatus As String
     Property Residency As String
-    Property Gender As Char
+    Property Gender As String
     Property Occupation As String
     Property WorkPlace As String
     Property Relationship As String
+    Property Minors As List(Of Minor)
+    Property RepresentativeMinors As List(Of RepresentativeMinor)
 
     Public ReadOnly Property IDAndName As String
         Get
@@ -33,6 +35,10 @@ Public Class Representative
         Padre
         Madre
         Tutor
+        Tío
+        Tía
+        Abuelo
+        Abuela
         Otro
     End Enum
 
@@ -74,13 +80,6 @@ Public Class Representative
     Public Sub New(ByVal representativeID As Integer, ByVal name As String)
         Me.RepresentativeID = representativeID
         Me.Name = name
-    End Sub
-
-    Public Sub New(v1 As String, v2 As String, v3 As String, v4 As String)
-        Me.v1 = v1
-        Me.v2 = v2
-        Me.v3 = v3
-        Me.v4 = v4
     End Sub
 
     'Validations
@@ -166,6 +165,44 @@ Public Class Representative
             Return False
         End If
     End Function
+
+    'Methods
+
+    'Validate if the representative is valid and creates the error message
+    Public Sub ValidateAll()
+        Dim errorMessage As String = ""
+        If Not ValidateName() Then
+            errorMessage += "El nombre no puede estar vacío." + vbCrLf
+        End If
+        If Not ValidateMail() Then
+            errorMessage += "El correo no puede estar vacío." + vbCrLf
+        End If
+        If Not ValidatePhone() Then
+            errorMessage += "El teléfono no puede estar vacío." + vbCrLf
+        End If
+        If Not ValidateMaritalStatus() Then
+            errorMessage += "El estado civil no puede estar vacío." + vbCrLf
+        End If
+        If Not ValidateResidency() Then
+            errorMessage += "La residencia no puede estar vacía." + vbCrLf
+        End If
+        If Not ValidateOccupation() Then
+            errorMessage += "La ocupación no puede estar vacía." + vbCrLf
+        End If
+        If Not ValidateWorkPlace() Then
+            errorMessage += "El lugar de trabajo no puede estar vacío." + vbCrLf
+        End If
+        If Not ValidateRepresentativeID() Then
+            errorMessage += "El ID del representante no puede estar vacío." + vbCrLf
+        End If
+        If Not ValidateMailFormat() Then
+            errorMessage += "El correo no tiene un formato válido." + vbCrLf
+        End If
+        If errorMessage <> "" Then
+            Throw New Exception(errorMessage)
+        End If
+    End Sub
+
 
 
 End Class

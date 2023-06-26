@@ -1,4 +1,4 @@
-﻿using DAO;
+using DAO;
 using DOM;
 using System;
 using System.Collections.Generic;
@@ -46,6 +46,11 @@ namespace BL
             {
                 throw ex;
             }
+        }
+
+        public List<Representative> RepresentativeList()
+        {
+            return new DAO_Representative().loadAllFromDB();
         }
 
         public void deleteFromDB(Representative representative)
