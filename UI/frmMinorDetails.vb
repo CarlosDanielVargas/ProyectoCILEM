@@ -27,6 +27,7 @@ Public Class frmMinorDetails
         txtBeca.Text = minor.HasSchoolarship
         txtMetodoRecomendacion.Text = minor.RecommendationMethod
         txtCedulaMenor.Text = minor.MinorID
+        txtJornada.Text = minor.WorkingDay
 
         Dim representativeManager As New RepresentativeManager()
         representatives = representativeManager.searchByMinorID(minor.MinorID)

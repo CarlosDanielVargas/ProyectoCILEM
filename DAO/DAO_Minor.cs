@@ -34,6 +34,7 @@ namespace DAO
                     minor.RecommendationMethod = row["RecommendationMethod"].ToString();
                     minor.Residency = row["Residency"].ToString();
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
+                    minor.WorkingDay = row["WorkingDay"].ToString();
 
                     // Get Level
                     DAO_Level daoLevel = new DAO_Level();
@@ -68,7 +69,7 @@ namespace DAO
                 // Minor insertion to DB
                 SqlCommand insertMinor = new SqlCommand();
                 insertMinor.Connection = connection;
-                insertMinor.CommandText = "INSERT INTO [Minors] ([MinorID], [Name], [BirthDate], [EnterDate], [LeaveDate], [Residency], [Gender], [HasSchoolarship], [LevelID], [RecommendationMethod]) VALUES (@MinorID, @Name, @BirthDate, @EnterDate, @LeaveDate, @Residency, @Gender, @HasSchoolarship, @LevelID, @RecommendationMethod)";
+                insertMinor.CommandText = "INSERT INTO [Minors] ([MinorID], [Name], [BirthDate], [EnterDate], [LeaveDate], [Residency], [Gender], [HasSchoolarship], [LevelID], [RecommendationMethod], [WorkingDay]) VALUES (@MinorID, @Name, @BirthDate, @EnterDate, @LeaveDate, @Residency, @Gender, @HasSchoolarship, @LevelID, @RecommendationMethod, @WorkingDay)";
                 insertMinor.Parameters.AddWithValue("@MinorID", minor.MinorID);
                 insertMinor.Parameters.AddWithValue("@Name", minor.Name);
                 insertMinor.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
@@ -79,6 +80,7 @@ namespace DAO
                 insertMinor.Parameters.AddWithValue("@Residency", minor.Residency);
                 insertMinor.Parameters.AddWithValue("@HasSchoolarship", minor.HasSchoolarship);
                 insertMinor.Parameters.AddWithValue("@LevelID", minor.LevelID);
+                insertMinor.Parameters.AddWithValue("@WorkingDay", minor.WorkingDay);
 
                 connection.Open();
                 insertMinor.ExecuteNonQuery();
@@ -122,7 +124,7 @@ namespace DAO
             {
                 SqlCommand update = new SqlCommand();
                 update.Connection = connection;
-                update.CommandText = "UPDATE Minors SET Name = @Name, BirthDate = @BirthDate, EnterDate = @EnteredDate, LeaveDate = @GraduationDate, Gender = @Gender, Residency = @Residency, LevelID = @LevelID, RecommendationMethod = @RecommendationMethod WHERE MinorID = @MinorID";
+                update.CommandText = "UPDATE Minors SET Name = @Name, BirthDate = @BirthDate, EnterDate = @EnteredDate, LeaveDate = @GraduationDate, Gender = @Gender, Residency = @Residency, LevelID = @LevelID, RecommendationMethod = @RecommendationMethod, WorkingDay = @WorkingDay WHERE MinorID = @MinorID";
                 update.Parameters.AddWithValue("@MinorID", minor.MinorID);
                 update.Parameters.AddWithValue("@Name", minor.Name);
                 update.Parameters.AddWithValue("@BirthDate", minor.BirthDate);
@@ -132,6 +134,7 @@ namespace DAO
                 update.Parameters.AddWithValue("@RecommendationMethod", minor.RecommendationMethod);
                 update.Parameters.AddWithValue("@Residency", minor.Residency);
                 update.Parameters.AddWithValue("@LevelID", minor.LevelID);
+                update.Parameters.AddWithValue("@WorkingDay", minor.WorkingDay);
 
                 connection.Open();
                 update.ExecuteNonQuery();
@@ -155,6 +158,14 @@ namespace DAO
                     connection.Close();
                 }
 
+                //Creation and insertion monthlyPayments to DB
+                List<MonthlyPayment> monthlyPayments = minor.Payments;
+                foreach (MonthlyPayment monthlyPayment in monthlyPayments)
+                {
+                    monthlyPayment.MinorID = minor.MinorID;
+                    DAO_MonthlyPayments daoMonthlyPayments = new DAO_MonthlyPayments();
+                    daoMonthlyPayments.saveToDB(monthlyPayment);
+                }
             }
             catch (Exception ex)
             {
@@ -228,6 +239,7 @@ namespace DAO
                     minor.RecommendationMethod = row["RecommendationMethod"].ToString();
                     minor.Residency = row["Residency"].ToString();
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
+                    minor.WorkingDay = row["WorkingDay"].ToString();
                     minors.Add(minor);
                 }
                 return minors[0];
@@ -266,6 +278,7 @@ namespace DAO
                     minor.Gender = row["Gender"].ToString();
                     minor.RecommendationMethod = row["RecommendationMethod"].ToString();
                     minor.Residency = row["Residency"].ToString();
+                    minor.WorkingDay = row["WorkingDay"].ToString();
                     minor.LevelID = Int32.Parse(row["LevelID"].ToString());
 
                     // Get level

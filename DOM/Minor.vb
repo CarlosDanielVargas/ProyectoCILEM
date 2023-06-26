@@ -12,12 +12,17 @@
     Property LevelID As Integer
     Property HasSchoolarship As String
     Property Relationship As String
+    Property WorkingDay As String
     Property Payments As List(Of MonthlyPayment)
     Property Representatives As List(Of Representative)
     Property RepresentativeMinors As List(Of RepresentativeMinor)
     Property Level As Level
 
     'Enums
+    Enum WorkingDayEnum
+        Medio_Tiempo
+        Tiempo_Completo
+    End Enum
     Enum HasSchoolarshipEnum
         Sí
         No

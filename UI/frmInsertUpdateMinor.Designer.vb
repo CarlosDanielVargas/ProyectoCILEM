@@ -80,6 +80,8 @@ Partial Class frmInsertUpdateMinor
         Me.tbMonth = New System.Windows.Forms.TextBox()
         Me.lbMonth = New System.Windows.Forms.Label()
         Me.lbPayments = New System.Windows.Forms.Label()
+        Me.cboxWorkDay = New System.Windows.Forms.ComboBox()
+        Me.lbWorkDay = New System.Windows.Forms.Label()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -115,6 +117,8 @@ Partial Class frmInsertUpdateMinor
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.cboxWorkDay)
+        Me.Panel1.Controls.Add(Me.lbWorkDay)
         Me.Panel1.Controls.Add(Me.cboxRecommendationMethod)
         Me.Panel1.Controls.Add(Me.cboxLevels)
         Me.Panel1.Controls.Add(Me.lbLevel)
@@ -259,7 +263,7 @@ Partial Class frmInsertUpdateMinor
         Me.tbResidency.Location = New System.Drawing.Point(288, 281)
         Me.tbResidency.Multiline = True
         Me.tbResidency.Name = "tbResidency"
-        Me.tbResidency.Size = New System.Drawing.Size(794, 88)
+        Me.tbResidency.Size = New System.Drawing.Size(794, 54)
         Me.tbResidency.TabIndex = 72
         '
         'lbResidency
@@ -638,6 +642,25 @@ Partial Class frmInsertUpdateMinor
         Me.lbPayments.TabIndex = 0
         Me.lbPayments.Text = "Pagos"
         '
+        'cboxWorkDay
+        '
+        Me.cboxWorkDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.cboxWorkDay.FormattingEnabled = True
+        Me.cboxWorkDay.Location = New System.Drawing.Point(288, 340)
+        Me.cboxWorkDay.Name = "cboxWorkDay"
+        Me.cboxWorkDay.Size = New System.Drawing.Size(791, 28)
+        Me.cboxWorkDay.TabIndex = 86
+        '
+        'lbWorkDay
+        '
+        Me.lbWorkDay.AutoSize = True
+        Me.lbWorkDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbWorkDay.Location = New System.Drawing.Point(9, 340)
+        Me.lbWorkDay.Name = "lbWorkDay"
+        Me.lbWorkDay.Size = New System.Drawing.Size(90, 25)
+        Me.lbWorkDay.TabIndex = 85
+        Me.lbWorkDay.Text = "Jornada:"
+        '
         'frmInsertUpdateMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -730,4 +753,6 @@ Partial Class frmInsertUpdateMinor
     Friend WithEvents lbObservations As Label
     Friend WithEvents dgvPayments As DataGridView
     Friend WithEvents btnAddPayment As Button
+    Friend WithEvents cboxWorkDay As ComboBox
+    Friend WithEvents lbWorkDay As Label
 End Class

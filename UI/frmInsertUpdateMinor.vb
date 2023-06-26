@@ -29,6 +29,8 @@ Public Class frmInsertUpdateMinor
         cboxLevels.DisplayMember = "Name"
         cboxLevels.ValueMember = "LevelID"
         tbValue.Text = "0"
+        cboxWorkDay.DataSource = [Enum].GetValues(GetType(Minor.WorkingDayEnum))
+        cboxWorkDay.SelectedItem = Minor.WorkingDayEnum.Medio_Tiempo
 
         dgvRepresentatives.ReadOnly = True
         dgvRepresentatives.AllowUserToAddRows = False
@@ -86,6 +88,10 @@ Public Class frmInsertUpdateMinor
             ' Set the value of cboxSchoolarship to match the minor's schoolarship status
             Dim schoolarship As Minor.HasSchoolarshipEnum = [Enum].Parse(GetType(Minor.HasSchoolarshipEnum), minor.HasSchoolarship)
             cboxSchoolarship.SelectedItem = schoolarship
+
+            ' Set the value of cboxWorkDay to match the minor's working day
+            Dim workDay As Minor.WorkingDayEnum = [Enum].Parse(GetType(Minor.WorkingDayEnum), minor.WorkingDay)
+            cboxWorkDay.SelectedItem = workDay
         End If
 
 
@@ -190,6 +196,7 @@ Public Class frmInsertUpdateMinor
             minor.Representatives = representatives
             minor.Payments = payments
             minor.LevelID = cboxLevels.SelectedItem.LevelID
+            minor.WorkingDay = cboxWorkDay.SelectedItem.ToString()
 
             ' Validate the minor object
             minor.ValidateAll()

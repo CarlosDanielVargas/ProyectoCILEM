@@ -145,8 +145,11 @@ Public Module ExcelUtility
             worksheet.Cells(11, 1).Value = "Cédula Menor:"
             worksheet.Cells(11, 2).Value = minorForm.txtCedulaMenor.Text
 
+            worksheet.Cells(12, 1).Value = "Jornada:"
+            worksheet.Cells(12, 2).Value = minorForm.txtJornada.Text
+
             ' Set the column headers for representatives
-            Dim headerRow As Integer = 13
+            Dim headerRow As Integer = 14
             worksheet.Cells(headerRow, 1).Value = "Representantes Legales"
             worksheet.Range("A" & headerRow.ToString() & ":E" & headerRow.ToString()).Merge()
             worksheet.Range("A" & headerRow.ToString() & ":E" & headerRow.ToString()).Font.Bold = True
