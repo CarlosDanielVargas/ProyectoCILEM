@@ -107,12 +107,13 @@ Public Class frmInsertUpdateUser
             user.IsActive = cboxIsActive.SelectedIndex
             user.ValidateAll()
             If Not isNew Then
-                If user.Name = Globals.current_user.Name Then
+                If user.Name = Globals.current_user.Name And toChangePassword Then
                     user.Password = tbPassword.Text
                     user.PasswordConfirm = tbPasswordConfirmation.Text
                     user.ValidateAllChangePassword()
                     user.HasChangedPassword = User.ChangedPassword.Sí
                 Else
+                    user.Password = ""
                     parent.refreshUserList()
                 End If
                 userManager.UpdateToDB(user)

@@ -30,6 +30,7 @@ Partial Class frmLoggin
         Me.tbIDCard = New System.Windows.Forms.TextBox()
         Me.lbIDCard = New System.Windows.Forms.Label()
         Me.lbInstructions = New System.Windows.Forms.Label()
+        Me.lbkForgotPassword = New System.Windows.Forms.LinkLabel()
         Me.panelContent.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -37,6 +38,7 @@ Partial Class frmLoggin
         '
         Me.panelContent.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.panelContent.BackColor = System.Drawing.Color.White
+        Me.panelContent.Controls.Add(Me.lbkForgotPassword)
         Me.panelContent.Controls.Add(Me.btnLoggin)
         Me.panelContent.Controls.Add(Me.tbPassword)
         Me.panelContent.Controls.Add(Me.lbPassword)
@@ -112,6 +114,17 @@ Partial Class frmLoggin
         Me.lbInstructions.Text = "Digite sus credenciales para acceder al sistema"
         Me.lbInstructions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'lbkForgotPassword
+        '
+        Me.lbkForgotPassword.AutoSize = True
+        Me.lbkForgotPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
+        Me.lbkForgotPassword.Location = New System.Drawing.Point(500, 250)
+        Me.lbkForgotPassword.Name = "lbkForgotPassword"
+        Me.lbkForgotPassword.Size = New System.Drawing.Size(178, 22)
+        Me.lbkForgotPassword.TabIndex = 6
+        Me.lbkForgotPassword.TabStop = True
+        Me.lbkForgotPassword.Text = "Olvidé mi contraseña"
+        '
         'frmLoggin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -140,4 +153,5 @@ Partial Class frmLoggin
     Friend WithEvents tbPassword As TextBox
     Friend WithEvents lbPassword As Label
     Friend WithEvents btnLoggin As Button
+    Friend WithEvents lbkForgotPassword As LinkLabel
 End Class

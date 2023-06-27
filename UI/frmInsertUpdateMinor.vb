@@ -24,13 +24,33 @@ Public Class frmInsertUpdateMinor
         cboxGender.DataSource = [Enum].GetValues(GetType(Minor.GenderEnum))
         cboxSchoolarship.DataSource = [Enum].GetValues(GetType(Minor.HasSchoolarshipEnum))
         cbRelationship.DataSource = [Enum].GetValues(GetType(Representative.RelationshipEnum))
-        cboxRecommendationMethod.DataSource = [Enum].GetValues(GetType(Minor.RecommendationMethodEnum))
+
         cboxLevels.DataSource = levelManager.loadAllFromDB()
         cboxLevels.DisplayMember = "Name"
         cboxLevels.ValueMember = "LevelID"
         tbValue.Text = "0"
-        cboxWorkDay.DataSource = [Enum].GetValues(GetType(Minor.WorkingDayEnum))
-        cboxWorkDay.SelectedItem = Minor.WorkingDayEnum.Medio_Tiempo
+
+        Dim recommendationMethods As Array = [Enum].GetValues(GetType(Minor.RecommendationMethodEnum))
+        Dim displayValues As New List(Of String)()
+
+        For Each method As Minor.RecommendationMethodEnum In recommendationMethods
+            Dim displayValue As String = method.ToString().Replace("_", " ")
+            displayValues.Add(displayValue)
+        Next
+
+        cboxRecommendationMethod.DataSource = displayValues
+        cboxRecommendationMethod.SelectedItem = Minor.RecommendationMethodEnum.Comunidad.ToString().Replace("_", " ")
+
+        Dim workingDays As Array = [Enum].GetValues(GetType(Minor.WorkingDayEnum))
+        displayValues = New List(Of String)()
+
+        For Each workingDay As Minor.WorkingDayEnum In workingDays
+            Dim displayValue As String = workingDay.ToString().Replace("_", " ")
+            displayValues.Add(displayValue)
+        Next
+
+        cboxWorkDay.DataSource = displayValues
+        cboxWorkDay.SelectedItem = Minor.WorkingDayEnum.Tiempo_Completo.ToString().Replace("_", " ")
 
         dgvRepresentatives.ReadOnly = True
         dgvRepresentatives.AllowUserToAddRows = False
@@ -46,10 +66,13 @@ Public Class frmInsertUpdateMinor
         representativeMinors = minor.RepresentativeMinors
         payments = minor.Payments
 
-        ' Populate the form with the existing minor data if available
+        ' Populate the form with the existing minor data f available
         If minor IsNot Nothing And Not isNew Then
             isNew = False
             cboxLevels.SelectedValue = minor.LevelID
+            cboxSchoolarship.SelectedItem = minor.HasSchoolarship
+            cboxRecommendationMethod.SelectedItem = minor.RecommendationMethod
+            cboxWorkDay.SelectedItem = minor.WorkingDay
             tbIDCard.Text = minor.MinorID
             tbName.Text = minor.Name
             tbResidency.Text = minor.Residency
@@ -92,6 +115,28 @@ Public Class frmInsertUpdateMinor
             ' Set the value of cboxWorkDay to match the minor's working day
             Dim workDay As Minor.WorkingDayEnum = [Enum].Parse(GetType(Minor.WorkingDayEnum), minor.WorkingDay)
             cboxWorkDay.SelectedItem = workDay
+
+            recommendationMethods = [Enum].GetValues(GetType(Minor.RecommendationMethodEnum))
+            displayValues = New List(Of String)()
+
+            For Each method As Minor.RecommendationMethodEnum In recommendationMethods
+                Dim displayValue As String = method.ToString().Replace("_", " ")
+                displayValues.Add(displayValue)
+            Next
+
+            cboxRecommendationMethod.DataSource = displayValues
+            cboxRecommendationMethod.SelectedItem = minor.WorkingDay.ToString().Replace("_", " ")
+
+            workingDays = [Enum].GetValues(GetType(Minor.WorkingDayEnum))
+            displayValues = New List(Of String)()
+
+            For Each workingDay As Minor.WorkingDayEnum In workingDays
+                Dim displayValue As String = workingDay.ToString().Replace("_", " ")
+                displayValues.Add(displayValue)
+            Next
+
+            cboxWorkDay.DataSource = displayValues
+            cboxWorkDay.SelectedItem = minor.WorkingDay.ToString().Replace("_", " ")
         End If
 
 
@@ -189,14 +234,14 @@ Public Class frmInsertUpdateMinor
             minor.EnteredDate = dtpEnterDate.Value
             minor.GraduationDate = dtpLeaveDate.Value
             minor.HasSchoolarship = cboxSchoolarship.SelectedItem.ToString()
-            minor.RecommendationMethod = cboxRecommendationMethod.SelectedItem.ToString()
+            minor.RecommendationMethod = cboxRecommendationMethod.SelectedItem.ToString().Replace(" ", "_")
             minor.Residency = tbResidency.Text
             minor.Gender = cboxGender.SelectedItem.ToString()
             minor.RepresentativeMinors = representativeMinors
             minor.Representatives = representatives
             minor.Payments = payments
             minor.LevelID = cboxLevels.SelectedItem.LevelID
-            minor.WorkingDay = cboxWorkDay.SelectedItem.ToString()
+            minor.WorkingDay = cboxWorkDay.SelectedItem.ToString().Replace(" ", "_")
 
             ' Validate the minor object
             minor.ValidateAll()
@@ -287,7 +332,7 @@ Public Class frmInsertUpdateMinor
         Next
     End Sub
 
-    Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+    Private Sub dgvRepresentatives_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRepresentatives.CellContentClick
         ' Check if the clicked cell is a button cell and the corresponding column index
         If e.ColumnIndex = dgvRepresentatives.Columns("Detalles").Index AndAlso e.RowIndex >= 0 Then
             ' "Detalles" button clicked
@@ -365,5 +410,9 @@ Public Class frmInsertUpdateMinor
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
+    End Sub
+
+    Private Sub pnlRepresentatives_Paint(sender As Object, e As PaintEventArgs) Handles pnlRepresentatives.Paint
+
     End Sub
 End Class

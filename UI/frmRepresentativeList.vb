@@ -65,6 +65,8 @@ Public Class frmRepresentativeList
         cboxGender.DataSource = genderOptions
         cboxGender.SelectedIndex = 0
 
+        lbCurrentFilter.Text = "Filtrado por: Ninguno"
+
         refreshDataGridView() ' Update the DataGridView with all representatives
     End Sub
 

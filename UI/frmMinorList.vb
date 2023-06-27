@@ -68,8 +68,16 @@ Public Class frmMinorList
             btnEditColumn.Text = "Editar"
             btnEditColumn.UseColumnTextForButtonValue = True
 
+            Dim btnMinorPaymentColumn As New DataGridViewButtonColumn()
+            btnMinorPaymentColumn.HeaderText = "Pagos"
+            btnMinorPaymentColumn.Name = "Pagos"
+            btnMinorPaymentColumn.Text = "Pagos"
+            btnMinorPaymentColumn.UseColumnTextForButtonValue = True
+
+
             dgvMinors.Columns.Add(btnDeleteColumn)
             dgvMinors.Columns.Add(btnEditColumn)
+            dgvMinors.Columns.Add(btnMinorPaymentColumn)
         End If
 
         dgvMinors.Columns.Add(btnDetallesColumn)
@@ -120,6 +128,17 @@ Public Class frmMinorList
             Dim minor As Minor = minors(rowIndex)
             ' Open the form for editing the minor details using the minor object
             Dim frm As New frmInsertUpdateMinor(minor, Me)
+            frm.MdiParent = Me.MdiParent
+            frm.Show()
+
+        ElseIf e.ColumnIndex = dgvMinors.Columns("Pagos").Index AndAlso e.RowIndex >= 0 Then
+            ' "Pagos" button clicked
+            ' Get the row index of the clicked cell
+            Dim rowIndex As Integer = e.RowIndex
+            ' Get the Minor object from the list of minors using the row index
+            Dim minor As Minor = minors(rowIndex)
+            ' Open the form for editing the minor details using the minor object
+            Dim frm As New frmAddPayment(minor)
             frm.MdiParent = Me.MdiParent
             frm.Show()
         End If

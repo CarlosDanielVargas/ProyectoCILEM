@@ -2,6 +2,14 @@ Imports System.Windows.Forms
 Imports DOM
 
 Public Class MdiMain
+    Property parent As frmLoggin
+
+    ' Constructor
+    Public Sub New(parent As frmLoggin)
+        InitializeComponent()
+        Me.parent = parent
+    End Sub
+
     ' This method is triggered when the "Show Students" menu item is clicked.
     ' It creates an instance of frmMinorList and displays it as a child window within this MDI form.
     Private Sub menuItemShowStudents_Click(sender As Object, e As EventArgs) Handles menuItemShowStudents.Click
@@ -43,7 +51,7 @@ Public Class MdiMain
         form.Show()
     End Sub
 
-    ' This method is triggered when the "Add User" menu item is clicked.
+    ' This method is triggered when the "Add minor" menu item is clicked.
     ' It creates an instance of frmInsertUpdateUser and displays it as a child window within this MDI form.
     Private Sub menuItemAddUser_Click(sender As Object, e As EventArgs) Handles menuItemAddUser.Click
         Dim form As New frmInsertUpdateUser
@@ -72,6 +80,9 @@ Public Class MdiMain
             menuItemAddUser.Visible = False
             menuItemAddMinor.Visible = False
             menuItemAddRepresentative.Visible = False
+            menuItemListUsers.Visible = False
+            UsuariosToolStripMenuItem.Visible = False
+
         Else
             NivelesToolStripMenuItem.Visible = True
             menuItemAddUser.Visible = True
@@ -88,5 +99,11 @@ Public Class MdiMain
         Dim form As New frmInsertUpdateUser(user)
         form.MdiParent = Me
         form.Show()
+    End Sub
+
+    Private Sub CerrarSesiónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesiónToolStripMenuItem.Click
+        parent.action = "LogIn"
+        parent.ResetForm()
+        Me.Close()
     End Sub
 End Class

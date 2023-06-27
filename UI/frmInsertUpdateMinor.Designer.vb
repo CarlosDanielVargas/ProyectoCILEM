@@ -27,10 +27,10 @@ Partial Class frmInsertUpdateMinor
         Me.lbIndications = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
-        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.DirectoryEntry1 = New System.DirectoryServices.DirectoryEntry()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cboxWorkDay = New System.Windows.Forms.ComboBox()
+        Me.lbWorkDay = New System.Windows.Forms.Label()
         Me.cboxRecommendationMethod = New System.Windows.Forms.ComboBox()
         Me.cboxLevels = New System.Windows.Forms.ComboBox()
         Me.lbLevel = New System.Windows.Forms.Label()
@@ -80,23 +80,23 @@ Partial Class frmInsertUpdateMinor
         Me.tbMonth = New System.Windows.Forms.TextBox()
         Me.lbMonth = New System.Windows.Forms.Label()
         Me.lbPayments = New System.Windows.Forms.Label()
-        Me.cboxWorkDay = New System.Windows.Forms.ComboBox()
-        Me.lbWorkDay = New System.Windows.Forms.Label()
-        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel1.SuspendLayout()
         Me.pnlRepresentatives.SuspendLayout()
         CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgvPayments, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbIndications
         '
         Me.lbIndications.AutoSize = True
         Me.lbIndications.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIndications.Location = New System.Drawing.Point(63, -479)
+        Me.lbIndications.Location = New System.Drawing.Point(24, 9)
         Me.lbIndications.Name = "lbIndications"
         Me.lbIndications.Size = New System.Drawing.Size(384, 29)
         Me.lbIndications.TabIndex = 22
@@ -139,10 +139,29 @@ Partial Class frmInsertUpdateMinor
         Me.Panel1.Controls.Add(Me.lbIDCard)
         Me.Panel1.Controls.Add(Me.tbName)
         Me.Panel1.Controls.Add(Me.lbName)
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Location = New System.Drawing.Point(12, 41)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1102, 497)
+        Me.Panel1.Size = New System.Drawing.Size(1102, 496)
         Me.Panel1.TabIndex = 65
+        '
+        'cboxWorkDay
+        '
+        Me.cboxWorkDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.cboxWorkDay.FormattingEnabled = True
+        Me.cboxWorkDay.Location = New System.Drawing.Point(288, 340)
+        Me.cboxWorkDay.Name = "cboxWorkDay"
+        Me.cboxWorkDay.Size = New System.Drawing.Size(791, 28)
+        Me.cboxWorkDay.TabIndex = 86
+        '
+        'lbWorkDay
+        '
+        Me.lbWorkDay.AutoSize = True
+        Me.lbWorkDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbWorkDay.Location = New System.Drawing.Point(9, 340)
+        Me.lbWorkDay.Name = "lbWorkDay"
+        Me.lbWorkDay.Size = New System.Drawing.Size(90, 25)
+        Me.lbWorkDay.TabIndex = 85
+        Me.lbWorkDay.Text = "Jornada:"
         '
         'cboxRecommendationMethod
         '
@@ -347,7 +366,7 @@ Partial Class frmInsertUpdateMinor
         Me.pnlRepresentatives.Controls.Add(Me.tbRepresentativeName)
         Me.pnlRepresentatives.Controls.Add(Me.lbRepresentativeName)
         Me.pnlRepresentatives.Controls.Add(Me.lbRepresentatives)
-        Me.pnlRepresentatives.Location = New System.Drawing.Point(12, 515)
+        Me.pnlRepresentatives.Location = New System.Drawing.Point(12, 552)
         Me.pnlRepresentatives.Name = "pnlRepresentatives"
         Me.pnlRepresentatives.Size = New System.Drawing.Size(1102, 467)
         Me.pnlRepresentatives.TabIndex = 66
@@ -490,7 +509,7 @@ Partial Class frmInsertUpdateMinor
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.btnSave)
-        Me.Panel3.Location = New System.Drawing.Point(12, 1265)
+        Me.Panel3.Location = New System.Drawing.Point(12, 1302)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1102, 48)
         Me.Panel3.TabIndex = 68
@@ -510,7 +529,7 @@ Partial Class frmInsertUpdateMinor
         Me.Panel2.Controls.Add(Me.tbMonth)
         Me.Panel2.Controls.Add(Me.lbMonth)
         Me.Panel2.Controls.Add(Me.lbPayments)
-        Me.Panel2.Location = New System.Drawing.Point(12, 988)
+        Me.Panel2.Location = New System.Drawing.Point(12, 1025)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1102, 271)
         Me.Panel2.TabIndex = 69
@@ -642,25 +661,6 @@ Partial Class frmInsertUpdateMinor
         Me.lbPayments.TabIndex = 0
         Me.lbPayments.Text = "Pagos"
         '
-        'cboxWorkDay
-        '
-        Me.cboxWorkDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.cboxWorkDay.FormattingEnabled = True
-        Me.cboxWorkDay.Location = New System.Drawing.Point(288, 340)
-        Me.cboxWorkDay.Name = "cboxWorkDay"
-        Me.cboxWorkDay.Size = New System.Drawing.Size(791, 28)
-        Me.cboxWorkDay.TabIndex = 86
-        '
-        'lbWorkDay
-        '
-        Me.lbWorkDay.AutoSize = True
-        Me.lbWorkDay.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbWorkDay.Location = New System.Drawing.Point(9, 340)
-        Me.lbWorkDay.Name = "lbWorkDay"
-        Me.lbWorkDay.Size = New System.Drawing.Size(90, 25)
-        Me.lbWorkDay.TabIndex = 85
-        Me.lbWorkDay.Text = "Jornada:"
-        '
         'frmInsertUpdateMinor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -669,7 +669,7 @@ Partial Class frmInsertUpdateMinor
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1221, 500)
+        Me.ClientSize = New System.Drawing.Size(1156, 500)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.pnlRepresentatives)
@@ -682,8 +682,6 @@ Partial Class frmInsertUpdateMinor
         Me.Name = "frmInsertUpdateMinor"
         Me.ShowInTaskbar = False
         Me.Text = "Agregar menor"
-        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.pnlRepresentatives.ResumeLayout(False)
@@ -693,6 +691,8 @@ Partial Class frmInsertUpdateMinor
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.dgvPayments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

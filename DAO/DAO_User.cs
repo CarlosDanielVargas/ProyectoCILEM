@@ -32,6 +32,7 @@ namespace DAO
                     user.HasChangedPassword = Convert.ToInt32(row["HasChangedPassword"]);
                     user.Name = row["Name"].ToString();
                     user.IDCard = row["IDCard"].ToString();
+                    user.PasswordInitials = row["PasswordInitials"].ToString();
                     users.Add(user);
                 }
                 return users;
@@ -48,7 +49,7 @@ namespace DAO
             {
                 SqlCommand insertUser = new SqlCommand();
                 insertUser.Connection = connection;
-                insertUser.CommandText = "INSERT INTO [Users] ([Password], [Role], [IsActive], [IsLogged], [HasChangedPassword], [Name], [IDCard]) VALUES (@Password, @Role, @IsActive, @IsLogged, @HasChangedPassword, @Name, @IDCard)";
+                insertUser.CommandText = "INSERT INTO [Users] ([Password], [Role], [IsActive], [IsLogged], [HasChangedPassword], [Name], [IDCard], [PasswordInitials]) VALUES (@Password, @Role, @IsActive, @IsLogged, @HasChangedPassword, @Name, @IDCard, @PasswordInitials)";
                 insertUser.Parameters.AddWithValue("@Password", user.Password);
                 insertUser.Parameters.AddWithValue("@Role", user.Role);
                 insertUser.Parameters.AddWithValue("@IsActive", user.IsActive);
@@ -56,6 +57,7 @@ namespace DAO
                 insertUser.Parameters.AddWithValue("@HasChangedPassword", user.HasChangedPassword);
                 insertUser.Parameters.AddWithValue("@Name", user.Name);
                 insertUser.Parameters.AddWithValue("@IDCard", user.IDCard);
+                insertUser.Parameters.AddWithValue("@PasswordInitials", user.PasswordInitials);
 
                 connection.Open();
                 insertUser.ExecuteNonQuery();
@@ -73,9 +75,17 @@ namespace DAO
             {
                 SqlCommand updateUser = new SqlCommand();
                 updateUser.Connection = connection;
-                updateUser.CommandText = "UPDATE Users SET Password = @Password, Role = @Role, IsActive = @IsActive, IsLogged = @IsLogged, HasChangedPassword = @HasChangedPassword, Name = @Name WHERE UserID = @UserID";
+                if(user.Password != "")
+                {
+                    updateUser.CommandText = "UPDATE Users SET Password = @Password, Role = @Role, IsActive = @IsActive, IsLogged = @IsLogged, HasChangedPassword = @HasChangedPassword, Name = @Name, PasswordInitials = @PasswordInitials WHERE UserID = @UserID";
+                    updateUser.Parameters.AddWithValue("@Password", user.Password);
+                    updateUser.Parameters.AddWithValue("@PasswordInitials", user.PasswordInitials);
+                } else
+                {
+                    updateUser.CommandText = "UPDATE Users SET Role = @Role, IsActive = @IsActive, IsLogged = @IsLogged, HasChangedPassword = @HasChangedPassword, Name = @Name WHERE UserID = @UserID";
+                }
+                
                 updateUser.Parameters.AddWithValue("@UserID", user.UserID);
-                updateUser.Parameters.AddWithValue("@Password", user.Password);
                 updateUser.Parameters.AddWithValue("@Role", user.Role);
                 updateUser.Parameters.AddWithValue("@IsActive", user.IsActive);
                 updateUser.Parameters.AddWithValue("@IsLogged", user.IsLogged);
@@ -132,6 +142,7 @@ namespace DAO
                     user.HasChangedPassword = Convert.ToInt32(row["HasChangedPassword"]);
                     user.Name = row["Name"].ToString();
                     user.IDCard = row["IDCard"].ToString();
+                    user.PasswordInitials = row["PasswordInitials"].ToString();
 
                     return user;
                 }
@@ -164,6 +175,7 @@ namespace DAO
                     user.HasChangedPassword = Convert.ToInt32(row["HasChangedPassword"]);
                     user.Name = row["Name"].ToString();
                     user.IDCard = row["IDCard"].ToString();
+                    user.PasswordInitials = row["PasswordInitials"].ToString();
 
                     return user;
                 }

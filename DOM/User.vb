@@ -10,6 +10,7 @@ Public Class User
     Property IsActive As Integer
     Property HasChangedPassword As Integer
     Property IDCard As String
+    Property PasswordInitials As String
 
     Public Sub New()
         UserId = 0
@@ -21,6 +22,7 @@ Public Class User
         IsLogged = 0
         IsActive = 1
         HasChangedPassword = 0
+        PasswordInitials = ""
     End Sub
 
     'Enums
@@ -49,6 +51,7 @@ Public Class User
     'Validate passwords
     Public Function ValidatePasswords() As Boolean
         If Password = PasswordConfirm Then
+            PasswordInitials = Password.Substring(0, 4)
             Return True
         Else
             Return False
@@ -144,7 +147,11 @@ Public Class User
     'Generate first random password
     Public Sub GenerateRandomPassword()
         Dim result As String = "Contra" + IDCard
+        ' Take first 4 characters
+        PasswordInitials = result.Substring(0, 4)
+        ' Set password
         Password = result
+        ' Encrypt password
         Password = EncryptPassword()
     End Sub
 

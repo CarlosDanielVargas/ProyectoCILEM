@@ -48,7 +48,7 @@ Public Module ExcelUtility
                     Dim columnName As String = dataGridView.Columns(colIndex).Name
 
                     ' Skip columns with specified names
-                    If columnName = "Eliminar" Or columnName = "Editar" Or columnName = "Detalles" Then
+                    If columnName = "Eliminar" Or columnName = "Editar" Or columnName = "Detalles" Or columnName = "Pagos" Then
                         Continue For
                     End If
 

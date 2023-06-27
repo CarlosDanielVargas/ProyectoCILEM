@@ -25,9 +25,13 @@ Public Class frmMinorDetails
         txtNivel.Text = minor.Level.Name
         txtGenero.Text = minor.Gender
         txtBeca.Text = minor.HasSchoolarship
-        txtMetodoRecomendacion.Text = minor.RecommendationMethod
+        txtMetodoRecomendacion.Text = minor.RecommendationMethod.ToString().Replace("_", " ")
         txtCedulaMenor.Text = minor.MinorID
-        txtJornada.Text = minor.WorkingDay
+        txtJornada.Text = minor.WorkingDay.ToString().Replace("_", " ")
+
+        lbPayments.Visible = False
+        dgvPayments.Visible = False
+
 
         Dim representativeManager As New RepresentativeManager()
         representatives = representativeManager.searchByMinorID(minor.MinorID)
@@ -67,6 +71,28 @@ Public Class frmMinorDetails
             dgvRepresentatives.Columns.Add(btnDeleteColumn)
             dgvRepresentatives.Columns.Add(btnEditColumn)
 
+            lbPayments.Visible = True
+            dgvPayments.Visible = True
+
+            ' Poblate the DataGridView with the payments
+            dgvPayments.ReadOnly = True ' Set the DataGridView to read-only
+            dgvPayments.AllowUserToAddRows = False ' Disable the ability to add new rows
+
+            dgvPayments.Columns.Add("Fecha", "Fecha")
+            dgvPayments.Columns.Add("Monto", "Monto")
+            dgvPayments.Columns.Add("Mes cancelado", "Mes cancelado")
+            dgvPayments.Columns.Add("Observaciones", "Observaciones")
+            dgvPayments.Columns.Add("Nº Depósito", "Nº Depósito")
+
+            For Each column As DataGridViewColumn In dgvPayments.Columns
+                column.ReadOnly = True ' Set individual columns to read-only
+            Next
+
+            For Each payment As MonthlyPayment In payments
+                dgvPayments.Rows.Add(payment.PaymentDate, payment.Value, payment.Month, payment.Observation, payment.DepositNumber)
+            Next
+        Else
+            Me.Height = 400
         End If
 
         dgvRepresentatives.Columns.Add(btnDetallesColumn)
@@ -74,24 +100,6 @@ Public Class frmMinorDetails
         ' Add the representatives to the DataGridView
         For Each representative As Representative In representatives
             dgvRepresentatives.Rows.Add(representative.Name, representative.RepresentativeID, representative.Mail, representative.Phone)
-        Next
-
-        ' Poblate the DataGridView with the payments
-        dgvPayments.ReadOnly = True ' Set the DataGridView to read-only
-        dgvPayments.AllowUserToAddRows = False ' Disable the ability to add new rows
-
-        dgvPayments.Columns.Add("Fecha", "Fecha")
-        dgvPayments.Columns.Add("Monto", "Monto")
-        dgvPayments.Columns.Add("Mes cancelado", "Mes cancelado")
-        dgvPayments.Columns.Add("Observaciones", "Observaciones")
-        dgvPayments.Columns.Add("Nº Depósito", "Nº Depósito")
-
-        For Each column As DataGridViewColumn In dgvPayments.Columns
-            column.ReadOnly = True ' Set individual columns to read-only
-        Next
-
-        For Each payment As MonthlyPayment In payments
-            dgvPayments.Rows.Add(payment.PaymentDate, payment.Value, payment.Month, payment.Observation, payment.DepositNumber)
         Next
 
     End Sub

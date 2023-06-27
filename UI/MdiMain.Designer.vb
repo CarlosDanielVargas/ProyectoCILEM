@@ -44,6 +44,7 @@ Partial Class MdiMain
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -52,7 +53,7 @@ Partial Class MdiMain
         'MenuStrip
         '
         Me.MenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.menuItemMyAccount})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstudiantesToolStripMenuItem, Me.EncargadosLegalesToolStripMenuItem, Me.NivelesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.menuItemMyAccount, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(975, 28)
@@ -120,13 +121,13 @@ Partial Class MdiMain
         'menuItemAddUser
         '
         Me.menuItemAddUser.Name = "menuItemAddUser"
-        Me.menuItemAddUser.Size = New System.Drawing.Size(198, 26)
+        Me.menuItemAddUser.Size = New System.Drawing.Size(224, 26)
         Me.menuItemAddUser.Text = "Agregar usuario"
         '
         'menuItemListUsers
         '
         Me.menuItemListUsers.Name = "menuItemListUsers"
-        Me.menuItemListUsers.Size = New System.Drawing.Size(198, 26)
+        Me.menuItemListUsers.Size = New System.Drawing.Size(224, 26)
         Me.menuItemListUsers.Text = "Listar usuarios"
         '
         'menuItemMyAccount
@@ -175,6 +176,12 @@ Partial Class MdiMain
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(54, 20)
         Me.ToolStripStatusLabel.Text = "Estado"
+        '
+        'CerrarSesiónToolStripMenuItem
+        '
+        Me.CerrarSesiónToolStripMenuItem.Name = "CerrarSesiónToolStripMenuItem"
+        Me.CerrarSesiónToolStripMenuItem.Size = New System.Drawing.Size(108, 24)
+        Me.CerrarSesiónToolStripMenuItem.Text = "Cerrar sesión"
         '
         'MdiMain
         '
@@ -225,4 +232,5 @@ Partial Class MdiMain
     Friend WithEvents menuItemAddUser As ToolStripMenuItem
     Friend WithEvents menuItemListUsers As ToolStripMenuItem
     Friend WithEvents menuItemMyAccount As ToolStripMenuItem
+    Friend WithEvents CerrarSesiónToolStripMenuItem As ToolStripMenuItem
 End Class

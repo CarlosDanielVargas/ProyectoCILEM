@@ -44,13 +44,13 @@ Partial Class frmMinorDetails
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.txtMetodoRecomendacion = New System.Windows.Forms.Label()
         Me.lbMetodoRecomendacion = New System.Windows.Forms.Label()
+        Me.lbJornada = New System.Windows.Forms.Label()
+        Me.txtJornada = New System.Windows.Forms.Label()
         Me.lbRepresentatives = New System.Windows.Forms.Label()
         Me.dgvRepresentatives = New System.Windows.Forms.DataGridView()
         Me.dgvPayments = New System.Windows.Forms.DataGridView()
         Me.lbPayments = New System.Windows.Forms.Label()
         Me.btnExport = New System.Windows.Forms.Button()
-        Me.lbJornada = New System.Windows.Forms.Label()
-        Me.txtJornada = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dgvRepresentatives, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvPayments, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,7 +81,7 @@ Partial Class frmMinorDetails
         '
         Me.lbBeca.AutoSize = True
         Me.lbBeca.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbBeca.Location = New System.Drawing.Point(497, 60)
+        Me.lbBeca.Location = New System.Drawing.Point(496, 60)
         Me.lbBeca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbBeca.Name = "lbBeca"
         Me.lbBeca.Size = New System.Drawing.Size(145, 25)
@@ -92,7 +92,7 @@ Partial Class frmMinorDetails
         '
         Me.txtBeca.AutoSize = True
         Me.txtBeca.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBeca.Location = New System.Drawing.Point(785, 60)
+        Me.txtBeca.Location = New System.Drawing.Point(784, 60)
         Me.txtBeca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtBeca.Name = "txtBeca"
         Me.txtBeca.Size = New System.Drawing.Size(57, 25)
@@ -103,7 +103,7 @@ Partial Class frmMinorDetails
         '
         Me.lbNivel.AutoSize = True
         Me.lbNivel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNivel.Location = New System.Drawing.Point(497, 30)
+        Me.lbNivel.Location = New System.Drawing.Point(496, 30)
         Me.lbNivel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbNivel.Name = "lbNivel"
         Me.lbNivel.Size = New System.Drawing.Size(61, 25)
@@ -114,7 +114,7 @@ Partial Class frmMinorDetails
         '
         Me.txtNivel.AutoSize = True
         Me.txtNivel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNivel.Location = New System.Drawing.Point(785, 30)
+        Me.txtNivel.Location = New System.Drawing.Point(784, 30)
         Me.txtNivel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtNivel.Name = "txtNivel"
         Me.txtNivel.Size = New System.Drawing.Size(55, 25)
@@ -125,7 +125,7 @@ Partial Class frmMinorDetails
         '
         Me.lbResidencia.AutoSize = True
         Me.lbResidencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbResidencia.Location = New System.Drawing.Point(497, 0)
+        Me.lbResidencia.Location = New System.Drawing.Point(496, 0)
         Me.lbResidencia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbResidencia.Name = "lbResidencia"
         Me.lbResidencia.Size = New System.Drawing.Size(114, 25)
@@ -136,7 +136,7 @@ Partial Class frmMinorDetails
         '
         Me.txtResidencia.AutoSize = True
         Me.txtResidencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtResidencia.Location = New System.Drawing.Point(785, 0)
+        Me.txtResidencia.Location = New System.Drawing.Point(784, 0)
         Me.txtResidencia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtResidencia.Name = "txtResidencia"
         Me.txtResidencia.Size = New System.Drawing.Size(108, 25)
@@ -259,7 +259,7 @@ Partial Class frmMinorDetails
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.35514!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.64486!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 288.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 253.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.txtBeca, 3, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.lbNombreCompleto, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lbGenero, 0, 1)
@@ -299,7 +299,7 @@ Partial Class frmMinorDetails
         '
         Me.txtMetodoRecomendacion.AutoSize = True
         Me.txtMetodoRecomendacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMetodoRecomendacion.Location = New System.Drawing.Point(785, 90)
+        Me.txtMetodoRecomendacion.Location = New System.Drawing.Point(784, 90)
         Me.txtMetodoRecomendacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.txtMetodoRecomendacion.Name = "txtMetodoRecomendacion"
         Me.txtMetodoRecomendacion.Size = New System.Drawing.Size(217, 25)
@@ -310,12 +310,34 @@ Partial Class frmMinorDetails
         '
         Me.lbMetodoRecomendacion.AutoSize = True
         Me.lbMetodoRecomendacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbMetodoRecomendacion.Location = New System.Drawing.Point(497, 90)
+        Me.lbMetodoRecomendacion.Location = New System.Drawing.Point(496, 90)
         Me.lbMetodoRecomendacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbMetodoRecomendacion.Name = "lbMetodoRecomendacion"
         Me.lbMetodoRecomendacion.Size = New System.Drawing.Size(83, 25)
         Me.lbMetodoRecomendacion.TabIndex = 25
         Me.lbMetodoRecomendacion.Text = "Vínculo:"
+        '
+        'lbJornada
+        '
+        Me.lbJornada.AutoSize = True
+        Me.lbJornada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbJornada.Location = New System.Drawing.Point(496, 120)
+        Me.lbJornada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbJornada.Name = "lbJornada"
+        Me.lbJornada.Size = New System.Drawing.Size(90, 25)
+        Me.lbJornada.TabIndex = 27
+        Me.lbJornada.Text = "Jornada:"
+        '
+        'txtJornada
+        '
+        Me.txtJornada.AutoSize = True
+        Me.txtJornada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtJornada.Location = New System.Drawing.Point(784, 120)
+        Me.txtJornada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.txtJornada.Name = "txtJornada"
+        Me.txtJornada.Size = New System.Drawing.Size(84, 25)
+        Me.txtJornada.TabIndex = 28
+        Me.txtJornada.Text = "Jornada"
         '
         'lbRepresentatives
         '
@@ -359,9 +381,9 @@ Partial Class frmMinorDetails
         Me.lbPayments.Location = New System.Drawing.Point(11, 449)
         Me.lbPayments.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbPayments.Name = "lbPayments"
-        Me.lbPayments.Size = New System.Drawing.Size(313, 25)
+        Me.lbPayments.Size = New System.Drawing.Size(93, 31)
         Me.lbPayments.TabIndex = 27
-        Me.lbPayments.Text = "Representantes legales del menor:"
+        Me.lbPayments.Text = "Pagos:"
         '
         'btnExport
         '
@@ -376,32 +398,11 @@ Partial Class frmMinorDetails
         Me.btnExport.Text = "Descargar informe"
         Me.btnExport.UseVisualStyleBackColor = False
         '
-        'lbJornada
-        '
-        Me.lbJornada.AutoSize = True
-        Me.lbJornada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbJornada.Location = New System.Drawing.Point(497, 120)
-        Me.lbJornada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbJornada.Name = "lbJornada"
-        Me.lbJornada.Size = New System.Drawing.Size(90, 25)
-        Me.lbJornada.TabIndex = 27
-        Me.lbJornada.Text = "Jornada:"
-        '
-        'txtJornada
-        '
-        Me.txtJornada.AutoSize = True
-        Me.txtJornada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtJornada.Location = New System.Drawing.Point(785, 120)
-        Me.txtJornada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.txtJornada.Name = "txtJornada"
-        Me.txtJornada.Size = New System.Drawing.Size(84, 25)
-        Me.txtJornada.TabIndex = 28
-        Me.txtJornada.Text = "Jornada"
-        '
         'frmMinorDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1068, 631)
         Me.Controls.Add(Me.btnExport)
