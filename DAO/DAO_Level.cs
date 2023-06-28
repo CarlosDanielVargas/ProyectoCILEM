@@ -11,7 +11,7 @@ namespace DAO
 {
     public class DAO_Level
     {
-        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString);
+        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionStringCopy);
 
         public List<Level> loadAllFromDB()
         {

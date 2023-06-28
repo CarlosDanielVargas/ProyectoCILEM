@@ -8,7 +8,7 @@ namespace DAO
 {
     public class DAO_RepresentativeMinor
     {
-        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString);
+        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionStringCopy);
 
         public List<RepresentativeMinor> loadAllFromDB()
         {

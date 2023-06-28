@@ -11,7 +11,7 @@ namespace DAO
 {
     public class DAO_MonthlyPayments
     {
-        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString);
+        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionStringCopy);
 
         public void saveToDB(MonthlyPayment monthlyPayment)
         {
