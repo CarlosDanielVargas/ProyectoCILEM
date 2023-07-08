@@ -285,5 +285,25 @@ namespace DAO
                 throw ex;
             }
         }
+
+        public void ResetPassword(User user)
+        {
+            try
+            {
+                SqlCommand resetPassword = new SqlCommand();
+                resetPassword.Connection = connection;
+                resetPassword.CommandText = "UPDATE Users SET Password = @Password, HasChangedPassword = 0 WHERE UserID = @UserID";
+                resetPassword.Parameters.AddWithValue("@Password", (user.Password));
+                resetPassword.Parameters.AddWithValue("@UserID", user.UserID);
+
+                connection.Open();
+                resetPassword.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

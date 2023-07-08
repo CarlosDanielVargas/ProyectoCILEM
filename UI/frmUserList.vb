@@ -41,8 +41,15 @@ Public Class frmUserList
             btnEditColumn.Text = "Editar"
             btnEditColumn.UseColumnTextForButtonValue = True
 
+            Dim btnResetColumn As New DataGridViewButtonColumn()
+            btnResetColumn.HeaderText = "Resetear contraseña"
+            btnResetColumn.Name = "Resetear"
+            btnResetColumn.Text = "Resetear"
+            btnResetColumn.UseColumnTextForButtonValue = True
+
             dgvUsers.Columns.Add(btnDeleteColumn)
             dgvUsers.Columns.Add(btnEditColumn)
+            dgvUsers.Columns.Add(btnResetColumn)
         End If
 
         ' Refresh the users list
@@ -80,6 +87,23 @@ Public Class frmUserList
             Dim form As New frmInsertUpdateUser(user, Me)
             form.MdiParent = Me.MdiParent
             form.Show()
+        ElseIf e.ColumnIndex = dgvUsers.Columns("Resetear").Index AndAlso e.RowIndex >= 0 Then
+            ' "Resetear" button clicked
+            Dim rowIndex As Integer = e.RowIndex
+            Dim user As User = users(rowIndex)
+            ' Perform reset action using the user object
+            Dim result As DialogResult = MessageBox.Show("¿Está seguro que desea resetear la contraseña del usuario?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.No Then
+                Return
+            End If
+            Try
+                Dim userManager As New UserManager()
+                user.GenerateRandomPassword()
+                userManager.ResetPassword(user)
+                MessageBox.Show("Se reseteó la contraseña del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch ex As Exception
+                MessageBox.Show("No se pudo resetear la contraseña del usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
     End Sub
 

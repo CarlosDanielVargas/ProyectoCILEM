@@ -77,9 +77,9 @@ Partial Class frmManageLevels
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.btnSave.ForeColor = System.Drawing.Color.White
-        Me.btnSave.Location = New System.Drawing.Point(395, 95)
+        Me.btnSave.Location = New System.Drawing.Point(374, 95)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(103, 32)
+        Me.btnSave.Size = New System.Drawing.Size(124, 32)
         Me.btnSave.TabIndex = 2
         Me.btnSave.Text = "Guardar"
         Me.btnSave.UseVisualStyleBackColor = False

@@ -119,5 +119,17 @@ namespace BL
                 throw ex;
             }
         }
+
+        public void ResetPassword(User user)
+        {
+            try
+            {
+                daoUser.ResetPassword(user);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

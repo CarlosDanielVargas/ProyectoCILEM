@@ -11,7 +11,6 @@ Public Class frmManageLevels
         dgvLevels.AllowUserToDeleteRows = False
 
         dgvLevels.Columns.Add("LevelID", "LevelID")
-        dgvLevels.Columns("LevelID").Visible = False
         dgvLevels.Columns.Add("Nombre", "Nombre")
         Dim btnEditColumn As New DataGridViewButtonColumn()
         btnEditColumn.HeaderText = "Editar"
@@ -54,15 +53,24 @@ Public Class frmManageLevels
             Dim level As New Level()
             level.Name = tbName.Text
             level.ValidateAll()
+
             If Not editing Then
-                levelManager.saveToDB(level)
-                MessageBox.Show("Nivel agregado exitosamente")
+                If tbName.Text IsNot "" Then
+                    levelManager.saveToDB(level)
+                    MessageBox.Show("Nivel agregado exitosamente")
+                Else
+                    MessageBox.Show("Debe ingresar un nombre para el nivel")
+                End If
             Else
-                ' Obtener el LevelID del nivel seleccionado en el DataGridView
-                Dim levelID As Integer = Convert.ToInt32(dgvLevels.SelectedRows(0).Cells("LevelID").Value)
-                level.LevelID = levelID
-                levelManager.updateToDB(level)
-                MessageBox.Show("Nivel editado exitosamente")
+                Try
+                    Dim selectedRow As DataGridViewRow = dgvLevels.SelectedRows(0)
+                    Dim levelID As Integer = Convert.ToInt32(selectedRow.Cells("LevelID").Value)
+                    level.LevelID = levelID
+                    levelManager.updateToDB(level)
+                    MessageBox.Show("Nivel editado exitosamente")
+                Catch ex As Exception
+                    MessageBox.Show("No se ha seleccionado ninguna fila.")
+                End Try
             End If
 
         Catch ex As Exception
@@ -72,6 +80,7 @@ Public Class frmManageLevels
         refreshDataGridView()
         changeMode()
     End Sub
+
 
     Private Sub dgvLevels_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvLevels.CellContentClick
         ' Verificar si se hizo clic en la columna "Editar"
